@@ -13,17 +13,17 @@ public class TankWheelMovement : MonoBehaviour
     public float speed;
     public float wheelSpeed;
 
-    void Start()
+    void Update()
     {
-        
+        AnimationWheelMove();
     }
 
-    void Update()
+    private void AnimationWheelMove()
     {
         offset = Time.time * speed;
         leftTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0f, offset));
         rightTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0f, offset));
-        foreach (var wheel in leftWheels) 
+        foreach (var wheel in leftWheels)
         {
             wheel.transform.Rotate(wheelSpeed * speed, 0f, 0f);
         }

@@ -25,6 +25,9 @@ public class TankWheelCollider : MonoBehaviour
     public List<Wheel> wheels;
 
     float moveInput;
+    float steerInput;
+    [SerializeField] float turnSensitivity;
+    [SerializeField] float maxSteerAngle;
 
     private Rigidbody carRb;
 
@@ -41,18 +44,32 @@ public class TankWheelCollider : MonoBehaviour
     private void LateUpdate()
     {
         Move();
+        Steer();
     }
 
     void GetInputs()
     {
         moveInput = Input.GetAxis("Vertical");
+        steerInput = Input.GetAxis("Horizontal");
     }
 
     private void Move()
     {
         foreach(var wheel in wheels) 
         {
-            wheel.wheelCollider.motorTorque = moveInput * 600 * maxAccelration * Time.deltaTime;
+            wheel.wheelCollider.motorTorque = moveInput * 6000 * maxAccelration * Time.deltaTime;
+        }
+    }
+
+    private void Steer()
+    {
+        foreach(var wheel in wheels)
+        {
+            if(wheel.axel == Axel.Front)
+            {
+                var _steerAngle = steerInput * turnSensitivity * maxSteerAngle;
+                wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, _steerAngle, 0.6f);
+            }
         }
     }
 }

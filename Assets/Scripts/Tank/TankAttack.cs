@@ -13,7 +13,8 @@ public class TankAttack : MonoBehaviour
     // 주포를 발사합니다.
     private void MainGunFire()
     {
-
+        GameObject shell = Instantiate(cannonPrefab, gunPoint.position, Quaternion.identity);
+        shell.GetComponent<Shell>().Fire();
     }
 
     // 동축기관총을 발사합니다.
@@ -24,9 +25,12 @@ public class TankAttack : MonoBehaviour
 
     #region InputSystem
     // 주포 공격 키 입력
-    private void OnAttack(InputValue key) 
+    private void OnMouseLeft(InputValue key) 
     {
-        
+        if(key.isPressed == true)
+        {
+            MainGunFire();
+        }
     }
 
     // 동축기관총 키 입력

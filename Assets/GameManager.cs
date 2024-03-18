@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI debugText;
     public TankHullMovement tankMovement;
+    public Transform targetTransform;
 
     private void Start()
     {

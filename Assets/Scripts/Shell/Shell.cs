@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,10 +35,19 @@ public class Shell : MonoBehaviour
             print("aimTransform is null");
             return;
         }
-        Vector3 direction = (aimTransform.position - transform.position).normalized;
-        transform.LookAt(aimTransform);
-        rb.AddForce(direction * shellSpeed * 10f, ForceMode.Impulse);
+       // Vector3 direction = (aimTransform.position - transform.position).normalized;
+       //  transform.LookAt(aimTransform);
+       Vector3 direction = transform.forward;
+        rb.AddForce(direction * shellSpeed * 1f, ForceMode.Impulse);
+        StartCoroutine(MeasureSpeed());
         StartCoroutine(DestroySelf());
+    }
+
+    private IEnumerator MeasureSpeed()
+    {
+        yield return new WaitForFixedUpdate();
+        float speedMeterPerSecond = rb.velocity.magnitude;
+        Debug.Log($"Æ÷Åº¼Óµµ(m/s): [{speedMeterPerSecond}] : [{DateTime.Now}]");
     }
 
     private void OnCollisionEnter(Collision collision)

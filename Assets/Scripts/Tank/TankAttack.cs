@@ -13,7 +13,7 @@ public class TankAttack : MonoBehaviour
     // 주포를 발사합니다.
     private void MainGunFire()
     {
-        GameObject shell = Instantiate(cannonPrefab, gunPoint.position, Quaternion.identity);
+        GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
         shell.GetComponent<Shell>().Fire();
     }
 

@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI debugText;
     public TankHullMovement tankMovement;
     public Transform targetTransform;
+    public Transform gunTransform;
 
     private void Start()
     {
@@ -79,6 +80,12 @@ public class GameManager : MonoBehaviour
             {
                 sb.AppendLine("Rotation : None");
             }
+           
+
+
+            // gun
+            sb.AppendLine($"Gun Elevation : {(int)gunTransform.eulerAngles.x}");
+
             debugText.text = sb.ToString();
         }
     }

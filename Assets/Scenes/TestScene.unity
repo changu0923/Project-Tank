@@ -440,7 +440,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297478139}
-  m_LocalRotation: {x: 0.08604983, y: -0.000000004387509, z: 3.7895e-10, w: 0.99629086}
+  m_LocalRotation: {x: 0.08604983, y: -0.000000004310993, z: 3.7234127e-10, w: 0.99629086}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1458,6 +1458,7 @@ MonoBehaviour:
   debugText: {fileID: 199301839}
   tankMovement: {fileID: 4462697825531695398}
   targetTransform: {fileID: 676716626}
+  gunTransform: {fileID: 4462509587089682480}
 --- !u!4 &1176866203
 Transform:
   m_ObjectHideFlags: 0

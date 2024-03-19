@@ -59,9 +59,19 @@ public class TankTurretMovement : MonoBehaviour
     public void GunMove()
     {
         Vector3 aimDirection = (aimTransform.position - gun.position).normalized;
-        Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
+        Quaternion targetRotation = Quaternion.LookRotation(aimDirection);   
         targetRotation.eulerAngles = new Vector3(targetRotation.eulerAngles.x, gun.rotation.eulerAngles.y, 0f);
-        gun.rotation = Quaternion.RotateTowards(gun.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+        if (targetRotation.eulerAngles.x > 10f && targetRotation.eulerAngles.x < 180f)
+        {
+            targetRotation.eulerAngles = new Vector3(10f, gun.rotation.eulerAngles.y, 0f);
+        }
+        if (targetRotation.eulerAngles.x < 340f && targetRotation.eulerAngles.x >= 180f)
+        {
+            targetRotation.eulerAngles = new Vector3(340f, gun.rotation.eulerAngles.y, 0f);
+        }
+
+        gun.rotation = Quaternion.RotateTowards(gun.rotation, targetRotation, Time.deltaTime * rotationSpeed);   
     }
 
     // 터렛 잠금 기능

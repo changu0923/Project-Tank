@@ -20,6 +20,8 @@ public class TankTurretMovement : MonoBehaviour
 
     private bool isTurretLock;
 
+    public float currentAngle;
+
     private void Start()
     {
         playerLayer = 1 << LayerMask.NameToLayer("Player");
@@ -62,28 +64,14 @@ public class TankTurretMovement : MonoBehaviour
     public void GunMove()
     {
         // aimTransform과 gun 사이의 방향을 구함
-        Vector3 aimDirection = (aimTransform.position - gun.position).normalized;
+        Vector3 aimDirection = aimTransform.position - gun.position;
+        float targetAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        // aimDirection을 gun의 로컬 좌표계로 변환
-        Vector3 localAimDirection = gun.parent.InverseTransformDirection(aimDirection);
+        // 각도를 0 ~ 360도 범위로 변환
+        targetAngle = (targetAngle + 360f) % 360f;
+        currentAngle = targetAngle;
 
-        // 로컬 방향 벡터를 각도로 변환
-        float targetAngleX = Mathf.Atan2(localAimDirection.y, localAimDirection.z) * Mathf.Rad2Deg;
-
-        // aimTransform이 gun 아래에 있으면 위쪽을 조준하고, 위에 있으면 아래쪽을 조준
-        if (aimTransform.position.y < gun.position.y)
-        {
-            targetAngleX = Mathf.Max(targetAngleX, minGunAngle);
-        }
-        else
-        {
-            targetAngleX = Mathf.Min(targetAngleX, maxGunAngle);
-        }
-
-        // x축 각도만 사용하여 위아래로 조준
-        Quaternion targetRotation = Quaternion.Euler(targetAngleX, 0f, 0f);
-
-        // 현재 각도에서 목표 각도로 부드럽게 회전
+        Quaternion targetRotation = Quaternion.Euler(targetAngle, 0f, 0f);
         gun.localRotation = Quaternion.RotateTowards(gun.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 

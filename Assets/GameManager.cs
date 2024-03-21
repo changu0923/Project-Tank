@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI debugText;
     public TankHullMovement tankMovement;
+    public TankTurretMovement turretMovement;
     public Transform targetTransform;
     public Transform gunTransform;
 
@@ -85,6 +86,8 @@ public class GameManager : MonoBehaviour
 
             // gun
             sb.AppendLine($"Gun Elevation : {(int)gunTransform.eulerAngles.x}");
+
+            sb.AppendLine($"Atan : {(int)turretMovement.currentAngle}");
 
             debugText.text = sb.ToString();
         }

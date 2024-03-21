@@ -39,15 +39,7 @@ public class Shell : MonoBehaviour
        //  transform.LookAt(aimTransform);
        Vector3 direction = transform.forward;
         rb.AddForce(direction * shellSpeed * 1f, ForceMode.Impulse);
-        StartCoroutine(MeasureSpeed());
         StartCoroutine(DestroySelf());
-    }
-
-    private IEnumerator MeasureSpeed()
-    {
-        yield return new WaitForFixedUpdate();
-        float speedMeterPerSecond = rb.velocity.magnitude;
-        Debug.Log($"Æ÷Åº¼Óµµ(m/s): [{speedMeterPerSecond}] : [{DateTime.Now}]");
     }
 
     private void OnCollisionEnter(Collision collision)

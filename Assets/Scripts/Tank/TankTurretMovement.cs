@@ -65,10 +65,9 @@ public class TankTurretMovement : MonoBehaviour
     {
         // aimTransform과 gun 사이의 방향을 구함
         Vector3 aimDirection = aimTransform.position - gun.position;
-        float targetAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        float targetAngle = Mathf.Atan2(aimDirection.y, aimDirection.z) * Mathf.Rad2Deg;
 
-        // 각도를 0 ~ 360도 범위로 변환
-        targetAngle = (targetAngle + 360f) % 360f;
+        // debug
         currentAngle = targetAngle;
 
         Quaternion targetRotation = Quaternion.Euler(targetAngle, 0f, 0f);

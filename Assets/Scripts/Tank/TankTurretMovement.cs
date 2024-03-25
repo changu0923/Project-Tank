@@ -63,16 +63,13 @@ public class TankTurretMovement : MonoBehaviour
 
     public void GunMove()
     {
-        // aimTransform과 gun 사이의 방향을 구함
-        Vector3 aimDirection = aimTransform.position - gun.position;
-        float targetAngle = Mathf.Atan2(aimDirection.y, aimDirection.z) * Mathf.Rad2Deg;
-
-        // debug
-        currentAngle = targetAngle;
-
-        Quaternion targetRotation = Quaternion.Euler(targetAngle, 0f, 0f);
-        gun.localRotation = Quaternion.RotateTowards(gun.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
-    }
+        //Vector3 aimDirection = aimTransform.position - gun.position;
+        //float targetAngle = Mathf.Atan2(aimDirection.y, aimDirection.z) * Mathf.Rad2Deg;
+        //targetAngle *= -1f;
+        //currentAngle = targetAngle;
+        //Quaternion targetRotation = Quaternion.Euler(targetAngle, 0f, 0f);
+        //gun.localRotation = Quaternion.RotateTowards(gun.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
+    }   
 
     // 터렛 잠금 기능
     void OnMouseRight(InputValue key)

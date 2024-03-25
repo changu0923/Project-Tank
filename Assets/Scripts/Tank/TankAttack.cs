@@ -20,7 +20,8 @@ public class TankAttack : MonoBehaviour
     // 동축기관총을 발사합니다.
     private void SubGunFire()
     {
-
+        GameObject bullet = Instantiate(bulletPrefab, subGunPoint.position, subGunPoint.rotation);
+        bullet.GetComponent<Shell>().Fire();
     }
 
     #region InputSystem
@@ -36,7 +37,10 @@ public class TankAttack : MonoBehaviour
     // 동축기관총 키 입력
     private void OnSubAttack(InputValue key)
     {
-
+        if(key.isPressed == true)
+        {
+            SubGunFire();
+        }
     }
     #endregion;
 }

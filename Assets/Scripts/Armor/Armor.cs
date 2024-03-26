@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,6 @@ public class Armor : MonoBehaviour
     }
     public void Penetrated()
     {
-        Destroy(gameObject);
+        print(transform.name + "is Penetrated : [" + DateTime.Now + "]");
     }    
 }

@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,12 +66,15 @@ public class TankTurretMovement : MonoBehaviour
 
     public void GunMove()
     {
-        //Vector3 aimDirection = aimTransform.position - gun.position;
-        //float targetAngle = Mathf.Atan2(aimDirection.y, aimDirection.z) * Mathf.Rad2Deg;
-        //targetAngle *= -1f;
-        //currentAngle = targetAngle;
-        //Quaternion targetRotation = Quaternion.Euler(targetAngle, 0f, 0f);
-        //gun.localRotation = Quaternion.RotateTowards(gun.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
+        Vector3 localTargetPos = turret.InverseTransformDirection(aimTransform.position - gun.position);
+        Vector3 zeroPlainVector = Vector3.ProjectOnPlane(localTargetPos, Vector3.up);
+        float angle = Vector3.Angle(zeroPlainVector, localTargetPos);
+        angle *= Mathf.Sign(localTargetPos.y);
+        currentAngle = Mathf.MoveTowards(currentAngle, angle, rotationSpeed * Time.deltaTime);
+        if(Mathf.Abs(currentAngle) >Mathf.Epsilon)
+        {
+            gun.localEulerAngles = Vector3.right * - currentAngle;
+        }
     }   
 
     // 터렛 잠금 기능

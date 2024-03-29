@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4024391591487949047}
   - component: {fileID: 3431615572034581154}
   - component: {fileID: 1397543386502795813}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shell_Head (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1604074584693954698}
   - component: {fileID: 6397619415255398962}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 6361743864005021464}
   - component: {fileID: 6361743864005021467}
   - component: {fileID: 6361743864005021466}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shell_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 6361743865098832095}
   - component: {fileID: 6361743865098832064}
   - component: {fileID: 6028836358931285001}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shell_120mm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6361743865375071933}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 6361743865398217878}
   - component: {fileID: 6361743865398217881}
   - component: {fileID: 6361743865398217880}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shell_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5496205788484330306}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shell_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 7639150461538378870}
   - component: {fileID: 4562892395990882696}
   - component: {fileID: 908853545235518090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shell_Penetrator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 35633989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,9 +360,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 109423191}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 225074128}
   - component: {fileID: 225074127}
   - component: {fileID: 225074131}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Armor
   m_Icon: {fileID: 0}
@@ -826,7 +826,6 @@ GameObject:
   - component: {fileID: 603983774}
   - component: {fileID: 603983773}
   - component: {fileID: 603983778}
-  - component: {fileID: 603983779}
   m_Layer: 7
   m_Name: HullFrontLower
   m_TagString: Armor
@@ -1163,23 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 60
---- !u!54 &603983779
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603983771}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  armorThickness: 400
 --- !u!1 &676716625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,7 +1583,6 @@ GameObject:
   - component: {fileID: 885526393}
   - component: {fileID: 885526392}
   - component: {fileID: 885526397}
-  - component: {fileID: 885526398}
   m_Layer: 7
   m_Name: HullRight
   m_TagString: Armor
@@ -2013,23 +1995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 80
---- !u!54 &885526398
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885526390}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  armorThickness: 400
 --- !u!1 &885794554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,7 +2514,6 @@ GameObject:
   - component: {fileID: 926296264}
   - component: {fileID: 926296263}
   - component: {fileID: 926296268}
-  - component: {fileID: 926296269}
   m_Layer: 7
   m_Name: HullLeft
   m_TagString: Armor
@@ -2961,23 +2926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 80
---- !u!54 &926296269
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926296261}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  armorThickness: 400
 --- !u!1 &934544830
 GameObject:
   m_ObjectHideFlags: 3
@@ -3179,7 +3128,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-36098
+  m_Name: pb_Mesh24646
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3714,7 +3663,7 @@ GameObject:
   - component: {fileID: 1042002957}
   - component: {fileID: 1042002956}
   - component: {fileID: 1042002960}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Armor
   m_Icon: {fileID: 0}
@@ -3818,7 +3767,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24590
+  m_Name: pb_Mesh24692
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4256,7 +4205,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24420
+  m_Name: pb_Mesh24462
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4414,13 +4363,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &1363022334
+--- !u!43 &1266159248
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24548
+  m_Name: pb_Mesh24614
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4584,7 +4533,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-32868
+  m_Name: pb_Mesh24496
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4776,7 +4725,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1363022334}
+  m_Mesh: {fileID: 1266159248}
 --- !u!33 &1401461846
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -4784,7 +4733,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401461844}
-  m_Mesh: {fileID: 1363022334}
+  m_Mesh: {fileID: 1266159248}
 --- !u!23 &1401461847
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5028,8 +4977,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
-  m_Mesh: {fileID: 1363022334}
-  m_VersionIndex: 7348
+  m_Mesh: {fileID: 1266159248}
+  m_VersionIndex: 7351
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5064,7 +5013,6 @@ GameObject:
   - component: {fileID: 1497103197}
   - component: {fileID: 1497103196}
   - component: {fileID: 1497103201}
-  - component: {fileID: 1497103202}
   m_Layer: 7
   m_Name: HullFrontUpper
   m_TagString: Armor
@@ -5401,23 +5349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 150
---- !u!54 &1497103202
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497103194}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  armorThickness: 400
 --- !u!1 &1504179810
 GameObject:
   m_ObjectHideFlags: 0
@@ -5433,7 +5365,6 @@ GameObject:
   - component: {fileID: 1504179813}
   - component: {fileID: 1504179812}
   - component: {fileID: 1504179817}
-  - component: {fileID: 1504179818}
   m_Layer: 7
   m_Name: HullBack
   m_TagString: Armor
@@ -5770,23 +5701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 40
---- !u!54 &1504179818
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504179810}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  armorThickness: 400
 --- !u!1 &1525437070
 GameObject:
   m_ObjectHideFlags: 0
@@ -6037,7 +5952,7 @@ GameObject:
   - component: {fileID: 1580211292}
   - component: {fileID: 1580211291}
   - component: {fileID: 1580211295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Armor
   m_Icon: {fileID: 0}
@@ -6553,7 +6468,7 @@ GameObject:
   - component: {fileID: 1695080772}
   - component: {fileID: 1695080771}
   - component: {fileID: 1695080775}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Armor
   m_Icon: {fileID: 0}
@@ -6917,7 +6832,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-41870
+  m_Name: pb_Mesh24392
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7213,7 +7128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2082359067}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7353,7 +7268,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-39400
+  m_Name: pb_Mesh24628
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7517,7 +7432,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-32122
+  m_Name: pb_Mesh24444
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11127,8 +11042,7 @@ GameObject:
   - component: {fileID: 5078857610964691934}
   - component: {fileID: 5049180695951315642}
   - component: {fileID: 5060070379246488524}
-  - component: {fileID: 5078857610964691935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player_RUS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11146,7 +11060,7 @@ GameObject:
   - component: {fileID: 5072656353219959014}
   - component: {fileID: 5052875041749302974}
   - component: {fileID: 5060269446312040972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11164,7 +11078,7 @@ GameObject:
   - component: {fileID: 5072479008237293378}
   - component: {fileID: 5052847612048663926}
   - component: {fileID: 5060346175062590812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11182,7 +11096,7 @@ GameObject:
   - component: {fileID: 5078720064889542094}
   - component: {fileID: 5052391045242585424}
   - component: {fileID: 5061692260903805210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11200,7 +11114,7 @@ GameObject:
   - component: {fileID: 5072414988128844136}
   - component: {fileID: 5051995524987929708}
   - component: {fileID: 5060058662428649082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11218,7 +11132,7 @@ GameObject:
   - component: {fileID: 5078760645046092534}
   - component: {fileID: 5049250693109229552}
   - component: {fileID: 5061717691631210978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11236,7 +11150,7 @@ GameObject:
   - component: {fileID: 5078694173036100060}
   - component: {fileID: 5049183467525543742}
   - component: {fileID: 5061683523360632428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11254,7 +11168,7 @@ GameObject:
   - component: {fileID: 5072397963054841728}
   - component: {fileID: 5052444537620536538}
   - component: {fileID: 5061825705573239658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11273,7 +11187,7 @@ GameObject:
   - component: {fileID: 5052876729054183472}
   - component: {fileID: 5059944429868297104}
   - component: {fileID: 5078400967219077120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11291,7 +11205,7 @@ GameObject:
   - component: {fileID: 5078646303603653854}
   - component: {fileID: 5052417025827480930}
   - component: {fileID: 5060273656104199902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11310,7 +11224,7 @@ GameObject:
   - component: {fileID: 5052361411741930048}
   - component: {fileID: 5059909528227875200}
   - component: {fileID: 5078424943419694906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11328,7 +11242,7 @@ GameObject:
   - component: {fileID: 5078401038818920530}
   - component: {fileID: 5052431414471281934}
   - component: {fileID: 5060199613861047692}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11346,7 +11260,7 @@ GameObject:
   - component: {fileID: 5072387471490353390}
   - component: {fileID: 5052166290517784280}
   - component: {fileID: 5060208083743012182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11364,7 +11278,7 @@ GameObject:
   - component: {fileID: 5072619913046274702}
   - component: {fileID: 5049131031627414582}
   - component: {fileID: 5061723121228234650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11382,7 +11296,7 @@ GameObject:
   - component: {fileID: 5072561465281986484}
   - component: {fileID: 5052968515043200926}
   - component: {fileID: 5060271774475977606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11400,7 +11314,7 @@ GameObject:
   - component: {fileID: 5072471262716669368}
   - component: {fileID: 5052865030923509924}
   - component: {fileID: 5061749486038562288}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11418,7 +11332,7 @@ GameObject:
   - component: {fileID: 5078851345741691672}
   - component: {fileID: 5052156025920776322}
   - component: {fileID: 5060347022235600468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11436,7 +11350,7 @@ GameObject:
   - component: {fileID: 5078773324126105636}
   - component: {fileID: 5049164328042217920}
   - component: {fileID: 5060157022798436190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11454,7 +11368,7 @@ GameObject:
   - component: {fileID: 5078675180169459820}
   - component: {fileID: 5052210609547797228}
   - component: {fileID: 5059977965125485366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11658,19 +11572,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!54 &5078857610964691935
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5073727720926410070}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0

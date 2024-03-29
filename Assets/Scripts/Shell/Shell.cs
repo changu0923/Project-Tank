@@ -22,7 +22,7 @@ public class Shell : MonoBehaviour
     void FixedUpdate()
     {
         // 포탄 포물선 비행
-        if (rb.velocity != Vector3.zero)    // velcocity에 따른 화살각도변화 
+        if (rb.velocity != Vector3.zero)    // velcocity에 따른 탄도 각도 변화 
         {
             rb.rotation = Quaternion.LookRotation(rb.velocity);
         }
@@ -35,8 +35,6 @@ public class Shell : MonoBehaviour
             print("aimTransform is null");
             return;
         }
-       // Vector3 direction = (aimTransform.position - transform.position).normalized;
-       //  transform.LookAt(aimTransform);
        Vector3 direction = transform.forward;
         rb.AddForce(direction * shellSpeed * 1f, ForceMode.Impulse);
         StartCoroutine(DestroySelf());
@@ -48,6 +46,7 @@ public class Shell : MonoBehaviour
         {
             if (collision.collider.CompareTag("Armor"))
             {
+                print($"Collision Detected : [{collision.collider.name}] : [{DateTime.Now}]");
                 Armor targetArmor = collision.collider.GetComponent<Armor>();
 
                 // 충돌한 객체의 표면 노멀 벡터 (정규화된 노멀 벡터 사용)

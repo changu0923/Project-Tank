@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class TankView : MonoBehaviour
     public float BottomClamp = -30.0f;
 
     // cinemachine
+    public CinemachineVirtualCamera vcam;
     public float sensivity;
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
@@ -68,5 +70,23 @@ public class TankView : MonoBehaviour
     {
         if(true)
         _input = value.Get<Vector2>();
+    }
+
+    public void OnScroll(InputValue value)
+    {
+        float z = value.Get<float>();
+        if (z > 0)
+        {
+            if(vcam != null)
+            {
+                
+            }
+            Debug.Log("Scroll UP");
+        }
+
+        else if (z < 0)
+        {
+            Debug.Log("Scroll DOWN");
+        }
     }
 }

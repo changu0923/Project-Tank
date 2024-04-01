@@ -9771,6 +9771,7 @@ MonoBehaviour:
   cameraRoot: {fileID: 790031435}
   TopClamp: 70
   BottomClamp: -30
+  vcam: {fileID: 1525437073}
   sensivity: 500
 --- !u!4 &4462728476943148408
 Transform:

@@ -9,8 +9,10 @@ using UnityEngine.InputSystem;
 public class TankTurretMovement : MonoBehaviour
 {
     [SerializeField] Transform aimTransform;
+    [SerializeField] Transform gunAimTransform;
     [SerializeField] Transform turret;
     [SerializeField] Transform gun;
+    [SerializeField] Transform gunPoint;
     [Header("포탑 회전 속도")]
     [SerializeField] float rotationSpeed;
 
@@ -67,6 +69,21 @@ public class TankTurretMovement : MonoBehaviour
 
     public void GunMove()
     {
+        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~playerLayer))
+        {
+            gunAimTransform.position = hit.point;
+        }
+        else
+        {
+            
+            Vector3 targetPos = ray.origin + ray.direction * 100f;
+            gunAimTransform.position = targetPos;
+        }
+
+
         Vector3 localTargetPos = turret.InverseTransformDirection(aimTransform.position - gun.position);
         Vector3 zeroPlainVector = Vector3.ProjectOnPlane(localTargetPos, Vector3.up);
         float angle = Vector3.Angle(zeroPlainVector, localTargetPos);

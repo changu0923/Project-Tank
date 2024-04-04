@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIReticleTPS : MonoBehaviour
 { 
     [SerializeField]RectTransform inCircleReticle;
+    [SerializeField] RectTransform outCircleBackgroundReticle;
     [SerializeField]RectTransform outCircleReticle;
     [SerializeField]Transform aimTrasform;
     [SerializeField]Transform gunAimTrasform;
@@ -15,5 +16,6 @@ public class UIReticleTPS : MonoBehaviour
 
         inCircleReticle.position = screenGunAimPosition;
         outCircleReticle.position = screenMousePosition;
+        outCircleBackgroundReticle.position = screenMousePosition;
     }
 }

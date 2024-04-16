@@ -184,6 +184,10 @@ public class DatabaseManager : MonoBehaviour
                     {
                         returnData.UserLevel = int.Parse(row[col].ToString());
                     }
+                    else if(col.ColumnName == "silver")
+                    {
+                        returnData.Silver = int.Parse(row[col].ToString());
+                    }
                 }
             }
         }

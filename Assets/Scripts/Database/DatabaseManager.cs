@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 
 public class DatabaseManager : MonoBehaviour
 {
@@ -33,9 +34,12 @@ public class DatabaseManager : MonoBehaviour
     [SerializeField] string passwd;
     private MySqlConnection conn;
 
+    private Dictionary<int, TankData> vehiclesInDB = new Dictionary<int, TankData>();
     private UserData currentUserdata;
-    public UserData CurrentUserdata { get => currentUserdata; set => currentUserdata = value; }
+    private List<TankData> currentUserOwnedVehicles;
 
+    public UserData CurrentUserdata { get => currentUserdata; set => currentUserdata = value; }
+    public List<TankData> CurrentUserOwnedVehicles { get => currentUserOwnedVehicles; }
 
     private void Awake()
     {
@@ -63,6 +67,7 @@ public class DatabaseManager : MonoBehaviour
             conn = new MySqlConnection(config);
             conn.Open();
             Debug.Log($"Mysql Connect Success : [{DateTime.Now}]");
+            GetVehiclesFromDB();
         }
         catch (Exception e)
         {
@@ -82,8 +87,8 @@ public class DatabaseManager : MonoBehaviour
         if (isLogin)
         {
             print($"Login Success [{DateTime.Now}]");
-            // TODO get userinfo
             CurrentUserdata = GetUserData(id);
+            GetUserOwnedVehicles(CurrentUserdata.Uid);
             return true;
         }
         else
@@ -104,6 +109,8 @@ public class DatabaseManager : MonoBehaviour
             int count = cmd.ExecuteNonQuery();
             if (count != 0)
             {
+                UserData tempUser = GetUserData(userData.UserEmail);
+                AddStarterKit(tempUser.Uid);
                 return true;
             }
             else
@@ -116,6 +123,14 @@ public class DatabaseManager : MonoBehaviour
             Debug.LogError(e.Message);
             return false;
         }
+    }
+
+    public void AddStarterKit(string uid)
+    {
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandText = $"INSERT INTO user_owned_tanks (uid, tank_id) VALUES ('{uid}', '1')";
+        cmd.ExecuteNonQuery();
     }
 
     public bool UpdateNickname(string nickname)
@@ -225,11 +240,111 @@ public class DatabaseManager : MonoBehaviour
         return 1;
     }
 
-    public bool CheckID(string id)
+    public void GetUserOwnedVehicles(string uid)
     {
         MySqlCommand cmd = new MySqlCommand();
         cmd.Connection = conn;
-        cmd.CommandText = $"SELECT * FROM users WHERE user_email =\'{id}\';";
+        cmd.CommandText = $"SELECT {uid} FROM user_owned_tanks";
+        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+        DataSet dataset = new DataSet();
+        da.Fill(dataset);
+
+        if (dataset.Tables.Count > 0)
+        {
+            DataTable dataTable = dataset.Tables[0];
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                TankData tankData = new TankData();
+                foreach (DataColumn col in dataTable.Columns)
+                {
+                    if (col.ColumnName == "tank_id")
+                    {
+                        int tankID = int.Parse(row[col].ToString());
+                        tankData.TankID = vehiclesInDB[tankID].TankID;
+                        tankData.TankName = vehiclesInDB[tankID].TankName;
+                        tankData.TankNation = vehiclesInDB[tankID].TankNation;
+                        tankData.TankPrice = vehiclesInDB[tankID].TankPrice;
+                        tankData.TankDescription = vehiclesInDB[tankID].TankDescription;
+                    }
+                    else if(col.ColumnName == "item_slot_1")
+                    {
+                        tankData.ItemSlot_01 = int.Parse(row[col].ToString());
+                    }
+                    else if (col.ColumnName == "item_slot_2")
+                    {
+                        tankData.ItemSlot_02 = int.Parse(row[col].ToString());
+                    }
+                    else if (col.ColumnName == "item_slot_3")
+                    {
+                        tankData.ItemSlot_03 = int.Parse(row[col].ToString());
+                        currentUserOwnedVehicles.Add(tankData);
+                    }
+                }
+            }
+        }
+        else
+        {
+            print("No data found.");
+        }
+
+    }
+
+    public void GetVehiclesFromDB()
+    {
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandText = $"SELECT tank_id FROM tanks";
+        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+        DataSet dataset = new DataSet();
+        da.Fill(dataset);
+
+        if (dataset.Tables.Count > 0)
+        {
+            DataTable dataTable = dataset.Tables[0];
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                TankData tankData = new TankData();
+                int tankIndex = 0;
+                foreach (DataColumn col in dataTable.Columns)
+                {                   
+                    if (col.ColumnName == "tank_id")
+                    {
+                        tankData.TankID = int.Parse(row[col].ToString());
+                        tankIndex = tankData.TankID;
+                    }
+                    else if(col.ColumnName == "tank_name")
+                    {
+                        tankData.TankName = row[col].ToString();
+                    }
+                    else if (col.ColumnName == "tank_nation")
+                    {
+                        tankData.TankNation = row[col].ToString();
+                    }
+                    else if (col.ColumnName == "tank_price")
+                    {
+                        tankData.TankPrice = int.Parse(row[col].ToString());
+                    }
+                    else if (col.ColumnName == "description")
+                    {
+                        tankData.TankDescription = row[col].ToString();
+                        vehiclesInDB.Add(tankIndex, tankData);
+                    }
+                }
+            }
+        }
+        else
+        {
+            print("No data found.");
+        }
+    }
+
+    public bool CheckID(string email)
+    {
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandText = $"SELECT * FROM users WHERE user_email =\'{email}\';";
         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
         DataSet dataset = new DataSet();
         da.Fill(dataset);

@@ -7,6 +7,13 @@ public class HangarUIVehicleContent : MonoBehaviour
 {
     [SerializeField] Image vehicleIcon;
 
+    Toggle toggle;
     public Image SetVehicleIcon { set => vehicleIcon = value; }
     public Image GetVehicleIcon { get => vehicleIcon;}
+
+    private void Awake()
+    {
+    }
+
+
 }

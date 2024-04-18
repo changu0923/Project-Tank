@@ -15,7 +15,6 @@ public class UIBottomBarPanel : MonoBehaviour
 
     private void UpdateVehicleElements()
     {
-        print($"Current User Vehicles : {DatabaseManager.Instance.CurrentUserOwnedVehicles.Count} [{DateTime.Now}]");
         foreach (TankData element in DatabaseManager.Instance.CurrentUserOwnedVehicles) 
         {
             HangarUIVehicleContent content = Instantiate(contentPrefab, VehicleHolder).GetComponent<HangarUIVehicleContent>();

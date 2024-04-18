@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ModelList : MonoBehaviour
@@ -9,7 +10,7 @@ public class ModelList : MonoBehaviour
 
     public List<GameObject> VehicleModelList { get => vehicleModelList; set => vehicleModelList = value; }
     public List<Sprite> Sprites { get => sprites; set => sprites = value; }
-    
+
     public Sprite GetSprite(string nation)
     {
         if(nation == "USA")

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,12 @@ public class HangarUIVehicleContent : MonoBehaviour
 
     private void Awake()
     {
+        toggle = GetComponent<Toggle>();
+        toggle.onValueChanged.AddListener(OnTogglePressed);
     }
 
-
+    private void OnTogglePressed(bool bValue)
+    {
+        
+    }
 }

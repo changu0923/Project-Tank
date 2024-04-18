@@ -19,4 +19,6 @@ public class UIHangarPanel : MonoBehaviour
     {
         UIManager.Instance.hangarPanel = this;
     } 
+
+
 }

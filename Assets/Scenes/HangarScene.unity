@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 0
+  m_AllowSwitchOff: 1
 --- !u!1 &515052992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,47 +2933,10 @@ PrefabInstance:
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 431483699}
-    - target: {fileID: 5179222979337576975, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5179222979337576975, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5179222979337576975, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6097807998655432465}
-    - target: {fileID: 5179222979337576975, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5179222979337576975, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 5179222979337576975, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5179222979337576975, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5927648629613184712, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
 --- !u!224 &6097807998655432464 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1509148874273612126, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
-  m_PrefabInstance: {fileID: 6097807998655432463}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6097807998655432465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5927648629613184712, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
   m_PrefabInstance: {fileID: 6097807998655432463}
   m_PrefabAsset: {fileID: 0}

@@ -49,25 +49,19 @@ public class HangarView : MonoBehaviour
 
     private void CameraMove()
     {
-
-        // if there is an input and camera position is not fixed
         if (_input.sqrMagnitude >= _threshold)
-        {
-            //Don't multiply mouse input by Time.deltaTime;
+        {           
             float deltaTimeMultiplier = Time.deltaTime * sensivity;
 
             _cinemachineTargetYaw += _input.x * deltaTimeMultiplier;
             _cinemachineTargetPitch += _input.y * deltaTimeMultiplier;
         }
-
-        // clamp our rotations so our values are limited 360 degrees
+      
         _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-        // Cinemachine will follow this target
         cameraRoot.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch,
             _cinemachineTargetYaw, 0.0f);
-
     }
 
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

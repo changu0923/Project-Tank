@@ -13,9 +13,12 @@ public class UITopBarPanel : MonoBehaviour
     [SerializeField] InputField editNicknameInput;
     private void Awake()
     {
-        playerNameText.text = DatabaseManager.Instance.CurrentUserdata.UserNickname;
-        playerLevelText.text = "LEVEL : " + DatabaseManager.Instance.CurrentUserdata.UserLevel.ToString();
-        silverText.text = "Silver : " + DatabaseManager.Instance.CurrentUserdata.Silver.ToString();
+        if (DatabaseManager.Instance.CurrentUserdata != null)
+        {
+            playerNameText.text = DatabaseManager.Instance.CurrentUserdata.UserNickname;
+            playerLevelText.text = "LEVEL : " + DatabaseManager.Instance.CurrentUserdata.UserLevel.ToString();
+            silverText.text = "Silver : " + DatabaseManager.Instance.CurrentUserdata.Silver.ToString();
+        }
     }
 
     private void OnButtonEditNicknameClick()

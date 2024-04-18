@@ -193,6 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicleIcon: {fileID: 1509148875208526405}
+  vehicleNation: {fileID: 1509148875031116860}
+  tankNameText: {fileID: 153459015239061600}
 --- !u!114 &5179222979337576975
 MonoBehaviour:
   m_ObjectHideFlags: 0

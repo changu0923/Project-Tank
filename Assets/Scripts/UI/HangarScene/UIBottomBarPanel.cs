@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIBottomBarPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] RectTransform VehicleHolder;
+    [SerializeField] GameObject contentPrefab;
+
+    private void Awake()
     {
-        
+        UpdateVehicleElements();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateVehicleElements()
     {
-        
+        print($"Current User Vehicles : {DatabaseManager.Instance.CurrentUserOwnedVehicles.Count} [{DateTime.Now}]");
+        foreach (TankData element in DatabaseManager.Instance.CurrentUserOwnedVehicles) 
+        {
+            HangarUIVehicleContent content = Instantiate(contentPrefab, VehicleHolder).GetComponent<HangarUIVehicleContent>();
+            content.GetTankNameText.text = element.TankName;
+            content.GetVehicleNation.sprite = UIManager.Instance.hangarPanel.ModelList.GetSprite(element.TankNation);
+        }
     }
 }

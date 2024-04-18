@@ -9,34 +9,14 @@ public class UIHangarPanel : MonoBehaviour
     public UIEquipmentPanel equipmentPanel;
 
     [Header("Vehicle Viewer")]
+    [SerializeField] ModelList modelList;
     [SerializeField] Transform vehicleSpawnPoint;
-    private GameObject currentViewModel;
-    private Dictionary<string, TankData> ownedVehicles;
-    private Dictionary<string, GameObject> ownedVehiclesModel = new Dictionary<string, GameObject>();
+
+    public Transform VehicleSpawnPoint { get => vehicleSpawnPoint; set => vehicleSpawnPoint = value; }
+    public ModelList ModelList { get => modelList; set => modelList = value; }
 
     private void Awake()
     {
         UIManager.Instance.hangarPanel = this;
-    }
-    
-    public void GetVehicle(string tankName, GameObject tankPrefab)
-    {
-        ownedVehiclesModel.Add(name, tankPrefab);
-    }
-
-    // toggle로 선택된 차량의 3d모델을 차고에 표시합니다.
-    public void GetViewModel(string vehicleName)
-    {
-        if(vehicleSpawnPoint.childCount == 0) 
-        {
-            currentViewModel = Instantiate(ownedVehiclesModel[vehicleName].gameObject, vehicleSpawnPoint);   
-        }
-        else
-        {
-            GameObject currentModel = vehicleSpawnPoint.GetChild(0).gameObject;
-            Destroy(currentModel);
-
-            currentViewModel = Instantiate(ownedVehiclesModel[vehicleName].gameObject, vehicleSpawnPoint);
-        }
-    }
+    } 
 }

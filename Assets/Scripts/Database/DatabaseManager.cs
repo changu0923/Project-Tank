@@ -8,6 +8,7 @@ using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
+using UnityEngine.ProBuilder.Shapes;
 
 public class DatabaseManager : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class DatabaseManager : MonoBehaviour
 
     private Dictionary<int, TankData> vehiclesInDB = new Dictionary<int, TankData>();
     private UserData currentUserdata;
-    private List<TankData> currentUserOwnedVehicles;
+    private List<TankData> currentUserOwnedVehicles = new();
 
     public UserData CurrentUserdata { get => currentUserdata; set => currentUserdata = value; }
     public List<TankData> CurrentUserOwnedVehicles { get => currentUserOwnedVehicles; }
@@ -177,8 +178,7 @@ public class DatabaseManager : MonoBehaviour
             foreach (DataRow row in dataTable.Rows)
             {
                 foreach (DataColumn col in dataTable.Columns)
-                {
-                    // print($"{col.ColumnName}: {row[col]}");
+                {                   
                     if (col.ColumnName == "uid")
                     {
                         returnData.Uid = row[col].ToString();
@@ -244,7 +244,7 @@ public class DatabaseManager : MonoBehaviour
     {
         MySqlCommand cmd = new MySqlCommand();
         cmd.Connection = conn;
-        cmd.CommandText = $"SELECT {uid} FROM user_owned_tanks";
+        cmd.CommandText = $"SELECT tank_id FROM user_owned_tanks WHERE uid = '{uid}'";
         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
         DataSet dataset = new DataSet();
         da.Fill(dataset);
@@ -261,11 +261,15 @@ public class DatabaseManager : MonoBehaviour
                     if (col.ColumnName == "tank_id")
                     {
                         int tankID = int.Parse(row[col].ToString());
-                        tankData.TankID = vehiclesInDB[tankID].TankID;
-                        tankData.TankName = vehiclesInDB[tankID].TankName;
-                        tankData.TankNation = vehiclesInDB[tankID].TankNation;
-                        tankData.TankPrice = vehiclesInDB[tankID].TankPrice;
-                        tankData.TankDescription = vehiclesInDB[tankID].TankDescription;
+                        if (vehiclesInDB.ContainsKey(tankID))
+                        {
+                            TankData originalTankData = vehiclesInDB[tankID];
+                            tankData.TankID = originalTankData.TankID;
+                            tankData.TankName = originalTankData.TankName;
+                            tankData.TankNation = originalTankData.TankNation;
+                            tankData.TankPrice = originalTankData.TankPrice;
+                            tankData.TankDescription = originalTankData.TankDescription;
+                        }
                     }
                     else if(col.ColumnName == "item_slot_1")
                     {
@@ -277,10 +281,10 @@ public class DatabaseManager : MonoBehaviour
                     }
                     else if (col.ColumnName == "item_slot_3")
                     {
-                        tankData.ItemSlot_03 = int.Parse(row[col].ToString());
-                        currentUserOwnedVehicles.Add(tankData);
+                        tankData.ItemSlot_03 = int.Parse(row[col].ToString());                        
                     }
                 }
+                currentUserOwnedVehicles.Add(tankData);
             }
         }
         else
@@ -294,7 +298,7 @@ public class DatabaseManager : MonoBehaviour
     {
         MySqlCommand cmd = new MySqlCommand();
         cmd.Connection = conn;
-        cmd.CommandText = $"SELECT tank_id FROM tanks";
+        cmd.CommandText = $"SELECT * FROM tanks";
         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
         DataSet dataset = new DataSet();
         da.Fill(dataset);
@@ -308,7 +312,7 @@ public class DatabaseManager : MonoBehaviour
                 TankData tankData = new TankData();
                 int tankIndex = 0;
                 foreach (DataColumn col in dataTable.Columns)
-                {                   
+                {
                     if (col.ColumnName == "tank_id")
                     {
                         tankData.TankID = int.Parse(row[col].ToString());
@@ -329,9 +333,9 @@ public class DatabaseManager : MonoBehaviour
                     else if (col.ColumnName == "description")
                     {
                         tankData.TankDescription = row[col].ToString();
-                        vehiclesInDB.Add(tankIndex, tankData);
                     }
                 }
+                vehiclesInDB.Add(tankIndex, tankData);
             }
         }
         else

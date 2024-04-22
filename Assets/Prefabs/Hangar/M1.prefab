@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 8962362842457776051}
   - component: {fileID: 8956588250685860141}
   - component: {fileID: 9006838515917051459}
+  - component: {fileID: -8415913201190477802}
   m_Layer: 0
   m_Name: M1
   m_TagString: Untagged
@@ -534,6 +535,44 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43063978493796898, guid: 41ab1990d516f004896af0d7b863b3e8, type: 2}
+--- !u!114 &-8415913201190477802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8943048692477030337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3841b3d56fd9074297ac01b1445c59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankName: M1
+  maxHP: 0
+  maxSpeed: 0
+  targetRenderers:
+  - {fileID: 8956588250685860141}
+  - {fileID: 8956297668740596545}
+  - {fileID: 8956103877183260567}
+  - {fileID: 8955779814161662743}
+  - {fileID: 8955992698969325377}
+  - {fileID: 8957033324851376293}
+  - {fileID: 8956021096068441723}
+  - {fileID: 8956215850894615557}
+  - {fileID: 8956064794454779631}
+  - {fileID: 8957034604500275685}
+  - {fileID: 8956547306294842469}
+  - {fileID: 8956771568807879937}
+  - {fileID: 8957066839134675683}
+  - {fileID: 8956446189848416699}
+  - {fileID: 8957082357949835723}
+  - {fileID: 8955729799554838295}
+  - {fileID: 8956655203020356255}
+  - {fileID: 8956350290553625015}
+  - {fileID: 8956693670481267647}
+  - {fileID: 8956761353520848835}
+  - {fileID: 8956551293964702303}
+  currentCamo: {fileID: 0}
 --- !u!1 &8943077399837200933
 GameObject:
   m_ObjectHideFlags: 0

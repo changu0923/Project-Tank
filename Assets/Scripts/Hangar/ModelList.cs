@@ -8,12 +8,12 @@ public class ModelList : MonoBehaviour
 {
     [SerializeField] List<GameObject> vehicleModelList = new List<GameObject>();
     [SerializeField] List<Sprite> sprites = new List<Sprite>();
-    [SerializeField] List<Material> materials = new List<Material>();
+    [SerializeField] List<Material> camoMaterials = new List<Material>();
     [SerializeField] List<Sprite> camoSprites = new List<Sprite>();
 
     public List<GameObject> VehicleModelList { get => vehicleModelList; set => vehicleModelList = value; }
     public List<Sprite> Sprites { get => sprites; set => sprites = value; }
-    public List<Material> Materials { get => materials; set => materials = value; }
+    public List<Material> CamoMaterials { get => camoMaterials; set => camoMaterials = value; }
     public List<Sprite> CamoSprites { get => camoSprites; set => camoSprites = value; }
 
     public Sprite GetSprite(string nation)

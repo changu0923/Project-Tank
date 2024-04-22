@@ -30,6 +30,7 @@ public class UIEquipmentPanel : MonoBehaviour
 
     private void OnCamoToggleOn(bool bValue)
     {
+        int index = 0;
         foreach (Toggle toggle in camoToggles) 
         {
             if(toggle.isOn) 
@@ -37,7 +38,16 @@ public class UIEquipmentPanel : MonoBehaviour
                 Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
                 Image buttonImage = camoButton.GetComponent<Image>();
                 buttonImage.sprite = newSprite;
+
+                TankStat targetTank;
+                bool result = UIManager.Instance.hangarPanel.VehicleSpawnPoint.GetChild(0).TryGetComponent<TankStat>(out targetTank);
+                if(result)
+                {
+                    targetTank.SetVehicleCamo(UIManager.Instance.hangarPanel.ModelList.CamoMaterials[index]);
+                }
+                //TODO : DB에 camo 넘겨주기
             }
+            index++;
         }
     }
 }

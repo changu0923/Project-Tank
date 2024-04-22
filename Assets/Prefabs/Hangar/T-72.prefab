@@ -1454,6 +1454,7 @@ GameObject:
   - component: {fileID: 5962671171958032042}
   - component: {fileID: 5950691013378170844}
   - component: {fileID: 5918411653304636216}
+  - component: {fileID: 9093937045729561110}
   m_Layer: 0
   m_Name: T-72
   m_TagString: Untagged
@@ -1557,6 +1558,39 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43597996998652480, guid: 597225d0aaceb7042979576af95795c3, type: 2}
+--- !u!114 &9093937045729561110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964000363943797062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3841b3d56fd9074297ac01b1445c59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankName: T-72
+  maxHP: 0
+  maxSpeed: 0
+  targetRenderers:
+  - {fileID: 5950691013378170844}
+  - {fileID: 5950682595120902762}
+  - {fileID: 5950566554988708686}
+  - {fileID: 5950160751590655474}
+  - {fileID: 5950052702885453690}
+  - {fileID: 5950201282952606986}
+  - {fileID: 5950403065767678532}
+  - {fileID: 5950476484445401806}
+  - {fileID: 5950117774900421088}
+  - {fileID: 5950192549710723708}
+  - {fileID: 5950471724868062748}
+  - {fileID: 5950739345365178150}
+  - {fileID: 5950469655006467990}
+  - {fileID: 5950542071574362524}
+  - {fileID: 5950403859253399884}
+  - {fileID: 5950551091203187014}
+  - {fileID: 5950161783166987146}
 --- !u!1 &5964011969776312280
 GameObject:
   m_ObjectHideFlags: 0

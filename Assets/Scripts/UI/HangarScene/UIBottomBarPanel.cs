@@ -18,8 +18,8 @@ public class UIBottomBarPanel : MonoBehaviour
         foreach (TankData element in DatabaseManager.Instance.CurrentUserOwnedVehicles) 
         {
             HangarUIVehicleContent content = Instantiate(contentPrefab, VehicleHolder).GetComponent<HangarUIVehicleContent>();
-            content.GetTankNameText.text = element.TankName;
-            content.GetVehicleNation.sprite = UIManager.Instance.hangarPanel.ModelList.GetSprite(element.TankNation);
+            content.SetCurrentTankData = element;
+            content.InitializeTankData();
         }
     }
 }

@@ -20,5 +20,24 @@ public class UIHangarPanel : MonoBehaviour
         UIManager.Instance.hangarPanel = this;
     } 
 
+    public void ShowSelectedVehicle(string name)
+    {
+        ClearVehicle();
+        GameObject selectedVehicle = modelList.VehicleModelList.Find(prefab => prefab.name == name);  
+        if (selectedVehicle != null) 
+        {
+            Instantiate(selectedVehicle, vehicleSpawnPoint.position, Quaternion.Euler(0f, -150f, 0f), vehicleSpawnPoint);
+        }
+    }
 
+    public void ClearVehicle()
+    {
+        if(vehicleSpawnPoint.childCount > 0) 
+        {
+            foreach (Transform child in vehicleSpawnPoint)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
 }

@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 8956588250685860141}
   - component: {fileID: 9006838515917051459}
   m_Layer: 0
-  m_Name: SM_Veh_Tank_USA_01
+  m_Name: M1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

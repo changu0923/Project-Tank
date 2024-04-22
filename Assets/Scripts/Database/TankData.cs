@@ -13,6 +13,7 @@ public class TankData
     private int itemSlot_01;
     private int itemSlot_02;
     private int itemSlot_03;
+    private int camoSlot;
 
     public int TankID { get => tankID; set => tankID = value; }
     public string TankName { get => tankName; set => tankName = value; }
@@ -22,6 +23,7 @@ public class TankData
     public int ItemSlot_01 { get => itemSlot_01; set => itemSlot_01 = value; }
     public int ItemSlot_02 { get => itemSlot_02; set => itemSlot_02 = value; }
     public int ItemSlot_03 { get => itemSlot_03; set => itemSlot_03 = value; }
+    public int CamoSlot { get => camoSlot; set => camoSlot = value; }
 
     public TankData() { }
 }

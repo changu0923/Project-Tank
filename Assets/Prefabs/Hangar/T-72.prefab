@@ -1455,7 +1455,7 @@ GameObject:
   - component: {fileID: 5950691013378170844}
   - component: {fileID: 5918411653304636216}
   m_Layer: 0
-  m_Name: SM_Veh_Tank_Russia_01
+  m_Name: T-72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

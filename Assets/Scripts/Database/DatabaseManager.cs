@@ -398,7 +398,7 @@ public class DatabaseManager : MonoBehaviour
                 {
                     if (col.ColumnName == "tank_id")
                     {
-                        int tankID = int.Parse(row[col].ToString());                  
+                        tankData.TankID = int.Parse(row[col].ToString());
                     }
                     else if (col.ColumnName == "item_slot_1")
                     {

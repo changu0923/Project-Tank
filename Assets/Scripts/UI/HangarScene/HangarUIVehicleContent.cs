@@ -31,7 +31,6 @@ public class HangarUIVehicleContent : MonoBehaviour
     {
         if(bValue)
         {
-            Debug.Log($"OnTogglePressed : {DateTime.Now}");
             DatabaseManager.Instance.SelectedTank = currentTankData;
             UIManager.Instance.hangarPanel.ShowSelectedVehicle(tankNameText.text);
         }

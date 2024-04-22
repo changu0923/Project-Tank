@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class UIHangarPanel : MonoBehaviour
     {
         ClearVehicle();
         GameObject selectedVehicle = modelList.VehicleModelList.Find(prefab => prefab.name == name);  
-        if (selectedVehicle != null) 
+        if (selectedVehicle != null)
         {
             Instantiate(selectedVehicle, vehicleSpawnPoint.position, Quaternion.Euler(0f, -150f, 0f), vehicleSpawnPoint);
         }

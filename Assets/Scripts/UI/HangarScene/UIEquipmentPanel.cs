@@ -1,3 +1,5 @@
+using ExitGames.Client.Photon;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +23,6 @@ public class UIEquipmentPanel : MonoBehaviour
             toggle.onValueChanged.AddListener(OnCamoToggleOn);
         }
     }
-
     private void OnCamoButtonClick()
     {
         isCamoButtonOn = !isCamoButtonOn;
@@ -45,10 +46,13 @@ public class UIEquipmentPanel : MonoBehaviour
                 {
                     targetTank.SetVehicleCamo(UIManager.Instance.hangarPanel.ModelList.CamoMaterials[index]);
                 }
-                //TODO : DB에 camo 넘겨주기
+                DatabaseManager.Instance.ChangeCamo(index);
+                break;
             }
             index++;
         }
     }
+
+
 }
 

@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class UIBottomBarPanel : MonoBehaviour
 {
-    [SerializeField] RectTransform VehicleHolder;
+    [SerializeField] RectTransform vehicleHolder;
     [SerializeField] GameObject contentPrefab;
+
+    public RectTransform GetVehicleHolder { get => vehicleHolder;}
 
     private void Awake()
     {
@@ -17,7 +19,7 @@ public class UIBottomBarPanel : MonoBehaviour
     {
         foreach (TankData element in DatabaseManager.Instance.CurrentUserOwnedVehicles) 
         {
-            HangarUIVehicleContent content = Instantiate(contentPrefab, VehicleHolder).GetComponent<HangarUIVehicleContent>();
+            HangarUIVehicleContent content = Instantiate(contentPrefab, vehicleHolder).GetComponent<HangarUIVehicleContent>();
             content.SetCurrentTankData = element;
             content.InitializeTankData();
         }

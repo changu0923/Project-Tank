@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using Unity.VisualScripting;
@@ -38,9 +39,10 @@ public class DatabaseManager : MonoBehaviour
     private Dictionary<int, TankData> vehiclesInDB = new Dictionary<int, TankData>();
     private UserData currentUserdata;
     private List<TankData> currentUserOwnedVehicles = new();
-
+    private TankData selectedTank;
     public UserData CurrentUserdata { get => currentUserdata; set => currentUserdata = value; }
     public List<TankData> CurrentUserOwnedVehicles { get => currentUserOwnedVehicles; }
+    public TankData SelectedTank { get => selectedTank; set => selectedTank = value; }
 
     private void Awake()
     {
@@ -159,7 +161,6 @@ public class DatabaseManager : MonoBehaviour
             return false;
         }
     }
-
     private UserData GetUserData(string id)
     {
         UserData returnData = new UserData();
@@ -283,6 +284,10 @@ public class DatabaseManager : MonoBehaviour
                     {
                         tankData.ItemSlot_03 = int.Parse(row[col].ToString());                        
                     }
+                    else if (col.ColumnName =="camo_slot")
+                    {
+                        tankData.CamoSlot = int.Parse(row[col].ToString());
+                    }
                 }
                 currentUserOwnedVehicles.Add(tankData);
             }
@@ -354,5 +359,67 @@ public class DatabaseManager : MonoBehaviour
         da.Fill(dataset);
         bool isExists = dataset.Tables.Count > 0 && dataset.Tables[0].Rows.Count > 0;
         return isExists;
+    }
+
+    public bool ChangeCamo(int index)
+    {
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandText = $"UPDATE user_owned_tanks SET camo_slot = '{index}' WHERE uid = '{currentUserdata.Uid}' AND tank_id = '{selectedTank.TankID}';";
+        int result = cmd.ExecuteNonQuery();
+
+        if (result != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public TankData UpdateTankData(int getTank_ID)
+    {
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandText = $"SELECT * FROM user_owned_tanks WHERE uid = '{currentUserdata.Uid}' AND tank_id = '{getTank_ID}';";
+        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+        DataSet dataset = new DataSet();
+        da.Fill(dataset);
+
+        if (dataset.Tables.Count > 0)
+        {
+            DataTable dataTable = dataset.Tables[0];
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                TankData tankData = new TankData();
+                foreach (DataColumn col in dataTable.Columns)
+                {
+                    if (col.ColumnName == "tank_id")
+                    {
+                        int tankID = int.Parse(row[col].ToString());                  
+                    }
+                    else if (col.ColumnName == "item_slot_1")
+                    {
+                        tankData.ItemSlot_01 = int.Parse(row[col].ToString());
+                    }
+                    else if (col.ColumnName == "item_slot_2")
+                    {
+                        tankData.ItemSlot_02 = int.Parse(row[col].ToString());
+                    }
+                    else if (col.ColumnName == "item_slot_3")
+                    {
+                        tankData.ItemSlot_03 = int.Parse(row[col].ToString());
+                    }
+                    else if (col.ColumnName == "camo_slot")
+                    {
+                        tankData.CamoSlot = int.Parse(row[col].ToString());
+                    }
+                }
+                return tankData;
+            }
+        }
+        return null;
     }
 }

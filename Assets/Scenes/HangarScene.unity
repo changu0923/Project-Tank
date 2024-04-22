@@ -2785,7 +2785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3934ffd077fcd934094b448d954ef91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VehicleHolder: {fileID: 431483697}
+  vehicleHolder: {fileID: 431483697}
   contentPrefab: {fileID: 1509148874273612125, guid: 658dd9cc716dfe244a9f44497d3b6b5b, type: 3}
 --- !u!1 &1028888268
 GameObject:

@@ -1,5 +1,8 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.UI;
 
 public class UIEquipmentPanel : MonoBehaviour
@@ -26,6 +29,7 @@ public class UIEquipmentPanel : MonoBehaviour
     [SerializeField] VerticalLayoutGroup camoContent;
     [SerializeField] List<Toggle> camoToggles = new List<Toggle>(); 
     private bool isCamoButtonOn;
+
     private void Awake()
     {
         camoButton.image.sprite = camoToggles[0].GetComponentInChildren<Image>().sprite;
@@ -111,42 +115,72 @@ public class UIEquipmentPanel : MonoBehaviour
 
     private void OnEquipSlot1ToggleOn(bool bValue)
     {
-        foreach(Toggle toggle in equipSlot1Toggles)
-        {
-            if(toggle.isOn)
+        int index = 0;
+        foreach (Toggle toggle in equipSlot1Toggles)
+        {  
+            if (toggle.isOn)
             {
-                // Change sprite
-                Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
-                Image targetImage = equipSlot1Button.GetComponent<Image>();
-                targetImage.sprite = newSprite;
+                Equipment currentEquipment = EquipmentManager.Instance.EquipmentDic[index];
+                bool result = EquipmentManager.Instance.CheckEquipmentOnSlot(0, currentEquipment);
+
+                if (result == false)
+                {
+                    EquipmentManager.Instance.SetEquipmentOnSlot(0, currentEquipment);
+                    Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
+                    Image targetImage = equipSlot1Button.GetComponent<Image>();
+                    targetImage.sprite = newSprite;
+                }
+                else
+                {
+                    // TODO : Check ½ÇÆÐ½Ã, No Equipment ÀåÂø
+                    
+                }
             }
+            index++;
         }
     }
     private void OnEquipSlot2ToggleOn(bool bValue)
     {
+        int index = 0;
         foreach (Toggle toggle in equipSlot2Toggles)
         {
             if (toggle.isOn)
             {
-                Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
-                Image targetImage = equipSlot2Button.GetComponent<Image>();
-                targetImage.sprite = newSprite;
+                Equipment currentEquipment = EquipmentManager.Instance.EquipmentDic[index];
+                bool result = EquipmentManager.Instance.CheckEquipmentOnSlot(1, currentEquipment);
+
+                if (result == false)
+                {
+                    EquipmentManager.Instance.SetEquipmentOnSlot(1, currentEquipment);
+                    Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
+                    Image targetImage = equipSlot2Button.GetComponent<Image>();
+                    targetImage.sprite = newSprite;
+                }
             }
+            index++;
         }
     }
     private void OnEquipSlot3ToggleOn(bool bValue)
     {
+        int index = 0;
         foreach (Toggle toggle in equipSlot3Toggles)
         {
             if (toggle.isOn)
             {
-                Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
-                Image targetImage = equipSlot3Button.GetComponent<Image>();
-                targetImage.sprite = newSprite;
+                Equipment currentEquipment = EquipmentManager.Instance.EquipmentDic[index];
+                bool result = EquipmentManager.Instance.CheckEquipmentOnSlot(2, currentEquipment);
+
+                if (result == false)
+                {
+                    EquipmentManager.Instance.SetEquipmentOnSlot(2, currentEquipment);
+                    Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
+                    Image targetImage = equipSlot3Button.GetComponent<Image>();
+                    targetImage.sprite = newSprite;
+                }
             }
+            index++;
         }
     }
-
     #endregion
 
 

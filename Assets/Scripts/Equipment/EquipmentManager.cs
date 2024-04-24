@@ -51,6 +51,18 @@ public class EquipmentManager : MonoBehaviour
         }
     }
 
+    public int GetEquipmentOnSlot(int slotIndex, Equipment equipment)
+    {
+        foreach ( var component in equipmentDic)
+        {
+            if(component.Value == equipment)
+            {
+                return component.Key;
+            }
+        }
+        return 0;
+    }
+
     public void SetEquipmentOnSlot(int slotIndex, Equipment equipment)
     {
         currentEquipmentSlot[slotIndex] = equipment;

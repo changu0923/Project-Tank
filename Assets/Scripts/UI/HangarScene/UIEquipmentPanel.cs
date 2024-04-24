@@ -35,9 +35,7 @@ public class UIEquipmentPanel : MonoBehaviour
         camoButton.image.sprite = camoToggles[0].GetComponentInChildren<Image>().sprite;
         camoContentHolder.gameObject.SetActive(false);
 
-        equipSlot1Button.onClick.AddListener(EquipSlot1ButtonClick);
-        equipSlot2Button.onClick.AddListener(EquipSlot2ButtonClick);
-        equipSlot3Button.onClick.AddListener(EquipSlot3ButtonClick);
+        InitializeEquipmentHolder();
 
         camoButton.onClick.AddListener(OnCamoButtonClick);
         foreach (Toggle toggle in camoToggles) 
@@ -53,8 +51,18 @@ public class UIEquipmentPanel : MonoBehaviour
         equipSlot2Button.onClick.AddListener(EquipSlot2ButtonClick);
         equipSlot3Button.onClick.AddListener(EquipSlot3ButtonClick);
 
-
-
+        foreach (Toggle toggle in equipSlot1Toggles)
+        {
+            toggle.onValueChanged.AddListener(OnEquipSlot1ToggleOn);
+        }
+        foreach (Toggle toggle in equipSlot2Toggles)
+        {
+            toggle.onValueChanged.AddListener(OnEquipSlot2ToggleOn);
+        }
+        foreach (Toggle toggle in equipSlot3Toggles)
+        {
+            toggle.onValueChanged.AddListener(OnEquipSlot3ToggleOn);
+        }
     }
 
     private void EquipSlot1ButtonClick()
@@ -107,10 +115,40 @@ public class UIEquipmentPanel : MonoBehaviour
 
     private void OnEquipSlot1ToggleOn(bool bValue)
     {
-
+        foreach(Toggle toggle in equipSlot1Toggles)
+        {
+            if(toggle.isOn)
+            {
+                Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
+                Image targetImage = equipSlot1Button.GetComponent<Image>();
+                targetImage.sprite = newSprite;
+            }
+        }
     }
-
-
+    private void OnEquipSlot2ToggleOn(bool bValue)
+    {
+        foreach (Toggle toggle in equipSlot2Toggles)
+        {
+            if (toggle.isOn)
+            {
+                Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
+                Image targetImage = equipSlot2Button.GetComponent<Image>();
+                targetImage.sprite = newSprite;
+            }
+        }
+    }
+    private void OnEquipSlot3ToggleOn(bool bValue)
+    {
+        foreach (Toggle toggle in equipSlot3Toggles)
+        {
+            if (toggle.isOn)
+            {
+                Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
+                Image targetImage = equipSlot3Button.GetComponent<Image>();
+                targetImage.sprite = newSprite;
+            }
+        }
+    }
     #endregion
 
 

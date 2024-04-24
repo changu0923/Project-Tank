@@ -81,6 +81,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         print($"JoinLobby Success : [{DateTime.Now}]");
     }
 
+    public override void OnLeftRoom()
+    {
+        print($"Leave Room : [{DateTime.Now}]");
+    }
+
     public void ChangeNickname(string newNickname)
     {
         PhotonNetwork.NickName = newNickname;

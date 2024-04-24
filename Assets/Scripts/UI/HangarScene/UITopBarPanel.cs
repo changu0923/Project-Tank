@@ -55,6 +55,7 @@ public class UITopBarPanel : MonoBehaviour
     public void OnStartButtonClick()
     {
         // TODO : Start Matchmaking
+        PhotonManager.Instance.JoinRandomRoom();
         UIManager.Instance.hangarPanel.matchmakingPanel.gameObject.SetActive(true);
     }
 

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,7 @@ public class UIMatchMakingPanel : MonoBehaviour
     public void OnBackButtonClick()
     {
         // TODO : Cancle MatchMaking And Close this Panel
+        PhotonNetwork.LeaveRoom();
         isMatchMaking = false;
         gameObject.SetActive(false);
     }

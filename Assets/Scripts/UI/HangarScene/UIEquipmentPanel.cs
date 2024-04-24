@@ -1,8 +1,4 @@
-using ExitGames.Client.Photon;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -119,6 +115,7 @@ public class UIEquipmentPanel : MonoBehaviour
         {
             if(toggle.isOn)
             {
+                // Change sprite
                 Sprite newSprite = toggle.GetComponentInChildren<Image>().sprite;
                 Image targetImage = equipSlot1Button.GetComponent<Image>();
                 targetImage.sprite = newSprite;
@@ -149,6 +146,7 @@ public class UIEquipmentPanel : MonoBehaviour
             }
         }
     }
+
     #endregion
 
 

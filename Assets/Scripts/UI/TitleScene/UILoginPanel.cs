@@ -23,6 +23,7 @@ public class UILoginPanel : MonoBehaviour
         bool result = DatabaseManager.Instance.Login(emailInput.text, UserData.HashPassword(passwordInput.text));
         if (result) 
         {
+            PhotonManager.Instance.PhotonLogin();
             SceneManager.LoadScene("HangarScene");
         }
         else

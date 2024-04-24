@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,6 +46,7 @@ public class UITopBarPanel : MonoBehaviour
             if(result) 
             {
                 playerNameText.text = name;
+                PhotonManager.Instance.ChangeNickname(name);
             }
         }
         editNicknameInput.gameObject.SetActive(false);

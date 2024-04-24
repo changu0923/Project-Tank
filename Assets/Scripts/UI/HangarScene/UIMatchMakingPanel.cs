@@ -7,6 +7,7 @@ public class UIMatchMakingPanel : MonoBehaviour
 {
     [SerializeField] Text elapsedTimeText;
     [SerializeField] Text statusText;
+    [SerializeField] Text matchedPlayerText;
     [SerializeField] Button backButton;
 
     private float elapsedTime;
@@ -50,5 +51,11 @@ public class UIMatchMakingPanel : MonoBehaviour
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
         elapsedTimeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private void SetPlayerCount()
+    {
+        // TODO : Get Matched Player List
+        matchedPlayerText.text = $"Matched Players : 0";
     }
 }

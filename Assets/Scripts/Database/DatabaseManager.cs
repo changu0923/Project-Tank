@@ -361,6 +361,23 @@ public class DatabaseManager : MonoBehaviour
         return isExists;
     }
 
+    public bool ChangeNickname(string newName)
+    {
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandText = $"UPDATE users SET user_nickname = '{newName}' WHERE uid = '{currentUserdata.Uid}';";
+        int result = cmd.ExecuteNonQuery();
+
+        if(result !=0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }    
+    }
+
     public bool ChangeCamo(int index)
     {
         MySqlCommand cmd = new MySqlCommand();

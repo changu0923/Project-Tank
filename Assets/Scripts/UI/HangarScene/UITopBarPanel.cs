@@ -19,17 +19,41 @@ public class UITopBarPanel : MonoBehaviour
             playerLevelText.text = "LEVEL : " + DatabaseManager.Instance.CurrentUserdata.UserLevel.ToString();
             silverText.text = "Silver : " + DatabaseManager.Instance.CurrentUserdata.Silver.ToString();
         }
+
+        startButton.onClick.AddListener(OnStartButtonClick);
+        editNickname.onClick.AddListener(OnButtonEditNicknameClick);
     }
 
     private void OnButtonEditNicknameClick()
     {
         editNicknameInput.gameObject.SetActive(true);
+        editNicknameInput.onEndEdit.RemoveAllListeners();
         editNicknameInput.onEndEdit.AddListener(OnEditNicknameInputSubmit);
     }
     
     private void OnEditNicknameInputSubmit(string name)
     {
+        if (string.IsNullOrEmpty(name))
+        {
+            editNicknameInput.gameObject.SetActive(false);
+            return;
+        }
 
+        if(DatabaseManager.Instance.CurrentUserdata != null) 
+        {
+            bool result = DatabaseManager.Instance.ChangeNickname(name);
+            if(result) 
+            {
+                playerNameText.text = name;
+            }
+        }
+        editNicknameInput.gameObject.SetActive(false);
+    }
+
+    public void OnStartButtonClick()
+    {
+        // TODO : Start Matchmaking
+        UIManager.Instance.hangarPanel.matchmakingPanel.gameObject.SetActive(true);
     }
 
 }

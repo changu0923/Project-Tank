@@ -50,12 +50,12 @@ public class TankWheelMovement : MonoBehaviour
     /// </summary>
     void AnimationWheel()
     {
-        if (GameManager.Instance.tankMovement.Z > 0f)
+        if (TestGameManager.Instance.tankMovement.Z > 0f)
         {
             MoveLTrack(1f, 1f);
             MoveRTrack(1f, 1f);
         }
-        else if (GameManager.Instance.tankMovement.Z < 0f)
+        else if (TestGameManager.Instance.tankMovement.Z < 0f)
         {
             MoveLTrack(-1f, 1f);
             MoveRTrack(-1f, 1f);
@@ -65,12 +65,12 @@ public class TankWheelMovement : MonoBehaviour
             MoveLTrack(0f, 0f);
             MoveRTrack(0f, 0f);
 
-            if (GameManager.Instance.tankMovement.X > 0f && GameManager.Instance.tankMovement.Z == 0f)
+            if (TestGameManager.Instance.tankMovement.X > 0f && TestGameManager.Instance.tankMovement.Z == 0f)
             {
                 MoveLTrack(1f, 1f);
                 MoveRTrack(-1f, 1f);
             }
-            else if (GameManager.Instance.tankMovement.X < 0f && GameManager.Instance.tankMovement.Z == 0f)
+            else if (TestGameManager.Instance.tankMovement.X < 0f && TestGameManager.Instance.tankMovement.Z == 0f)
             {
                 MoveLTrack(-1f, 1f);
                 MoveRTrack(1f, 1f);

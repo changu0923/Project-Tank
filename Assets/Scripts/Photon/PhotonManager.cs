@@ -2,11 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
@@ -124,7 +120,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 {
                     StopCoroutine(startGameCoroutine);
                 }
-                startGameCoroutine = StartCoroutine(StartGameCoroutine("TestScene", 5f));
+                startGameCoroutine = StartCoroutine(StartGameCoroutine("GameScene", 5f));
             }
         }
     }
@@ -138,12 +134,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     #region Coroutines
     IEnumerator StartGameCoroutine(string sceneName, float waitTime) 
-    {
-        foreach (var player in PhotonNetwork.CurrentRoom.Players.Values)
-        {
-            print(player.NickName);
-        }
-
+    {    
         yield return new WaitForSeconds(waitTime);
         startGameCoroutine = null;
         ChangeScene(sceneName);

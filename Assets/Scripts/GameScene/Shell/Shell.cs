@@ -16,7 +16,7 @@ public class Shell : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        aimTransform = GameManager.Instance.targetTransform;
+        aimTransform = TestGameManager.Instance.targetTransform;
     }
 
     void FixedUpdate()

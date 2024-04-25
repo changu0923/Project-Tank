@@ -5,22 +5,22 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class TestGameManager : MonoBehaviour
 {
     #region Instance
-    private static GameManager instance;
+    private static TestGameManager instance;
 
-    public static GameManager Instance
+    public static TestGameManager Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<GameManager>();
+                instance = FindObjectOfType<TestGameManager>();
                 if (instance == null)
                 {
                     GameObject obj = new GameObject("GameManager");
-                    instance = obj.AddComponent<GameManager>();
+                    instance = obj.AddComponent<TestGameManager>();
                 }
             }
             return instance;

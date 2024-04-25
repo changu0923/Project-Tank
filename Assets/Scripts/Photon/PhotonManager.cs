@@ -3,7 +3,10 @@ using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
@@ -26,6 +29,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
     }
     #endregion
+
+    private int currentRoomPlayerCount = 0;
+    private Coroutine startGameCoroutine;
+
     private void Awake()
     {
         if (instance == null)
@@ -37,6 +44,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             Destroy(gameObject);
         }
+
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public void PhotonLogin()
@@ -70,7 +79,20 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         string createRoomName = $"{PhotonNetwork.NickName}'s Room";
         PhotonNetwork.JoinRandomOrCreateRoom(roomName: createRoomName, roomOptions: option);
     }
+    public void ChangeNickname(string newNickname)
+    {
+        PhotonNetwork.NickName = newNickname;
+        print($"ChangeNickname Success : [{DateTime.Now}][Name : {PhotonNetwork.NickName}]");
+    }
 
+
+    // 마스터 클라이언트가 게임 시작, 종료시 호출하기
+    private void ChangeScene(string sceneName)
+    {
+       PhotonNetwork.LoadLevel(sceneName);
+    }
+
+    #region Override Photon PunClasses
     public override void OnConnectedToMaster()
     {
         print($"Photon Login Success : [{DateTime.Now}][User : {PhotonNetwork.NickName}]");
@@ -81,14 +103,50 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         print($"JoinLobby Success : [{DateTime.Now}]");
     }
 
-    public override void OnLeftRoom()
-    {
-        print($"Leave Room : [{DateTime.Now}]");
+    // 로컬 플레이어가 방에 잘 접속했을때 호출
+    public override void OnJoinedRoom()
+    {        
+        Debug.Log($"Player Count : {PhotonNetwork.CurrentRoom.PlayerCount} [{DateTime.Now}]");
+        currentRoomPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
     }
 
-    public void ChangeNickname(string newNickname)
+    // 다른 플레이어가 방에 잘 접속했을때 호출
+    public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        PhotonNetwork.NickName = newNickname;
-        print($"ChangeNickname Success : [{DateTime.Now}][Name : {PhotonNetwork.NickName}]");
+        Debug.Log($"Player Joined : {PhotonNetwork.CurrentRoom.PlayerCount} [{DateTime.Now}]");
+        currentRoomPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+
+        if(PhotonNetwork.IsMasterClient)
+        {
+            if(currentRoomPlayerCount > 1)
+            {
+                if(startGameCoroutine != null)
+                {
+                    StopCoroutine(startGameCoroutine);
+                }
+                startGameCoroutine = StartCoroutine(StartGameCoroutine("TestScene", 5f));
+            }
+        }
     }
+
+    public override void OnLeftRoom()
+    {
+        currentRoomPlayerCount--;
+    }
+    #endregion
+
+
+    #region Coroutines
+    IEnumerator StartGameCoroutine(string sceneName, float waitTime) 
+    {
+        foreach (var player in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            print(player.NickName);
+        }
+
+        yield return new WaitForSeconds(waitTime);
+        startGameCoroutine = null;
+        ChangeScene(sceneName);
+    }
+    #endregion
 }

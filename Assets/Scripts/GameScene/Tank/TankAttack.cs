@@ -16,7 +16,6 @@ public class TankAttack : MonoBehaviour
 
     private bool isMainGunReady = true;
     private float currentReloadTime;
-    public event Action<float> OnReloadProgressChanged;
 
     // 주포를 발사합니다.
     private void MainGunFire()
@@ -43,14 +42,13 @@ public class TankAttack : MonoBehaviour
     {
         currentReloadTime = reloadTime; // 초기화
 
-        while (currentReloadTime >= 0f)
+        while (currentReloadTime > 0f)
         {
             currentReloadTime -= Time.deltaTime; // 현재 재장전 진행 상황 업데이트
-            if(currentReloadTime < 0f)
+            if (currentReloadTime < 0f)
             {
                 currentReloadTime = 0f;
             }
-            OnReloadProgressChanged?.Invoke(1 - (currentReloadTime / reloadTime)); // 이벤트 호출
             yield return null;
         }
         isMainGunReady = true;

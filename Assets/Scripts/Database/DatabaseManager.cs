@@ -245,7 +245,7 @@ public class DatabaseManager : MonoBehaviour
     {
         MySqlCommand cmd = new MySqlCommand();
         cmd.Connection = conn;
-        cmd.CommandText = $"SELECT tank_id FROM user_owned_tanks WHERE uid = '{uid}'";
+        cmd.CommandText = $"SELECT * FROM user_owned_tanks WHERE uid = '{uid}'";
         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
         DataSet dataset = new DataSet();
         da.Fill(dataset);
@@ -258,7 +258,7 @@ public class DatabaseManager : MonoBehaviour
             {
                 TankData tankData = new TankData();
                 foreach (DataColumn col in dataTable.Columns)
-                {
+                {                 
                     if (col.ColumnName == "tank_id")
                     {
                         int tankID = int.Parse(row[col].ToString());
@@ -288,7 +288,7 @@ public class DatabaseManager : MonoBehaviour
                     {
                         tankData.CamoSlot = int.Parse(row[col].ToString());
                     }
-                }
+                }                
                 currentUserOwnedVehicles.Add(tankData);
             }
         }

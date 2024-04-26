@@ -1245,9 +1245,9 @@ RectTransform:
   m_Father: {fileID: 1918133766}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -250}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &151337960
@@ -1672,9 +1672,9 @@ RectTransform:
   m_Father: {fileID: 1918133766}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191166383
@@ -1819,7 +1819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &224971036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2386,9 +2386,9 @@ RectTransform:
   m_Father: {fileID: 1918133766}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288190249
@@ -4123,9 +4123,9 @@ RectTransform:
   m_Father: {fileID: 1918133766}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597806054
@@ -4700,9 +4700,9 @@ RectTransform:
   m_Father: {fileID: 1918133766}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -350}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &706260464
@@ -4997,12 +4997,12 @@ GameObject:
   - component: {fileID: 760496375}
   - component: {fileID: 760496376}
   m_Layer: 5
-  m_Name: Equipment Panel
+  m_Name: UserEquipment Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &760496375
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5038,46 +5038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172c262914b9d334398485112ce7442f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipSlot1Button: {fileID: 859557968}
-  equipSlot2Button: {fileID: 1355306770}
-  equipSlot3Button: {fileID: 1246938036}
-  equipSlot1Rect: {fileID: 1979855853}
-  equipSlot2Rect: {fileID: 1448849519}
-  equipSlot3Rect: {fileID: 1003826777}
-  equipSlot1Content: {fileID: 967231219}
-  equipSlot2Content: {fileID: 701883718}
-  equipSlot3Content: {fileID: 656711958}
-  equipSlot1Toggles:
-  - {fileID: 1992542738}
-  - {fileID: 1382284872}
-  - {fileID: 2110681552}
-  - {fileID: 310608862}
-  - {fileID: 57553379}
-  - {fileID: 1281281045}
-  equipSlot2Toggles:
-  - {fileID: 1297954057}
-  - {fileID: 994982331}
-  - {fileID: 1482485706}
-  - {fileID: 71667075}
-  - {fileID: 1982021375}
-  - {fileID: 672384552}
-  equipSlot3Toggles:
-  - {fileID: 1444427323}
-  - {fileID: 1733597668}
-  - {fileID: 1594207604}
-  - {fileID: 256399623}
-  - {fileID: 461126641}
-  - {fileID: 434669745}
-  camoButton: {fileID: 20242889}
-  camoContentHolder: {fileID: 224971037}
-  camoContent: {fileID: 1918133767}
-  camoToggles:
-  - {fileID: 191166383}
-  - {fileID: 597806054}
-  - {fileID: 151337960}
-  - {fileID: 706260464}
-  - {fileID: 288190249}
-  - {fileID: 1217061143}
+  camoHolder: {fileID: 1643388756}
+  equipmentHolder: {fileID: 1954676483}
 --- !u!1 &792111282
 GameObject:
   m_ObjectHideFlags: 0
@@ -7531,9 +7493,9 @@ RectTransform:
   m_Father: {fileID: 1918133766}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -550}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217061143
@@ -9905,6 +9867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643388755}
+  - component: {fileID: 1643388756}
   m_Layer: 5
   m_Name: CamoHolder
   m_TagString: Untagged
@@ -9934,6 +9897,28 @@ RectTransform:
   m_AnchoredPosition: {x: 200, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1643388756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643388754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6014180d3decbd4f83002f75114680e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camoButton: {fileID: 20242889}
+  camoContentHolder: {fileID: 224971037}
+  camoContent: {fileID: 1918133767}
+  camoToggles:
+  - {fileID: 191166383}
+  - {fileID: 597806054}
+  - {fileID: 151337960}
+  - {fileID: 706260464}
+  - {fileID: 288190249}
+  - {fileID: 1217061143}
 --- !u!1 &1664263042
 GameObject:
   m_ObjectHideFlags: 0
@@ -11051,6 +11036,7 @@ GameObject:
   - component: {fileID: 1954676480}
   - component: {fileID: 1954676482}
   - component: {fileID: 1954676481}
+  - component: {fileID: 1954676483}
   m_Layer: 5
   m_Name: EquipmentHolder
   m_TagString: Untagged
@@ -11122,6 +11108,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954676479}
   m_CullTransparentMesh: 1
+--- !u!114 &1954676483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954676479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 601d6a9be9578ff459ded0c7b33fce26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipSlot1Button: {fileID: 859557968}
+  equipSlot2Button: {fileID: 1355306770}
+  equipSlot3Button: {fileID: 1246938036}
+  equipSlot1Rect: {fileID: 1979855853}
+  equipSlot2Rect: {fileID: 1448849519}
+  equipSlot3Rect: {fileID: 1003826777}
+  equipSlot1Content: {fileID: 967231219}
+  equipSlot2Content: {fileID: 701883718}
+  equipSlot3Content: {fileID: 656711958}
+  equipSlot1Toggles:
+  - {fileID: 1992542738}
+  - {fileID: 1382284872}
+  - {fileID: 2110681552}
+  - {fileID: 310608862}
+  - {fileID: 57553379}
+  - {fileID: 1281281045}
+  equipSlot2Toggles:
+  - {fileID: 1297954057}
+  - {fileID: 994982331}
+  - {fileID: 1482485706}
+  - {fileID: 71667075}
+  - {fileID: 1982021375}
+  - {fileID: 672384552}
+  equipSlot3Toggles:
+  - {fileID: 1444427323}
+  - {fileID: 1733597668}
+  - {fileID: 1594207604}
+  - {fileID: 256399623}
+  - {fileID: 461126641}
+  - {fileID: 434669745}
 --- !u!1 &1964091147
 GameObject:
   m_ObjectHideFlags: 0
@@ -11241,7 +11269,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e725a15f12dc9fc488165939a7fd0c62, type: 2}
   - {fileID: 2100000, guid: 1bcb5f05ca98284449cff824d104bf83, type: 2}
   - {fileID: 2100000, guid: be76a5ac3de137c4abce8171c8a4806e, type: 2}
-  - {fileID: 2100000, guid: fccf7b6a21f78354383f78ce977608af, type: 2}
   camoSprites:
   - {fileID: 21300000, guid: b83ca5d9fc1712e42839be6b8783ef2d, type: 3}
   - {fileID: 21300000, guid: b83ca5d9fc1712e42839be6b8783ef2d, type: 3}

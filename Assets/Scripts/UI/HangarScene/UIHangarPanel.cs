@@ -7,7 +7,7 @@ public class UIHangarPanel : MonoBehaviour
 {
     public UITopBarPanel topBarPanel;
     public UIBottomBarPanel bottomBarPanel;
-    public UIEquipmentPanel equipmentPanel;
+    public UIUserEquipmentPanel equipmentPanel;
     public UIMatchMakingPanel matchmakingPanel;
 
     [Header("Vehicle Viewer")]
@@ -29,6 +29,7 @@ public class UIHangarPanel : MonoBehaviour
         if (selectedVehicle != null)
         {
             Instantiate(selectedVehicle, vehicleSpawnPoint.position, Quaternion.Euler(0f, -150f, 0f), vehicleSpawnPoint);
+            UIManager.Instance.hangarPanel.equipmentPanel.gameObject.SetActive(true);
         }
     }
 
@@ -39,7 +40,8 @@ public class UIHangarPanel : MonoBehaviour
             foreach (Transform child in vehicleSpawnPoint)
             {
                 Destroy(child.gameObject);
-            }
+            }            
         }
+        UIManager.Instance.hangarPanel.equipmentPanel.gameObject.SetActive(false);
     }
 }

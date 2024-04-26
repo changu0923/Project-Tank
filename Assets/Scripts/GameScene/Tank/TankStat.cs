@@ -13,6 +13,9 @@ public class TankStat : MonoBehaviour
     [SerializeField] List<MeshRenderer> targetRenderers = new List<MeshRenderer>();
     private Material currentCamo;
 
+    [Header("HitBoxes")]
+    [SerializeField] List<Transform> hitboxes = new List<Transform>();
+
     public void SetVehicleCamo(Material inputMaterial)
     {
         currentCamo = inputMaterial;
@@ -20,5 +23,7 @@ public class TankStat : MonoBehaviour
         { 
             renderer.material = currentCamo;  
         }
+
+        Debug.Log($"SetVehicleCamo() Called : Input name : {inputMaterial.name}. Current Set : {currentCamo.name}");
     }
 }

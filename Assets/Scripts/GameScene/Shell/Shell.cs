@@ -42,35 +42,33 @@ public class Shell : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player") == false)
+
+        if (collision.collider.CompareTag("Armor"))
         {
-            if (collision.collider.CompareTag("Armor"))
+            print($"Collision Detected : [{collision.collider.name}] : [{DateTime.Now}]");
+            Armor targetArmor = collision.collider.GetComponent<Armor>();
+
+            // 충돌한 객체의 표면 노멀 벡터 (정규화된 노멀 벡터 사용)
+            Vector3 surfaceNormal = collision.contacts[0].normal;
+
+            // 총알의 방향 벡터 (총알이 튀어나온 방향)
+            Vector3 bulletDirection = transform.forward;
+
+            // 입사각 계산 (두 벡터의 각도 계산) 
+            float incidenceAngle = Vector3.Angle(-bulletDirection, surfaceNormal);
+
+            // 장갑계산
+            float relativeThickness = CalculateRelativeThickness(targetArmor.GetArmorThickness, incidenceAngle);
+
+            if (relativeThickness < shellPenetration)
             {
-                print($"Collision Detected : [{collision.collider.name}] : [{DateTime.Now}]");
-                Armor targetArmor = collision.collider.GetComponent<Armor>();
-
-                // 충돌한 객체의 표면 노멀 벡터 (정규화된 노멀 벡터 사용)
-                Vector3 surfaceNormal = collision.contacts[0].normal;
-
-                // 총알의 방향 벡터 (총알이 튀어나온 방향)
-                Vector3 bulletDirection = transform.forward;
-
-                // 입사각 계산 (두 벡터의 각도 계산)
-                float incidenceAngle = Vector3.Angle(-bulletDirection, surfaceNormal);
-
-                // 장갑계산
-                float relativeThickness = CalculateRelativeThickness(targetArmor.GetArmorThickness, incidenceAngle);
-
-                if (relativeThickness < shellPenetration)
-                {
-                    print("Penetration Success : " + relativeThickness + "mm");
-                    targetArmor.Penetrated();
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    print("Penetration Failed : " + relativeThickness + "mm");
-                }
+                print("Penetration Success : " + relativeThickness + "mm");
+                targetArmor.Penetrated();
+                Destroy(gameObject);
+            }
+            else
+            {
+                print("Penetration Failed : " + relativeThickness + "mm");
             }
         }
     }

@@ -9,6 +9,7 @@ public class UIHangarPanel : MonoBehaviour
     public UIBottomBarPanel bottomBarPanel;
     public UIUserEquipmentPanel equipmentPanel;
     public UIMatchMakingPanel matchmakingPanel;
+    public RectTransform loadingPanel;
 
     [Header("Vehicle Viewer")]
     [SerializeField] ModelList modelList;

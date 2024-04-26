@@ -32,14 +32,12 @@ public class HangarUIVehicleContent : MonoBehaviour
         {
             DatabaseManager.Instance.SelectedTank = currentTankData;
             Debug.Log($"Data Set : {DatabaseManager.Instance.SelectedTank.TankName}");
-            UIManager.Instance.hangarPanel.ShowSelectedVehicle(DatabaseManager.Instance.SelectedTank.TankName);
-            UIManager.Instance.hangarPanel.equipmentPanel.gameObject.SetActive(true);
+            UIManager.Instance.hangarPanel.ShowSelectedVehicle(DatabaseManager.Instance.SelectedTank.TankName);            
         }
         else
         {
             DatabaseManager.Instance.SelectedTank = null;
             UIManager.Instance.hangarPanel.ClearVehicle();
-            UIManager.Instance.hangarPanel.equipmentPanel.gameObject.SetActive(false);
         }
     }
     public void InitializeTankData()

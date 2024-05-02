@@ -15,9 +15,12 @@ public class TankStat : MonoBehaviour
     [Header("Camo")]
     [SerializeField] List<MeshRenderer> targetRenderers = new List<MeshRenderer>();
     private Material currentCamo;
+    private Material destroyedMaterial;
 
     private void Awake()
     {
+        destroyedMaterial = Resources.Load<Material>("MaterialDestroyed"); ;
+
         currentHP = maxHP;
         isDestoryed = false;
     }
@@ -48,8 +51,7 @@ public class TankStat : MonoBehaviour
     }
 
     private void TankDestroyed()
-    {
-        Material mat = Resources.Load<Material>("MaterialDestroyed");
-        SetVehicleCamo(mat);
+    {        
+        SetVehicleCamo(destroyedMaterial);
     }
 }

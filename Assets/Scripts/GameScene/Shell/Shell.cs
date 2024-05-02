@@ -63,7 +63,8 @@ public class Shell : MonoBehaviour
             if (relativeThickness < shellPenetration)
             {
                 print("Penetration Success : " + relativeThickness + "mm");
-                targetArmor.Penetrated();
+
+                targetArmor.Penetrated(GetRandomDamage());
                 Destroy(gameObject);
             }
             else
@@ -71,6 +72,11 @@ public class Shell : MonoBehaviour
                 print("Penetration Failed : " + relativeThickness + "mm");
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print($"Trigger Detected : [{other.name}] : [{DateTime.Now}]");
     }
 
     private float CalculateRelativeThickness(float actualThickness, float incidenceAngle)
@@ -89,6 +95,15 @@ public class Shell : MonoBehaviour
             // 입사각이 90도를 초과하는 경우, 상대적인 입사각은 90도로 설정
             return actualThickness;
         }
+    }
+
+    private int GetRandomDamage()
+    {
+        float getPercentage = UnityEngine.Random.Range(-0.15f, 0.15f);
+        float multiplier = 1f + getPercentage;
+        int finalDamage = Mathf.RoundToInt(shellDamage * multiplier);
+
+        return finalDamage;
     }
 
     IEnumerator DestroySelf()

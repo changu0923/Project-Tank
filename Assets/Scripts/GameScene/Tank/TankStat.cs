@@ -8,13 +8,19 @@ public class TankStat : MonoBehaviour
     [SerializeField] string tankName;
     [SerializeField] int maxHP;
     [SerializeField] int maxSpeed;
+    private int currentHP;
+    private int currentSpeed;
+    private bool isDestoryed;
 
     [Header("Camo")]
     [SerializeField] List<MeshRenderer> targetRenderers = new List<MeshRenderer>();
     private Material currentCamo;
 
-    [Header("HitBoxes")]
-    [SerializeField] List<Transform> hitboxes = new List<Transform>();
+    private void Awake()
+    {
+        currentHP = maxHP;
+        isDestoryed = false;
+    }
 
     public void SetVehicleCamo(Material inputMaterial)
     {
@@ -25,5 +31,25 @@ public class TankStat : MonoBehaviour
         }
 
         Debug.Log($"SetVehicleCamo() Called : Input name : {inputMaterial.name}. Current Set : {currentCamo.name}");
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if(!isDestoryed) 
+        {
+            currentHP -= damage;
+            print($"{transform.name} take Damage : [{damage}], Current HP is : {currentHP}");
+            if(currentHP <= 0)
+            {
+                isDestoryed = true;
+                TankDestroyed();
+            }
+        }
+    }
+
+    private void TankDestroyed()
+    {
+        Material mat = Resources.Load<Material>("MaterialDestroyed");
+        SetVehicleCamo(mat);
     }
 }

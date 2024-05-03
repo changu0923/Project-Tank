@@ -32,21 +32,20 @@ public class TankStat : MonoBehaviour
         { 
             renderer.material = currentCamo;  
         }
-
-        Debug.Log($"SetVehicleCamo() Called : Input name : {inputMaterial.name}. Current Set : {currentCamo.name}");
     }
 
     public void TakeDamage(int damage)
     {
         if(!isDestoryed) 
         {
-            currentHP -= damage;
-            print($"{transform.name} take Damage : [{damage}], Current HP is : {currentHP}");
+            currentHP -= damage;           
             if(currentHP <= 0)
             {
+                currentHP = 0;
                 isDestoryed = true;
                 TankDestroyed();
             }
+            print($"{transform.name} take Damage : [{damage}], Current HP is : {currentHP}");
         }
     }
 

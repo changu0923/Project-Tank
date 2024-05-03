@@ -87,7 +87,7 @@ public class TestGameManager : MonoBehaviour
             // gun
             sb.AppendLine($"Gun Elevation : {(int)gunTransform.eulerAngles.x}");
 
-            sb.AppendLine($"Atan : {(int)turretMovement.currentAngle}");
+            sb.AppendLine($"Atan : {(int)turretMovement.CurrentAngle}");
 
             debugText.text = sb.ToString();
         }

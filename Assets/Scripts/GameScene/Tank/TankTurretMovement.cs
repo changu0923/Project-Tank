@@ -17,15 +17,17 @@ public class TankTurretMovement : MonoBehaviour
     [SerializeField] float rotationSpeed;
 
     [Header("주포 내림각 제한")]
-    [SerializeField] float minGunAngle;
+    
+    [SerializeField] float maxDepression;
 
     [Header("주포 올림각 제한")]
-    [SerializeField] float maxGunAngle;
+    [SerializeField] float maxElevation;
+
     private int playerLayer;
-
     private bool isTurretLock;
+    private float currentAngle;
 
-    public float currentAngle;
+    public float CurrentAngle { get => currentAngle; }
 
     private void Start()
     {
@@ -86,12 +88,15 @@ public class TankTurretMovement : MonoBehaviour
 
         Vector3 localTargetPos = turret.InverseTransformDirection(aimTransform.position - gun.position);
         Vector3 zeroPlainVector = Vector3.ProjectOnPlane(localTargetPos, Vector3.up);
+
         float angle = Vector3.Angle(zeroPlainVector, localTargetPos);
         angle *= Mathf.Sign(localTargetPos.y);
+        angle = Mathf.Clamp(angle, -maxDepression, maxElevation);
+
         currentAngle = Mathf.MoveTowards(currentAngle, angle, rotationSpeed * Time.deltaTime);
-        if(Mathf.Abs(currentAngle) >Mathf.Epsilon)
+        if(Mathf.Abs(currentAngle) > Mathf.Epsilon)
         {
-            gun.localEulerAngles = Vector3.right * - currentAngle;
+            gun.localEulerAngles = Vector3.right * -currentAngle;
         }
     }   
 

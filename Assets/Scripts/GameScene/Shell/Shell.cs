@@ -45,7 +45,6 @@ public class Shell : MonoBehaviour
 
         if (collision.collider.CompareTag("Armor"))
         {
-            print($"Collision Detected : [{collision.collider.name}] : [{DateTime.Now}]");
             Armor targetArmor = collision.collider.GetComponent<Armor>();
 
             // 충돌한 객체의 표면 노멀 벡터 (정규화된 노멀 벡터 사용)
@@ -62,21 +61,20 @@ public class Shell : MonoBehaviour
 
             if (relativeThickness < shellPenetration)
             {
-                print("Penetration Success : " + relativeThickness + "mm");
 
                 targetArmor.Penetrated(GetRandomDamage());
                 Destroy(gameObject);
             }
             else
             {
-                print("Penetration Failed : " + relativeThickness + "mm");
+
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        print($"Trigger Detected : [{other.name}] : [{DateTime.Now}]");
+       
     }
 
     private float CalculateRelativeThickness(float actualThickness, float incidenceAngle)

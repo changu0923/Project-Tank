@@ -18,13 +18,14 @@ public class TankWheelMovement : MonoBehaviour
         AnimationWheel();
     }
 
+    // _MainTex : Built-in | _BaseMap : URP
     void MoveLTrack(float getSpeed, float getWheelSpeed)
     {
         float speed = getSpeed;
         float wheelSpeed = getWheelSpeed;
         offset = Time.time * speed;
-        leftTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0f, offset));
-        rightTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0f, offset));
+        leftTrackRenderer.material.SetTextureOffset("_BaseMap", new Vector2(0f, offset));
+        rightTrackRenderer.material.SetTextureOffset("_BaseMap", new Vector2(0f, offset));
         foreach (var wheel in leftWheels)
         {
             wheel.transform.Rotate(wheelSpeed * speed, 0f, 0f);
@@ -36,8 +37,8 @@ public class TankWheelMovement : MonoBehaviour
         float speed = getSpeed;
         float wheelSpeed = getWheelSpeed;
         offset = Time.time * speed;
-        leftTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0f, offset));
-        rightTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0f, offset));
+        leftTrackRenderer.material.SetTextureOffset("_BaseMap", new Vector2(0f, offset));
+        rightTrackRenderer.material.SetTextureOffset("_BaseMap", new Vector2(0f, offset));
         foreach (var wheel in rightWheels)
         {
             wheel.transform.Rotate(wheelSpeed * speed, 0f, 0f);

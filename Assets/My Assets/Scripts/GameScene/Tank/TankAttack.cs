@@ -14,6 +14,9 @@ public class TankAttack : MonoBehaviour
     [Header("Reload Time")]
     [SerializeField] float mainGunReloadTime;
 
+    [Header("VFX")]
+    [SerializeField] GameObject cannonFirePrefab;
+
     private bool isMainGunReady = true;
     private float currentReloadTime;
 
@@ -24,6 +27,8 @@ public class TankAttack : MonoBehaviour
         {
             isMainGunReady=false;
             GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
+            GameObject vfx = Instantiate(cannonFirePrefab, gunPoint.position, gunPoint.rotation);
+            Destroy(vfx, 2.5f);
             shell.GetComponent<Shell>().Fire();
             StartCoroutine(ReloadMainGun(mainGunReloadTime));
         }

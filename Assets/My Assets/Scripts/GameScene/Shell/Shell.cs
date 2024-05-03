@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shell : MonoBehaviour
@@ -9,14 +7,17 @@ public class Shell : MonoBehaviour
     [SerializeField] protected float shellPenetration;
     [SerializeField] protected float shellSpeed;
     [SerializeField] protected int shellDamage;
-
-    public Transform aimTransform;
+ 
+    private TrailRenderer trailRenderer;
+    private Transform aimTransform;
     private Rigidbody rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        // TODO: aimTransform should be automatically tracked.
         aimTransform = TestGameManager.Instance.targetTransform;
+        trailRenderer = GetComponentInChildren<TrailRenderer>();        
     }
 
     void FixedUpdate()
@@ -45,6 +46,8 @@ public class Shell : MonoBehaviour
 
         if (collision.collider.CompareTag("Armor"))
         {
+            OnImpact();
+
             Armor targetArmor = collision.collider.GetComponent<Armor>();
 
             // 충돌한 객체의 표면 노멀 벡터 (정규화된 노멀 벡터 사용)
@@ -61,8 +64,7 @@ public class Shell : MonoBehaviour
 
             if (relativeThickness < shellPenetration)
             {
-
-                targetArmor.Penetrated(GetRandomDamage());
+                targetArmor.Penetrated(GetRandomDamage());                
                 Destroy(gameObject);
             }
             else
@@ -102,6 +104,23 @@ public class Shell : MonoBehaviour
         int finalDamage = Mathf.RoundToInt(shellDamage * multiplier);
 
         return finalDamage;
+    }
+
+    private void OnImpact()
+    {
+        GameObject trailEndPoint = GameObject.Find("TrailEndPoint");
+        if (trailEndPoint != null)
+        {
+            trailRenderer.transform.SetParent(trailEndPoint.transform);
+        }
+        else
+        {
+            trailEndPoint = new GameObject("TrailEndPoint");
+            trailEndPoint.transform.position = transform.position;
+            trailEndPoint.transform.rotation = transform.rotation;
+            trailRenderer.transform.SetParent(trailEndPoint.transform);
+        }
+        Destroy(trailEndPoint, 0.15f);
     }
 
     IEnumerator DestroySelf()

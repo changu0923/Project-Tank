@@ -157,10 +157,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.25
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -388,7 +388,6 @@ MonoBehaviour:
   shellPenetration: 120
   shellSpeed: 6808
   shellDamage: 390
-  aimTransform: {fileID: 0}
 --- !u!1 &6361743865375071932
 GameObject:
   m_ObjectHideFlags: 0

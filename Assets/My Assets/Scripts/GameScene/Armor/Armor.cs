@@ -16,8 +16,14 @@ public class Armor : MonoBehaviour
     }
     public void Penetrated(int getDamage)
     {
-        print(transform.name + "is Penetrated : [" + DateTime.Now + "]");
-        currentTankStat.TakeDamage(getDamage);
+        if (currentTankStat != null)
+        {
+            currentTankStat.TakeDamage(getDamage);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
  
 }

@@ -82,6 +82,6 @@ public class GameManager : MonoBehaviour
 
     private void SetCamera()
     {
-     
+        // TODO : PhotonView == isMine 인 플레이어 찾아서 CM VCAM 할당시키기
     }
 }

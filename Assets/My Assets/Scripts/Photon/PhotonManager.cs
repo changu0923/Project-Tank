@@ -26,10 +26,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
     #endregion
 
-    private int currentRoomPlayerCount = 0;
+    private int currentRoomPlayerCount = 0; 
+    private int loadedPlayers = 0;
     private Coroutine startGameCoroutine;
-
-    private String[] players = new string[9];
 
     private void Awake()
     {
@@ -90,6 +89,17 @@ public class PhotonManager : MonoBehaviourPunCallbacks
        PhotonNetwork.LoadLevel(sceneName);
     }
 
+    // 게임신 로딩이 끝난 플레이어 수 세기
+    private void CountLoadedPlayer()
+    {
+        if( currentRoomPlayerCount == loadedPlayers) 
+        {
+            // TODO : CountDown Start;
+            // 카운트다운 시작하고, 플레이어 닉네임들 동기화 시키기
+        }
+    }
+
+
     #region Override Photon PunClasses
     public override void OnConnectedToMaster()
     {
@@ -136,6 +146,20 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
         print($"{targetPlayer.NickName} Updated Custom Properties ({changedProps}) [{DateTime.Now}]");
+        if(PhotonNetwork.IsMasterClient) 
+        {
+            if (changedProps.ContainsKey("SceneLoaded"))
+            {
+                bool sceneLoaded = (bool)changedProps["SceneLoaded"];
+
+                if (sceneLoaded)
+                {
+                    loadedPlayers++;
+                    CountLoadedPlayer();
+                }
+            }
+        }
+        
     }
     #endregion
 

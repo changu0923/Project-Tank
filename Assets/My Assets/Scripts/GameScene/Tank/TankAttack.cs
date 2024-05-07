@@ -19,6 +19,7 @@ public class TankAttack : MonoBehaviour
 
     private bool isMainGunReady = true;
     private float currentReloadTime;
+    private Transform aimTransfrom;
 
     // 주포를 발사합니다.
     private void MainGunFire()
@@ -27,6 +28,11 @@ public class TankAttack : MonoBehaviour
         {
             isMainGunReady=false;
             GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
+            if(aimTransfrom == null )
+            {
+                aimTransfrom = GetComponent<TankTurretMovement>().AimTransform;
+            }
+            shell.GetComponent<Shell>().SetAimTransform(aimTransfrom);
             GameObject vfx = Instantiate(cannonFirePrefab, gunPoint.position, gunPoint.rotation);
             Destroy(vfx, 2.5f);
             shell.GetComponent<Shell>().Fire();

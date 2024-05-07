@@ -15,8 +15,10 @@ public class Shell : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
         // TODO: aimTransform should be automatically tracked.
         aimTransform = TestGameManager.Instance.targetTransform;
+
         trailRenderer = GetComponentInChildren<TrailRenderer>();        
     }
 
@@ -39,6 +41,11 @@ public class Shell : MonoBehaviour
        Vector3 direction = transform.forward;
         rb.AddForce(direction * shellSpeed * 1f, ForceMode.Impulse);
         StartCoroutine(DestroySelf());
+    }
+
+    public void SetAimTransform(Transform target)
+    {
+        aimTransform = target;
     }
 
     private void OnCollisionEnter(Collision collision)

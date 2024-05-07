@@ -226,7 +226,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1568
+  m_Name: pb_Mesh30268
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -872,7 +872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297478139}
   m_LocalRotation: {x: 0.066316046, y: -0.000000017168505, z: 0.0000000011410591, w: 0.9977987}
-  m_LocalPosition: {x: -0.00000035762787, y: 1.0999999, z: 0}
+  m_LocalPosition: {x: 0, y: 1.0999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1305,7 +1305,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1586
+  m_Name: pb_Mesh30130
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2240,7 +2240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.021643694, y: 2.7665462, z: -7.0121994}
+  m_LocalPosition: {x: 0, y: 2.9, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2791,7 +2791,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1604
+  m_Name: pb_Mesh30350
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4007,7 +4007,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525437070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.021643694, y: 2.7665462, z: -7.0121994}
+  m_LocalPosition: {x: 0, y: 2.9, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4037,7 +4037,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 9128238297802392627}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -5381,7 +5381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117473580}
   m_LocalRotation: {x: 0.08440665, y: -0.00000001714498, z: 0.0000000014523331, w: 0.9964314}
-  m_LocalPosition: {x: -0.00000035762787, y: 1.0999999, z: 0}
+  m_LocalPosition: {x: 0, y: 1.0999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5605,7 +5605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138597452}
   m_LocalRotation: {x: 0.10251726, y: -0.000000004278931, z: 4.4098772e-10, w: 0.99473125}
-  m_LocalPosition: {x: -0.00000035762787, y: 1.0999999, z: 0}
+  m_LocalPosition: {x: 0, y: 1.0999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7250,6 +7250,7 @@ GameObject:
   - component: {fileID: 9128238297236124855}
   - component: {fileID: 9128238297236124854}
   - component: {fileID: 9128238297236124861}
+  - component: {fileID: 9128238297236124864}
   m_Layer: 6
   m_Name: M1
   m_TagString: Untagged
@@ -7368,8 +7369,8 @@ MonoBehaviour:
   gun: {fileID: 9128238298435602019}
   gunPoint: {fileID: 9128238296925738903}
   rotationSpeed: 60
-  maxDepression: 0
-  maxElevation: 0
+  maxDepression: 10
+  maxElevation: 20
 --- !u!114 &9128238297236124854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7512,6 +7513,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9128238297236124841}
   m_Mesh: {fileID: 4300000, guid: 1e70f83fd953e9e49adb1026cf90f1ca, type: 3}
+--- !u!114 &9128238297236124864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9128238297236124841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee2477a9cd392940be88495aa02df98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunPoint: {fileID: 9128238296925738903}
+  subGunPoint: {fileID: 9128238297764699683}
+  cannonPrefab: {fileID: 6361743865098832093, guid: b121bd63f3fd93641800df026df16457, type: 3}
+  bulletPrefab: {fileID: 0}
+  mainGunReloadTime: 1
+  cannonFirePrefab: {fileID: 1833268098726028, guid: f72f0eb4a0fb5934fab797add8da8711, type: 3}
 --- !u!1 &9128238297247233121
 GameObject:
   m_ObjectHideFlags: 0

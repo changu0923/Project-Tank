@@ -1,10 +1,12 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,7 +43,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        SceneLoadComplete();
         InitializeGame();
+    }
+
+    private void SceneLoadComplete()
+    {
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "SceneLoaded", true } });
+        print($"SceneLoadComplete {PhotonNetwork.LocalPlayer.NickName} Updated Custom Properties [{DateTime.Now}]");
     }
     
 
@@ -54,12 +63,10 @@ public class GameManager : MonoBehaviour
 
     private void SetNickName()
     {
-        // 모든 PhotonView를 가져옵니다.
         PhotonView[] players = FindObjectsOfType<PhotonView>();
 
         foreach (PhotonView view in players)
         {            
-            print(view.Owner.NickName);
             Canvas canvas = view.GetComponentInChildren<Canvas>();
             if (canvas != null)
             {                

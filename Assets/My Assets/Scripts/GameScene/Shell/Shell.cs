@@ -52,9 +52,7 @@ public class Shell : MonoBehaviour
     {
 
         if (collision.collider.CompareTag("Armor"))
-        {
-            OnImpact();
-
+        {      
             Armor targetArmor = collision.collider.GetComponent<Armor>();
 
             // 충돌한 객체의 표면 노멀 벡터 (정규화된 노멀 벡터 사용)
@@ -71,12 +69,13 @@ public class Shell : MonoBehaviour
 
             if (relativeThickness < shellPenetration)
             {
-                targetArmor.Penetrated(GetRandomDamage());                
+                targetArmor.Penetrated(GetRandomDamage());
+                OnImpact();
                 Destroy(gameObject);
             }
             else
             {
-
+                
             }
         }
     }

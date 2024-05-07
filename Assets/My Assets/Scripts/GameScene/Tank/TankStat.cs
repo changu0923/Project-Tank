@@ -12,6 +12,13 @@ public class TankStat : MonoBehaviour
     private int currentSpeed;
     private bool isDestoryed;
 
+    [Header("TankComponents")]
+    [SerializeField] TankHullMovement tankHullMovement;
+    [SerializeField] TankTurretMovement tankTurretMovement;
+    [SerializeField] TankWheelMovement tankWheelMovement;
+    [SerializeField] TankView tankView;
+    [SerializeField] TankAttack tankAttack;
+
     [Header("Camo")]
     [SerializeField] List<MeshRenderer> targetRenderers = new List<MeshRenderer>();
     private Material currentCamo;

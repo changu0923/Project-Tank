@@ -29,6 +29,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private int currentRoomPlayerCount = 0;
     private Coroutine startGameCoroutine;
 
+    private String[] players = new string[9];
+
     private void Awake()
     {
         if (instance == null)

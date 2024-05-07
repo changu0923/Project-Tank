@@ -1,15 +1,8 @@
 using MySqlConnector;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.XR.Haptics;
-using UnityEngine.ProBuilder.Shapes;
 
 public class DatabaseManager : MonoBehaviour
 {

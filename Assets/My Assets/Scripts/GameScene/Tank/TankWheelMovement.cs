@@ -9,9 +9,15 @@ public class TankWheelMovement : MonoBehaviour
     public GameObject[] leftWheels;
     public GameObject[] rightWheels;
 
-    [SerializeField] float offset;
+    private TankHullMovement tankHullMovement;
+    float offset;
     public float speed;
     public float wheelSpeed;
+
+    private void Awake()
+    {
+        tankHullMovement = GetComponent<TankHullMovement>();
+    }
 
     void Update()
     {
@@ -51,12 +57,12 @@ public class TankWheelMovement : MonoBehaviour
     /// </summary>
     void AnimationWheel()
     {
-        if (TestGameManager.Instance.tankMovement.Z > 0f)
+        if ( tankHullMovement.Z > 0f)
         {
             MoveLTrack(1f, 1f);
             MoveRTrack(1f, 1f);
         }
-        else if (TestGameManager.Instance.tankMovement.Z < 0f)
+        else if (tankHullMovement.Z < 0f)
         {
             MoveLTrack(-1f, 1f);
             MoveRTrack(-1f, 1f);
@@ -66,12 +72,12 @@ public class TankWheelMovement : MonoBehaviour
             MoveLTrack(0f, 0f);
             MoveRTrack(0f, 0f);
 
-            if (TestGameManager.Instance.tankMovement.X > 0f && TestGameManager.Instance.tankMovement.Z == 0f)
+            if (tankHullMovement.X > 0f && tankHullMovement.Z == 0f)
             {
                 MoveLTrack(1f, 1f);
                 MoveRTrack(-1f, 1f);
             }
-            else if (TestGameManager.Instance.tankMovement.X < 0f && TestGameManager.Instance.tankMovement.Z == 0f)
+            else if (tankHullMovement.X < 0f && tankHullMovement.Z == 0f)
             {
                 MoveLTrack(-1f, 1f);
                 MoveRTrack(1f, 1f);

@@ -1,0 +1,29 @@
+Reminder
+
+Shell
+ - Check Armor.cs with "Tag" Not "Layer"
+ 
+Armor
+ - Rigidbody 가 붙어있고, IsKinematic이 활성화 되어있으며, Continuos Dynamic 일 때 충돌검사
+
+
+TODO List ✓ ✗
+ - Photon ObjectPool(Bullets, Shells)		✗
+ - VFX When Destroyed						✗
+ - Change Model When Destroyed				✓ (Material : Complete, Model : Failed)
+ - Acceleration 							✗
+ - Highlight Opponents when mouse on it		✗
+ - 파괴될때 포탑 날리기?						✗
+ - 팀 나누기?									✗
+ - 시작 후 타이머구현							✗
+ - 차량별 UI구현 ( 조준시 정보 출력 )			✗
+ - 차량 속도 표시 							✗
+ 
+ - Built-in -> URP로 넘어오면서 궤도 작동 안함	 ✓
+ - VFX : 현재 low poly 사용중인데 war fx 로 바꾸기
+ 
+ 멀티플레이어 카메라
+ - 모든 플레이어마다 카메라를 구현할 필요는 없음. (각자의 클라이언트에서 자기 캐릭터만 조작)✓
+ 
+ GameScene
+ - 닉네임 동기화 : PhotonView의 

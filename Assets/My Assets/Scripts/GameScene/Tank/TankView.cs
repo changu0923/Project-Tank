@@ -48,7 +48,6 @@ public class TankView : MonoBehaviour
 
     private void CameraMove()
     {
-
         // if there is an input and camera position is not fixed
         if (_input.sqrMagnitude >= _threshold)
         {

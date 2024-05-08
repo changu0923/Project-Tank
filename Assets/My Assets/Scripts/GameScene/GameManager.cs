@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
     {
         TankView tankView = tankStatComponent.transform.GetComponent<TankView>();
         CinemachineVirtualCamera vCam = GameObject.FindGameObjectWithTag("TPSCamera").GetComponent<CinemachineVirtualCamera>();
+        tankView.Vcam = vCam;
         vCam.m_Follow = tankView.CameraRoot;
     }
 }

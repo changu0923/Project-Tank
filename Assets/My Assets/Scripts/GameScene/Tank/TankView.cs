@@ -24,13 +24,21 @@ public class TankView : MonoBehaviour
     private const float _threshold = 0.01f;
 
     public Transform CameraRoot { get => cameraRoot; }
+    public CinemachineVirtualCamera Vcam { get => vcam; set => vcam = value; }
+
+    [Header("Scroll Sensitivity")]
+    [SerializeField] float scrollSensitivity;
+    private float maxDistance = 30f;
+    private float minDistance = 3.3f;
+    Cinemachine3rdPersonFollow thirdpersonFollow;
 
     private void Awake()
     {
-        if(_mainCamera == null)
+        if (_mainCamera == null)
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
+        vcam = GameObject.FindGameObjectWithTag("TPSCamera").GetComponent<CinemachineVirtualCamera>();  
     }
 
     private void LateUpdate()
@@ -70,25 +78,25 @@ public class TankView : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
-        if(true)
-        _input = value.Get<Vector2>();
+        if (true)
+            _input = value.Get<Vector2>();
     }
 
     public void OnScroll(InputValue value)
     {
-        float z = value.Get<float>();
-        if (z > 0)
-        {
-            if(vcam != null)
-            {
-                
-            }
-            Debug.Log("Scroll UP");
+        if( thirdpersonFollow == null)
+        {           
+            thirdpersonFollow = vcam.GetCinemachineComponent<Cinemachine3rdPersonFollow>();            
         }
 
+        float z = value.Get<float>();
+        if (z > 0)
+        {           
+            thirdpersonFollow.CameraDistance = Mathf.Clamp(thirdpersonFollow.CameraDistance - (Time.deltaTime * scrollSensitivity), minDistance, maxDistance);
+        }
         else if (z < 0)
         {
-            Debug.Log("Scroll DOWN");
+            thirdpersonFollow.CameraDistance = Mathf.Clamp(thirdpersonFollow.CameraDistance + (Time.deltaTime * scrollSensitivity), minDistance, maxDistance);
         }
     }
 }

@@ -29,7 +29,7 @@ public class HangarView : MonoBehaviour
 
     // camera control
     private bool isEnabled;
-    [Header("Scroll Sensivity")]
+    [Header("Scroll Sensitivity")]
     [SerializeField] float scrollSensitivity;
     private float maxDistance = 10f;
     private float minDistance = 3.3f;

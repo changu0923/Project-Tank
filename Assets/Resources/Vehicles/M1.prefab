@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 7728402819998266}
   - component: {fileID: 7728402819998265}
   - component: {fileID: 7728402819998264}
+  - component: {fileID: 1590835772402749383}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_09
   m_TagString: Untagged
@@ -332,6 +333,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1590835772402749383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728402819998271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728402821081346
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +360,7 @@ GameObject:
   - component: {fileID: 7728402821081347}
   - component: {fileID: 7728402821081357}
   - component: {fileID: 7728402821081356}
+  - component: {fileID: 7718107434984379546}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_02
   m_TagString: Untagged
@@ -415,6 +433,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7718107434984379546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728402821081346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728402838487965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1171,7 @@ GameObject:
   - component: {fileID: 7728402839832068}
   - component: {fileID: 7728402839832070}
   - component: {fileID: 7728402839832069}
+  - component: {fileID: 9081222175697432235}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_03
   m_TagString: Untagged
@@ -1209,6 +1244,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9081222175697432235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728402839832123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728402881428339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1400,7 @@ GameObject:
   - component: {fileID: 7728402885849695}
   - component: {fileID: 7728402885849689}
   - component: {fileID: 7728402885849688}
+  - component: {fileID: 9221497251541191926}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_08
   m_TagString: Untagged
@@ -1421,6 +1473,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9221497251541191926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728402885849694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728402949312197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,6 +1549,7 @@ GameObject:
   - component: {fileID: 7728402966952331}
   - component: {fileID: 7728402966952341}
   - component: {fileID: 7728402966952340}
+  - component: {fileID: 2715488709284614830}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_03
   m_TagString: Untagged
@@ -1553,6 +1622,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2715488709284614830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728402966952330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728403048404577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,6 +1649,7 @@ GameObject:
   - component: {fileID: 7728403048404578}
   - component: {fileID: 7728403048404588}
   - component: {fileID: 7728403048404579}
+  - component: {fileID: 7895280804791347249}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_05
   m_TagString: Untagged
@@ -1636,6 +1722,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7895280804791347249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728403048404577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728403072163063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1749,7 @@ GameObject:
   - component: {fileID: 7728403072163056}
   - component: {fileID: 7728403072163058}
   - component: {fileID: 7728403072163057}
+  - component: {fileID: 4743780181817681521}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_01
   m_TagString: Untagged
@@ -1719,6 +1822,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4743780181817681521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728403072163063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728403211453008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,6 +2298,7 @@ GameObject:
   - component: {fileID: 7728403459833857}
   - component: {fileID: 7728403459833859}
   - component: {fileID: 7728403459833858}
+  - component: {fileID: 2907621114748740388}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -2253,6 +2373,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2907621114748740388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728403459833856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728403472089202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,6 +2732,7 @@ GameObject:
   - component: {fileID: 7728403796799045}
   - component: {fileID: 7728403796799047}
   - component: {fileID: 7728403796799046}
+  - component: {fileID: 1019556521739373403}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_04
   m_TagString: Untagged
@@ -2668,6 +2805,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1019556521739373403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728403796799044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728403808976274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,6 +2832,7 @@ GameObject:
   - component: {fileID: 7728403808976275}
   - component: {fileID: 7728403808976285}
   - component: {fileID: 7728403808976284}
+  - component: {fileID: 322063589006574719}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_01
   m_TagString: Untagged
@@ -2751,6 +2905,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &322063589006574719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728403808976274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728403931314530
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,6 +3144,7 @@ GameObject:
   - component: {fileID: 7728404050077124}
   - component: {fileID: 7728404050077126}
   - component: {fileID: 7728404050077125}
+  - component: {fileID: 7045963306322606450}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_07
   m_TagString: Untagged
@@ -3046,6 +3217,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7045963306322606450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404050077179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404071329112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,6 +3244,7 @@ GameObject:
   - component: {fileID: 7728404071329113}
   - component: {fileID: 7728404071329115}
   - component: {fileID: 7728404071329114}
+  - component: {fileID: 2318605163443497450}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_02
   m_TagString: Untagged
@@ -3129,6 +3317,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2318605163443497450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404071329112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404096438772
 GameObject:
   m_ObjectHideFlags: 0
@@ -3171,6 +3375,7 @@ GameObject:
   - component: {fileID: 7728404171858852}
   - component: {fileID: 7728404171858854}
   - component: {fileID: 7728404171858853}
+  - component: {fileID: 6007854281312967828}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_09
   m_TagString: Untagged
@@ -3243,6 +3448,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6007854281312967828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404171858907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404226687718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,6 +3475,7 @@ GameObject:
   - component: {fileID: 7728404226687719}
   - component: {fileID: 7728404226687713}
   - component: {fileID: 7728404226687712}
+  - component: {fileID: 8648874060720744945}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_08
   m_TagString: Untagged
@@ -3326,6 +3548,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8648874060720744945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404226687718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404259764616
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,6 +3575,7 @@ GameObject:
   - component: {fileID: 7728404259764617}
   - component: {fileID: 7728404259764619}
   - component: {fileID: 7728404259764618}
+  - component: {fileID: 4565247862037907656}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_05
   m_TagString: Untagged
@@ -3409,6 +3648,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4565247862037907656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404259764616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404377780795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3675,7 @@ GameObject:
   - component: {fileID: 7728404377780740}
   - component: {fileID: 7728404377780742}
   - component: {fileID: 7728404377780741}
+  - component: {fileID: 2163775781649488968}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_04
   m_TagString: Untagged
@@ -3492,6 +3748,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2163775781649488968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404377780795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404574794735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,6 +3775,7 @@ GameObject:
   - component: {fileID: 7728404574794728}
   - component: {fileID: 7728404574794730}
   - component: {fileID: 7728404574794729}
+  - component: {fileID: 6699566402275934827}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_07
   m_TagString: Untagged
@@ -3575,6 +3848,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6699566402275934827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404574794735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404738111764
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,6 +3875,7 @@ GameObject:
   - component: {fileID: 7728404738111765}
   - component: {fileID: 7728404738111767}
   - component: {fileID: 7728404738111766}
+  - component: {fileID: 2639089834117338723}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_06
   m_TagString: Untagged
@@ -3658,6 +3948,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2639089834117338723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404738111764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404793698030
 GameObject:
   m_ObjectHideFlags: 0
@@ -4382,6 +4688,7 @@ GameObject:
   - component: {fileID: 7728404840378893}
   - component: {fileID: 7728404840378898}
   - component: {fileID: 7728404840378899}
+  - component: {fileID: 1485389122508175271}
   m_Layer: 11
   m_Name: Turret
   m_TagString: Untagged
@@ -4484,6 +4791,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &1485389122508175271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404840378883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404926919371
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,6 +4828,7 @@ GameObject:
   - component: {fileID: 7728404926919381}
   - component: {fileID: 7728404926919330}
   - component: {fileID: 1278092983}
+  - component: {fileID: 7794471617280286962}
   m_Layer: 6
   m_Name: M1
   m_TagString: Untagged
@@ -4803,16 +5127,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
+  ObservedComponentsFoldoutOpen: 0
   Group: 0
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 7794471617280286962}
+  - {fileID: 1485389122508175271}
+  - {fileID: 2907621114748740388}
+  - {fileID: 4743780181817681521}
+  - {fileID: 2318605163443497450}
+  - {fileID: 9081222175697432235}
+  - {fileID: 2163775781649488968}
+  - {fileID: 4565247862037907656}
+  - {fileID: 897941191269667035}
+  - {fileID: 7045963306322606450}
+  - {fileID: 8648874060720744945}
+  - {fileID: 6007854281312967828}
+  - {fileID: 322063589006574719}
+  - {fileID: 7718107434984379546}
+  - {fileID: 2715488709284614830}
+  - {fileID: 1019556521739373403}
+  - {fileID: 7895280804791347249}
+  - {fileID: 2639089834117338723}
+  - {fileID: 6699566402275934827}
+  - {fileID: 9221497251541191926}
+  - {fileID: 1590835772402749383}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7794471617280286962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404926919371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7728404945273651
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,6 +5185,7 @@ GameObject:
   - component: {fileID: 7728404945273660}
   - component: {fileID: 7728404945273662}
   - component: {fileID: 7728404945273661}
+  - component: {fileID: 897941191269667035}
   m_Layer: 6
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_06
   m_TagString: Untagged
@@ -4896,3 +5258,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &897941191269667035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728404945273651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1

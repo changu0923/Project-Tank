@@ -7,7 +7,7 @@ using UnityEngine.Windows;
 
 public class TankView : MonoBehaviour
 {
-    public Transform cameraRoot;
+    [SerializeField] Transform cameraRoot;
     private GameObject _mainCamera;
     private Vector2 _input;
 
@@ -17,11 +17,13 @@ public class TankView : MonoBehaviour
     public float BottomClamp = -30.0f;
 
     // cinemachine
-    public CinemachineVirtualCamera vcam;
+    private CinemachineVirtualCamera vcam;
     public float sensivity;
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
     private const float _threshold = 0.01f;
+
+    public Transform CameraRoot { get => cameraRoot; }
 
     private void Awake()
     {

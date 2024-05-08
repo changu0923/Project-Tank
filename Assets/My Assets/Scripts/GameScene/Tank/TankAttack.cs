@@ -17,9 +17,14 @@ public class TankAttack : MonoBehaviour
     [Header("VFX")]
     [SerializeField] GameObject cannonFirePrefab;
 
+    // 스크립트 제어용 bool 변수
+    private bool scriptOn;
+
     private bool isMainGunReady = true;
     private float currentReloadTime;
     private Transform aimTransfrom;
+
+    public bool ScriptOn { get => scriptOn; set => scriptOn = value; }
 
     // 주포를 발사합니다.
     private void MainGunFire()
@@ -27,6 +32,7 @@ public class TankAttack : MonoBehaviour
         if (isMainGunReady == true)
         {
             isMainGunReady=false;
+            print($"MainGunFire() From TankAttack.cs Called : [{DateTime.Now}]");
             GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
             if(aimTransfrom == null )
             {
@@ -71,6 +77,8 @@ public class TankAttack : MonoBehaviour
     // 주포 공격 키 입력
     private void OnMouseLeft(InputValue key) 
     {
+        if (scriptOn == false) return;
+
         if(key.isPressed == true)
         {
             MainGunFire();
@@ -80,7 +88,9 @@ public class TankAttack : MonoBehaviour
     // 동축기관총 키 입력
     private void OnSubAttack(InputValue key)
     {
-        if(key.isPressed == true)
+        if (scriptOn == false) return;
+
+        if (key.isPressed == true)
         {
             SubGunFire();
         }

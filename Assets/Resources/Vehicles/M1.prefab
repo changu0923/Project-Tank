@@ -4693,7 +4693,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7728404926919371}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbc222e46141f8e4f99b7b726eb273f3, type: 3}
   m_Name: 
@@ -4707,7 +4707,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7728404926919371}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf6e160557526bd4f92db3647ad4cc9a, type: 3}
   m_Name: 
@@ -4771,7 +4771,6 @@ MonoBehaviour:
   cameraRoot: {fileID: 7728403211453009}
   TopClamp: 70
   BottomClamp: -30
-  vcam: {fileID: 0}
   sensivity: 500
 --- !u!114 &7728404926919330
 MonoBehaviour:

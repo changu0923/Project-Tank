@@ -1,3 +1,4 @@
+using Cinemachine;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
@@ -57,7 +58,13 @@ public class GameManager : MonoBehaviour
     private void InitializeGame()
     {
         int spawnIndex = PhotonNetwork.LocalPlayer.ActorNumber;
+        // TODO : Get Selected Vehicle From Database;
         GameObject spawnPlayer = PhotonNetwork.Instantiate("Vehicles/M1", spawnPoints[spawnIndex-1].position, spawnPoints[spawnIndex-1].rotation);
+
+        TankStat tankStat = spawnPlayer.transform.GetComponent<TankStat>();
+        SetCamera(tankStat);
+        tankStat.InitializeWhenGameStart();
+
         Invoke("SetNickName", 2f);
     }
 
@@ -76,12 +83,14 @@ public class GameManager : MonoBehaviour
                     string playerName = view.Owner.NickName;
                     textMeshPro.text = playerName;
                 }
-            }
+            }          
         }
     }
 
-    private void SetCamera()
+    private void SetCamera(TankStat tankStatComponent)
     {
-        // TODO : PhotonView == isMine 인 플레이어 찾아서 CM VCAM 할당시키기
+        TankView tankView = tankStatComponent.transform.GetComponent<TankView>();
+        CinemachineVirtualCamera vCam = GameObject.FindGameObjectWithTag("TPSCamera").GetComponent<CinemachineVirtualCamera>();
+        vCam.m_Follow = tankView.CameraRoot;
     }
 }

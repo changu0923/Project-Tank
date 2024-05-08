@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -24,10 +25,11 @@ public class TankStat : MonoBehaviour
     private Material currentCamo;
     private Material destroyedMaterial;
 
-    private void Awake()
-    {
-        destroyedMaterial = Resources.Load<Material>("MaterialDestroyed"); ;
+    private PhotonView photonView;
 
+    private void Awake()
+    {    
+        destroyedMaterial = Resources.Load<Material>("MaterialDestroyed"); 
         currentHP = maxHP;
         isDestoryed = false;
     }
@@ -59,5 +61,17 @@ public class TankStat : MonoBehaviour
     private void TankDestroyed()
     {        
         SetVehicleCamo(destroyedMaterial);
+    }
+
+    public void InitializeWhenGameStart()
+    {
+        photonView = GetComponent<PhotonView>();
+
+        if (photonView.IsMine == true)
+        {
+            tankHullMovement.enabled = true;
+            tankTurretMovement.enabled = true;
+            tankAttack.ScriptOn = true;
+        }
     }
 }

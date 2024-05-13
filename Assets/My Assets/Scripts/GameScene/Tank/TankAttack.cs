@@ -1,10 +1,11 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TankAttack : MonoBehaviour
+public class TankAttack : MonoBehaviourPunCallbacks
 {
     [SerializeField] Transform gunPoint;
     [SerializeField] Transform subGunPoint;
@@ -27,12 +28,12 @@ public class TankAttack : MonoBehaviour
     public bool ScriptOn { get => scriptOn; set => scriptOn = value; }
 
     // 주포를 발사합니다.
+    [PunRPC]
     private void MainGunFire()
     {
         if (isMainGunReady == true)
         {
             isMainGunReady=false;
-            print($"MainGunFire() From TankAttack.cs Called : [{DateTime.Now}]");
             GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
             if(aimTransfrom == null )
             {
@@ -81,7 +82,7 @@ public class TankAttack : MonoBehaviour
 
         if(key.isPressed == true)
         {
-            MainGunFire();
+            photonView.RPC("MainGunFire", RpcTarget.All);
         }
     }
 

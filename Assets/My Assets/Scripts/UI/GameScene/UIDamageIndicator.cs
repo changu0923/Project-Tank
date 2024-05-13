@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIDamageIndicator : MonoBehaviour
 {
     public Vector3 damageLocation;
     public Transform playerObject;
     public Transform DamageImagePivot;
+
+    [SerializeField] Text damageFromText;
+    [SerializeField] Text damageAmountText;
 
     private void Update()
     {

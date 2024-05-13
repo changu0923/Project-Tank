@@ -158,8 +158,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                     CountLoadedPlayer();
                 }
             }
-        }
-        
+        }        
     }
     #endregion
 

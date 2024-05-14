@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shell : MonoBehaviour
@@ -11,6 +12,10 @@ public class Shell : MonoBehaviour
     private TrailRenderer trailRenderer;
     private Transform aimTransform;
     private Rigidbody rb;
+
+    // Shooter Information
+    private string shooterName;
+    private Vector3 shooterPosition;
 
     private void Awake()
     {
@@ -69,7 +74,7 @@ public class Shell : MonoBehaviour
 
             if (relativeThickness < shellPenetration)
             {
-                targetArmor.Penetrated(GetRandomDamage());
+                targetArmor.Penetrated(GetRandomDamage(), shooterName, shooterPosition);
                 OnImpact();
                 Destroy(gameObject);
             }
@@ -110,6 +115,12 @@ public class Shell : MonoBehaviour
         int finalDamage = Mathf.RoundToInt(shellDamage * multiplier);
 
         return finalDamage;
+    }
+
+    public void SetShooterInfo(string from, Vector3 pos)
+    {
+        shooterName = from;
+        shooterPosition = pos;
     }
 
     private void OnImpact()

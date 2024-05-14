@@ -35,6 +35,7 @@ public class TankAttack : MonoBehaviourPunCallbacks
         {
             isMainGunReady=false;
             GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
+            shell.GetComponent<Shell>().SetShooterInfo(photonView.Owner.NickName, gunPoint.position);
             if(aimTransfrom == null )
             {
                 aimTransfrom = GetComponent<TankTurretMovement>().AimTransform;

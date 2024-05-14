@@ -26,12 +26,14 @@ public class TankStat : MonoBehaviour
     private Material destroyedMaterial;
 
     private PhotonView photonView;
+    private Canvas playerUICanvas;
 
     private void Awake()
     {    
         destroyedMaterial = Resources.Load<Material>("MaterialDestroyed"); 
         currentHP = maxHP;
         isDestoryed = false;
+        playerUICanvas = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<Canvas>();
     }
 
     public void SetVehicleCamo(Material inputMaterial)
@@ -43,11 +45,15 @@ public class TankStat : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, string from, Vector3 location)
     {
         if(!isDestoryed) 
         {
-            currentHP -= damage;           
+            currentHP -= damage;
+
+            UIDamageIndicator uiDamageIndicator = Resources.Load<UIDamageIndicator>("/InGameUI/DamageIndicator");
+            Instantiate(uiDamageIndicator, playerUICanvas.transform);
+            uiDamageIndicator.SetIndicatorInfo(from, damage, location);
             if(currentHP <= 0)
             {
                 currentHP = 0;

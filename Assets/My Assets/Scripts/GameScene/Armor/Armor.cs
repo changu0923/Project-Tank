@@ -14,11 +14,11 @@ public class Armor : MonoBehaviour
     {
         currentTankStat = GetComponentInParent<TankStat>(); 
     }
-    public void Penetrated(int getDamage)
+    public void Penetrated(int getDamage, string from, Vector3 location)
     {
         if (currentTankStat != null)
         {
-            currentTankStat.TakeDamage(getDamage);
+            currentTankStat.TakeDamage(getDamage, from, location);
         }
         else
         {

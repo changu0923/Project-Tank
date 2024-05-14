@@ -34,13 +34,13 @@ public class TankAttack : MonoBehaviourPunCallbacks
         if (isMainGunReady == true)
         {
             isMainGunReady=false;
-            GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
-            shell.GetComponent<Shell>().SetShooterInfo(photonView.Owner.NickName, gunPoint.position);
+            GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);           
             if(aimTransfrom == null )
             {
                 aimTransfrom = GetComponent<TankTurretMovement>().AimTransform;
             }
             shell.GetComponent<Shell>().SetAimTransform(aimTransfrom);
+            shell.GetComponent<Shell>().SetShooterInfo(photonView.Owner.NickName, gunPoint.position);
             GameObject vfx = Instantiate(cannonFirePrefab, gunPoint.position, gunPoint.rotation);
             Destroy(vfx, 2.5f);
             shell.GetComponent<Shell>().Fire();

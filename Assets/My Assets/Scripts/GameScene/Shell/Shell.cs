@@ -20,10 +20,6 @@ public class Shell : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
-        // TODO: aimTransform should be automatically tracked.
-        aimTransform = TestGameManager.Instance.targetTransform;
-
         trailRenderer = GetComponentInChildren<TrailRenderer>();        
     }
 
@@ -74,6 +70,7 @@ public class Shell : MonoBehaviour
 
             if (relativeThickness < shellPenetration)
             {
+                print($"OnCollisionEnter : {shooterName}, {shooterPosition}");
                 targetArmor.Penetrated(GetRandomDamage(), shooterName, shooterPosition);
                 OnImpact();
                 Destroy(gameObject);

@@ -25,15 +25,16 @@ public class TankStat : MonoBehaviour
     private Material currentCamo;
     private Material destroyedMaterial;
 
+    [Header("Hit Information")]
+    [SerializeField] GameObject uiDamageIndicator;
     private PhotonView photonView;
-    private Canvas playerUICanvas;
+    public Canvas playerUICanvas;
 
     private void Awake()
     {    
         destroyedMaterial = Resources.Load<Material>("MaterialDestroyed"); 
         currentHP = maxHP;
-        isDestoryed = false;
-        playerUICanvas = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<Canvas>();
+        isDestoryed = false;        
     }
 
     public void SetVehicleCamo(Material inputMaterial)
@@ -50,10 +51,13 @@ public class TankStat : MonoBehaviour
         if(!isDestoryed) 
         {
             currentHP -= damage;
-
-            UIDamageIndicator uiDamageIndicator = Resources.Load<UIDamageIndicator>("/InGameUI/DamageIndicator");
-            Instantiate(uiDamageIndicator, playerUICanvas.transform);
-            uiDamageIndicator.SetIndicatorInfo(from, damage, location);
+            if (photonView.IsMine)
+            {
+                print($"Take damage from : {from}, Damage : {damage}, Pos : {location}");
+                Instantiate(uiDamageIndicator, playerUICanvas.transform);
+                print($"Setting Indicator | damage from : {from}, Damage : {damage}, Pos : {location}");
+                uiDamageIndicator.GetComponent<UIDamageIndicator>().SetIndicatorInfo(from, damage, location);
+            }          
             if(currentHP <= 0)
             {
                 currentHP = 0;
@@ -75,6 +79,9 @@ public class TankStat : MonoBehaviour
 
         if (photonView.IsMine == true)
         {
+            playerUICanvas = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<Canvas>();
+            bool result = playerUICanvas != null;
+            print($"TankStat : InitializeWhenGameStart() : playerUICanvas : {result}");
             tankHullMovement.enabled = true;
             tankTurretMovement.enabled = true;
             tankAttack.ScriptOn = true;

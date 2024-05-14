@@ -5010,6 +5010,8 @@ MonoBehaviour:
   - {fileID: 7728404574794729}
   - {fileID: 7728402885849688}
   - {fileID: 7728402819998264}
+  uiDamageIndicator: {fileID: 8784604798048792318, guid: 0c253cbb374baeb43aaf606cc65d6938, type: 3}
+  playerUICanvas: {fileID: 0}
 --- !u!114 &7728404926919376
 MonoBehaviour:
   m_ObjectHideFlags: 0

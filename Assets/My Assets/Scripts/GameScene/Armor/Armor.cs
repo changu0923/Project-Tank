@@ -18,6 +18,7 @@ public class Armor : MonoBehaviour
     {
         if (currentTankStat != null)
         {
+            print($" Penetrated() : {getDamage}, {from}, {location}");
             currentTankStat.TakeDamage(getDamage, from, location);
         }
         else

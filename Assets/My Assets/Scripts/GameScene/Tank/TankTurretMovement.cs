@@ -33,6 +33,7 @@ public class TankTurretMovement : MonoBehaviour
     private void Start()
     {
         playerLayer = 1 << LayerMask.NameToLayer("Player");
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
 

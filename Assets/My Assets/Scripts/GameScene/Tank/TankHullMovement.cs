@@ -47,7 +47,7 @@ public class TankHullMovement : MonoBehaviour
     {
         if(Z != 0f) 
         {
-            Vector3 moveDirection = new Vector3(0f, 0f, Z) * moveSpeed * Time.deltaTime;
+            Vector3 moveDirection = new Vector3(0f, 0f, Z) * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(transform.position + transform.TransformDirection(moveDirection));
         }
     }

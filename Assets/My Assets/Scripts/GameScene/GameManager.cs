@@ -72,7 +72,8 @@ public class GameManager : MonoBehaviour
         PhotonView[] players = FindObjectsOfType<PhotonView>();
 
         foreach (PhotonView view in players)
-        {            
+        {
+            view.gameObject.name = view.Owner.NickName + "'s Vehicle";
             Canvas canvas = view.GetComponentInChildren<Canvas>();
             if (canvas != null)
             {                

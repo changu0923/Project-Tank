@@ -46,7 +46,8 @@ public class TankTurretMovement : MonoBehaviour
     {
         if (!isTurretLock)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            Ray ray = Camera.main.ScreenPointToRay(screenCenter);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~playerLayer))

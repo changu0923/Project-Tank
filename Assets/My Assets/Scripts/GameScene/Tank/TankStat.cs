@@ -63,6 +63,9 @@ public class TankStat : MonoBehaviour
                 {
                     GameObject indicator = Instantiate(uiDamageIndicator, playerUICanvas.transform);
                     indicator.GetComponent<UIDamageIndicator>().SetIndicatorInfo(from, damage, location, tankView.CameraRoot);
+
+                    // Set CustomProperties
+                    
                 }
             }
             if(currentHP <= 0)

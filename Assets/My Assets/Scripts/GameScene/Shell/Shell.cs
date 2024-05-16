@@ -70,7 +70,6 @@ public class Shell : MonoBehaviour
 
             if (relativeThickness < shellPenetration)
             {
-                print($"OnCollisionEnter : {shooterName}, {shooterPosition}");
                 targetArmor.Penetrated(GetRandomDamage(), shooterName, shooterPosition);
                 OnImpact();
                 Destroy(gameObject);

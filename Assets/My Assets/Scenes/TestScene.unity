@@ -6171,6 +6171,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5652815043425801923, guid: 8a4f02f35991ccf46830b41861655684, type: 3}
+      propertyPath: damageLocationTest.z
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5652815043935157144, guid: 8a4f02f35991ccf46830b41861655684, type: 3}
       propertyPath: m_Pivot.x
       value: 0

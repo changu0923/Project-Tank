@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
     private void SceneLoadComplete()
     {
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "SceneLoaded", true } });
-        print($"SceneLoadComplete {PhotonNetwork.LocalPlayer.NickName} Updated Custom Properties [{DateTime.Now}]");
     }
     
 

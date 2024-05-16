@@ -51,13 +51,22 @@ public class TankStat : MonoBehaviour
         if(!isDestoryed) 
         {
             currentHP -= damage;
-            if (photonView.IsMine)
+            if (photonView != null)
             {
-                print($"Take damage from : {from}, Damage : {damage}, Pos : {location}");
-                Instantiate(uiDamageIndicator, playerUICanvas.transform);
-                print($"Setting Indicator | damage from : {from}, Damage : {damage}, Pos : {location}");
-                uiDamageIndicator.GetComponent<UIDamageIndicator>().SetIndicatorInfo(from, damage, location);
-            }          
+                if (photonView.IsMine == true)
+                {
+                    GameObject indicator = Instantiate(uiDamageIndicator, playerUICanvas.transform);
+                    indicator.GetComponent<UIDamageIndicator>().SetIndicatorInfo(from, damage, location, transform);
+                }
+                else
+                {
+                    print($"{transform.name} : Not me (TakeDamage)");
+                }
+            }
+            else
+            {
+                print($"{transform.name} : PhotonView Null");
+            }
             if(currentHP <= 0)
             {
                 currentHP = 0;
@@ -81,7 +90,6 @@ public class TankStat : MonoBehaviour
         {
             playerUICanvas = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<Canvas>();
             bool result = playerUICanvas != null;
-            print($"TankStat : InitializeWhenGameStart() : playerUICanvas : {result}");
             tankHullMovement.enabled = true;
             tankTurretMovement.enabled = true;
             tankAttack.ScriptOn = true;

@@ -14,7 +14,7 @@ public class UIDamageIndicator : MonoBehaviour
     [Header("Test")]
     public Vector3 damageLocationTest;
 
-    private bool isOn = false;
+    public bool isOn = false;
 
     private Coroutine destroyCoroutine = null;
 
@@ -30,9 +30,9 @@ public class UIDamageIndicator : MonoBehaviour
         }
     }
 
-    public void SetIndicatorInfo(string shotFrom, int damage, Vector3 currentPos)
+    public void SetIndicatorInfo(string shotFrom, int damage, Vector3 currentPos, Transform myPositon)
     {
-        print($"SetIndicatorInfo Called [UIDamageIndicator]: {shotFrom},{damage},{currentPos}");
+        playerObject = myPositon;
         damageLocationTest = currentPos;
         damageLocation = currentPos;
         damageFromText.text = shotFrom;
@@ -42,7 +42,6 @@ public class UIDamageIndicator : MonoBehaviour
 
     private IEnumerator DestorySelf(float t)
     {
-        print("DestorySelf Called");
         yield return new WaitForSeconds(t);
         Destroy(gameObject);
     }

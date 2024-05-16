@@ -81,10 +81,6 @@ public class Shell : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-       
-    }
 
     private float CalculateRelativeThickness(float actualThickness, float incidenceAngle)
     {

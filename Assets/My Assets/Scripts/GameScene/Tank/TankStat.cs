@@ -46,6 +46,18 @@ public class TankStat : MonoBehaviour
         }
     }
 
+    public void RequestTakeDamage(int damage, string from, Vector3 location)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            TakeDamage(damage, from, location);
+        }
+        else
+        {
+            photonView.RPC("TakeDamage", RpcTarget.MasterClient, damage, from, location);
+        }
+    }
+
     public void TakeDamage(int damage, string from, Vector3 location)
     {
         if(!isDestoryed) 
@@ -58,14 +70,6 @@ public class TankStat : MonoBehaviour
                     GameObject indicator = Instantiate(uiDamageIndicator, playerUICanvas.transform);
                     indicator.GetComponent<UIDamageIndicator>().SetIndicatorInfo(from, damage, location, transform);
                 }
-                else
-                {
-                    print($"{transform.name} : Not me (TakeDamage)");
-                }
-            }
-            else
-            {
-                print($"{transform.name} : PhotonView Null");
             }
             if(currentHP <= 0)
             {

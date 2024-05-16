@@ -11,6 +11,9 @@ public class UIDamageIndicator : MonoBehaviour
     [SerializeField] Text damageFromText;
     [SerializeField] Text damageAmountText;
 
+    [Header("Test")]
+    public Vector3 damageLocationTest;
+
     private bool isOn = false;
 
     private Coroutine destroyCoroutine = null;
@@ -30,6 +33,7 @@ public class UIDamageIndicator : MonoBehaviour
     public void SetIndicatorInfo(string shotFrom, int damage, Vector3 currentPos)
     {
         print($"SetIndicatorInfo Called [UIDamageIndicator]: {shotFrom},{damage},{currentPos}");
+        damageLocationTest = currentPos;
         damageLocation = currentPos;
         damageFromText.text = shotFrom;
         damageAmountText.text = damage.ToString();

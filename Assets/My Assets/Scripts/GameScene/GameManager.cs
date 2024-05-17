@@ -82,8 +82,6 @@ public class GameManager : MonoBehaviour
         }
         UIManager.Instance.playerCanvas.playerStatusPanel.InitData(tankStat, photonView.Owner.NickName);
 
-        //UIManager.Instance.playerCanvas.playerStatusPanel.InitData(tankStat.CurrentHP, tankStat.MaxHP, tankStat.TankName, photonView.Owner.NickName);
-
         SetCamera(tankStat);
         Invoke("SetNickName", 2.5f);
     }

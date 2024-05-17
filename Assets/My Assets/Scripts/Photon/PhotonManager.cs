@@ -100,7 +100,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
 
 
-    #region Override Photon PunClasses
+    #region Override Photon Pun Classes
     public override void OnConnectedToMaster()
     {
         print($"Photon Login Success : [{DateTime.Now}][User : {PhotonNetwork.NickName}]");
@@ -142,11 +142,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         currentRoomPlayerCount--;
     }
 
-    // https://doc-api.photonengine.com/en/pun/current/class_photon_1_1_pun_1_1_mono_behaviour_pun_callbacks.html#afb96ff9ce687e592d74866b8775f1b32
+    // references https://doc-api.photonengine.com/en/pun/current/class_photon_1_1_pun_1_1_mono_behaviour_pun_callbacks.html#afb96ff9ce687e592d74866b8775f1b32
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
         if(PhotonNetwork.IsMasterClient) 
         {
+            #region SceneLoaded
             if (changedProps.ContainsKey("SceneLoaded"))
             {
                 bool sceneLoaded = (bool)changedProps["SceneLoaded"];
@@ -157,7 +158,21 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                     CountLoadedPlayer();
                 }
             }
-        }        
+            #endregion
+
+            #region HP Update
+            if(changedProps.ContainsKey("CurrentHP"))
+            {
+                int currentHP = (int)changedProps["CurrentHP"];
+                if(currentHP <=0)
+                {
+                    currentHP = 0;
+                }
+                print($"{targetPlayer.NickName}'s HP : {currentHP} left. ");
+                // TODO : 체력바 UI 연동
+            }
+            #endregion
+        }
     }
     #endregion
 

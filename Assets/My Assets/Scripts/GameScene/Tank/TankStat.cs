@@ -46,7 +46,7 @@ public class TankStat : MonoBehaviour
         }
     }
        
-    // 내가 포탄을 맞혀서 나온 결과를 각 클라이언트가 커스텀프로퍼티 업데이트. 
+    // TODO : 내가 포탄을 맞혀서 나온 결과를 각 클라이언트가 커스텀프로퍼티 업데이트. 
     public void TakeDamage(int damage, string from, Vector3 location)
     {
         if(photonView == null) 
@@ -63,21 +63,19 @@ public class TankStat : MonoBehaviour
                 {
                     GameObject indicator = Instantiate(uiDamageIndicator, playerUICanvas.transform);
                     indicator.GetComponent<UIDamageIndicator>().SetIndicatorInfo(from, damage, location, tankView.CameraRoot);
-
-                    // Set CustomProperties
-                    
+                    GameManager.Instance.UpdateCurrentHealth(this.currentHP);
                 }
             }
             if(currentHP <= 0)
             {
                 currentHP = 0;
                 isDestoryed = true;
-                TankDestroyed();
+                photonView.RPC("TankDestroyed", RpcTarget.All);
             }
-            print($"{transform.name} take Damage : [{damage}], Current HP is : {currentHP}");
         }
     }
 
+    [PunRPC]
     private void TankDestroyed()
     {        
         SetVehicleCamo(destroyedMaterial);

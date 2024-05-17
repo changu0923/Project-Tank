@@ -48,12 +48,18 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
+    #region Custom Propeerties
     private void SceneLoadComplete()
     {
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "SceneLoaded", true } });
     }
-    
 
+    public void UpdateCurrentHealth(int currentHP)
+    {
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "CurrentHP", currentHP} });
+    }
+
+    #endregion
     private void InitializeGame()
     {
         int spawnIndex = PhotonNetwork.LocalPlayer.ActorNumber;

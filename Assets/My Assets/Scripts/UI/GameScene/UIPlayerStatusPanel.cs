@@ -43,12 +43,23 @@ public class UIPlayerStatusPanel : MonoBehaviour
         sb.Append(" / ");
         sb.Append(tankStat.MaxHP);
         hpbarText.text = sb.ToString();
-        hpbarImage.fillAmount = (float)tankStat.CurrentHP / (float)tankStat.MaxHP; 
+        StartCoroutine(AnimateHPBar());
     }
 
     public void SubscribeTakeDamage(TankStat tankStat)
     {
         if (tankStat != null)
             tankStat.OnTakeDamage += UpdateHPBar;
+    }
+
+    private IEnumerator AnimateHPBar()
+    {
+        float targetFillAmount = (float)tankStat.CurrentHP / (float)tankStat.MaxHP;
+        while (Mathf.Abs(hpbarImage.fillAmount - targetFillAmount) > 0.01f)
+        {
+            hpbarImage.fillAmount = Mathf.Lerp(hpbarImage.fillAmount, targetFillAmount, Time.deltaTime * 2f);
+            yield return null;
+        }
+        hpbarImage.fillAmount = targetFillAmount;
     }
 }

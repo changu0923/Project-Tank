@@ -2,7 +2,9 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
@@ -24,6 +26,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             return instance;
         }
     }
+
+   
     #endregion
 
     private int currentRoomPlayerCount = 0; 
@@ -96,6 +100,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             // TODO : CountDown Start;
             // 카운트다운 시작하고, 플레이어 닉네임들 동기화 시키기
+            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "AllPlayerReady", true } });
         }
     }
 
@@ -172,7 +177,21 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             }
             #endregion
         }
+
     }
+
+    public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
+    {
+        if(propertiesThatChanged.ContainsKey("AllPlayerReady"))
+        {
+            bool result = (bool)propertiesThatChanged["AllPlayerReady"];
+            if(result)
+            {
+                GameManager.Instance.StartCountDown();
+            }
+        }
+    }
+
     #endregion
 
 

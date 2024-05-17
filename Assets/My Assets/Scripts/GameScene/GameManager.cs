@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     private List<PhotonView> activePlayers = new List<PhotonView>();
     private TankStat tankStat;
     private PhotonView photonView;
-    public PhotonView PhotonView { get => photonView; }
+    public PhotonView PhotonView { get => photonView;}
 
     #region Singleton
     private static GameManager instance;
@@ -75,11 +76,10 @@ public class GameManager : MonoBehaviour
             Debug.LogError($"{gameObject.name} : PhotonView is Null");
         }
         SetCamera(tankStat);
-        // TODO
-        InitalizeAfterCountDown();
         Invoke("SetNickName", 2.5f);
     }
-    public void RequestCountdown()
+
+    public void StartCountDown()
     {
         UIManager.Instance.playerCanvas.CountdownStart();
     }

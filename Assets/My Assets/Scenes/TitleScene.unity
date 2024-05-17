@@ -2346,6 +2346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titlePanel: {fileID: 1146926713}
   hangarPanel: {fileID: 0}
+  playerCanvas: {fileID: 0}
 --- !u!4 &1282506052
 Transform:
   m_ObjectHideFlags: 0

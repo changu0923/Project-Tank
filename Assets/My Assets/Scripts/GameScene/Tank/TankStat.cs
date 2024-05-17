@@ -1,7 +1,7 @@
 using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TankStat : MonoBehaviour
@@ -30,10 +30,13 @@ public class TankStat : MonoBehaviour
     private PhotonView photonView;
     public Canvas playerUICanvas;
 
+    private Action onTakeDamage;
+
+    
     public int CurrentHP { get => currentHP; }
     public int MaxHP { get => maxHP; }
     public string TankName { get => tankName; }
-
+    public Action OnTakeDamage { get => onTakeDamage; set => onTakeDamage = value; }
 
     private void Awake()
     {    
@@ -77,6 +80,7 @@ public class TankStat : MonoBehaviour
                 isDestoryed = true;
                 photonView.RPC("TankDestroyed", RpcTarget.All);
             }
+            OnTakeDamage?.Invoke();
         }
     }
 

@@ -25,5 +25,16 @@ public class Armor : MonoBehaviour
             Destroy(gameObject);
         }
     }
- 
+
+    public void NotPenetrated(int getDamage, string from, Vector3 location)
+    {
+        if (currentTankStat != null)
+        {
+            currentTankStat.TakeDamage(0, from, location);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -10,6 +10,7 @@ public class UIDamageIndicator : MonoBehaviour
     [SerializeField] Transform DamageImagePivot;
     [SerializeField] Text damageFromText;
     [SerializeField] Text damageAmountText;
+    [SerializeField] Image damageArrowImage;
 
     [Header("Test")]
     public Vector3 damageLocationTest;
@@ -26,7 +27,7 @@ public class UIDamageIndicator : MonoBehaviour
             Vector3 dir = (damageLocation - playerObject.transform.position).normalized;
             float angle = (Vector3.SignedAngle(dir, playerObject.forward, Vector3.up));
             DamageImagePivot.transform.localEulerAngles = new Vector3(0, 0, angle);            
-            destroyCoroutine ??= StartCoroutine(DestorySelf(2f));            
+            destroyCoroutine ??= StartCoroutine(DestorySelf(3f));            
         }
     }
 
@@ -36,7 +37,17 @@ public class UIDamageIndicator : MonoBehaviour
         damageLocationTest = currentPos;
         damageLocation = currentPos;
         damageFromText.text = shotFrom;
-        damageAmountText.text = damage.ToString();
+
+        if (damage != 0)
+        {
+            damageAmountText.text = damage.ToString();
+        }
+        else
+        {
+            damageArrowImage.color = Color.black;
+            damageAmountText.text = "Blocked";
+        }
+
         isOn = true;    
     }
 

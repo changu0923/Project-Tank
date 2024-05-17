@@ -336,6 +336,9 @@ MonoBehaviour:
   DamageImagePivot: {fileID: 8784604797667720262}
   damageFromText: {fileID: 8784604798047761670}
   damageAmountText: {fileID: 8784604798405205043}
+  damageArrowImage: {fileID: 8784604797667720257}
+  damageLocationTest: {x: 0, y: 0, z: 0}
+  isOn: 0
 --- !u!1 &8784604798405205044
 GameObject:
   m_ObjectHideFlags: 0

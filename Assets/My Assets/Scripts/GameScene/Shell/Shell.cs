@@ -76,7 +76,7 @@ public class Shell : MonoBehaviour
             }
             else
             {
-                
+                targetArmor.NotPenetrated(GetRandomDamage(), shooterName, shooterPosition);
             }
         }
     }

@@ -1143,7 +1143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 10
+  armorThickness: 80
 --- !u!54 &7728402838486118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 10
+  armorThickness: 80
 --- !u!54 &7728402881428346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2270,7 +2270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 10
+  armorThickness: 40
 --- !u!54 &7728403453407212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 10
+  armorThickness: 80
 --- !u!54 &7728403556170855
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3033,7 +3033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 10
+  armorThickness: 80
 --- !u!54 &7728403931314537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4658,7 +4658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423bd2a131c0d8468ca06f31cfd201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorThickness: 10
+  armorThickness: 80
 --- !u!54 &7728404793698039
 Rigidbody:
   m_ObjectHideFlags: 0

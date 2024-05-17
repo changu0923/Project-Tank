@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shellName: APFSDS-T
-  shellPenetration: 120
+  shellPenetration: 100
   shellSpeed: 6808
   shellDamage: 390
 --- !u!1 &6361743865375071932

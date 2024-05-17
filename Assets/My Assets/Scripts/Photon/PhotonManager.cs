@@ -99,7 +99,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
     }
 
-
     #region Override Photon Pun Classes
     public override void OnConnectedToMaster()
     {

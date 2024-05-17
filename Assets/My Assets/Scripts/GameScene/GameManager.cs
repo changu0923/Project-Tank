@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<Transform> spawnPoints;
 
     private List<PhotonView> activePlayers = new List<PhotonView>();
+    private TankStat tankStat;
+    private PhotonView photonView;
+    public PhotonView PhotonView { get => photonView; }
 
     #region Singleton
     private static GameManager instance;
@@ -60,17 +63,30 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    private void InitializeGame()
+    public void InitializeGame()
     {
         int spawnIndex = PhotonNetwork.LocalPlayer.ActorNumber;
         // TODO : Get Selected Vehicle From Database;
         GameObject spawnPlayer = PhotonNetwork.Instantiate("Vehicles/M1", spawnPoints[spawnIndex-1].position, spawnPoints[spawnIndex-1].rotation);
-
-        TankStat tankStat = spawnPlayer.transform.GetComponent<TankStat>();
+        tankStat = spawnPlayer.transform.GetComponent<TankStat>();
+        photonView = spawnPlayer.transform.GetComponent <PhotonView>();
+        if(photonView == null )
+        {
+            Debug.LogError($"{gameObject.name} : PhotonView is Null");
+        }
         SetCamera(tankStat);
-        tankStat.InitializeWhenGameStart();
+        // TODO
+        InitalizeAfterCountDown();
+        Invoke("SetNickName", 2.5f);
+    }
+    public void RequestCountdown()
+    {
+        UIManager.Instance.playerCanvas.CountdownStart();
+    }
 
-        Invoke("SetNickName", 2f);
+    public void InitalizeAfterCountDown()
+    {
+        tankStat.InitializeWhenGameStart();
     }
 
     private void SetNickName()

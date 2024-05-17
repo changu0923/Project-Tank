@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
 
     public UITitlePanel titlePanel;
     public UIHangarPanel hangarPanel;
+    public UIPlayerCanvas playerCanvas;
+
     private void Awake()
     {
         if (instance == null)

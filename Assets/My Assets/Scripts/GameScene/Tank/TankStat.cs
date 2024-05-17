@@ -88,7 +88,6 @@ public class TankStat : MonoBehaviour
         if (photonView.IsMine == true)
         {
             playerUICanvas = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<Canvas>();
-            bool result = playerUICanvas != null;
             tankHullMovement.enabled = true;
             tankTurretMovement.enabled = true;
             tankAttack.ScriptOn = true;

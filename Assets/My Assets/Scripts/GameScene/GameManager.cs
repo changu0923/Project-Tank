@@ -68,13 +68,20 @@ public class GameManager : MonoBehaviour
     {
         int spawnIndex = PhotonNetwork.LocalPlayer.ActorNumber;
         // TODO : Get Selected Vehicle From Database;
-        GameObject spawnPlayer = PhotonNetwork.Instantiate("Vehicles/M1", spawnPoints[spawnIndex-1].position, spawnPoints[spawnIndex-1].rotation);
+        GameObject spawnPlayer = PhotonNetwork.Instantiate("Vehicles/M1", spawnPoints[spawnIndex - 1].position, spawnPoints[spawnIndex - 1].rotation);
         tankStat = spawnPlayer.transform.GetComponent<TankStat>();
-        photonView = spawnPlayer.transform.GetComponent <PhotonView>();
-        if(photonView == null )
+        print(tankStat.gameObject.name);
+        photonView = spawnPlayer.transform.GetComponent<PhotonView>();
+        if (photonView == null)
         {
             Debug.LogError($"{gameObject.name} : PhotonView is Null");
         }
+        if (UIManager.Instance.playerCanvas == null)
+        {
+            UIManager.Instance.playerCanvas = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<UIPlayerCanvas>();
+            UIManager.Instance.playerCanvas.playerStatusPanel.InitData(tankStat.CurrentHP, tankStat.MaxHP, tankStat.TankName, photonView.Owner.NickName);
+        }       
+
         SetCamera(tankStat);
         Invoke("SetNickName", 2.5f);
     }

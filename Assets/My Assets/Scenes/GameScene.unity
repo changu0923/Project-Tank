@@ -2783,6 +2783,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f9d74f0a0aa246b273f0e956ce373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: {fileID: 5652815045265025764}
+  tankName: {fileID: 5652815043536897214}
+  hpbarText: {fileID: 5652815044665618829}
+  hpbarImage: {fileID: 5652815044605514886}
+  currentSpeedText: {fileID: 5652815043659204735}
 --- !u!1 &5652815043957069506
 GameObject:
   m_ObjectHideFlags: 0

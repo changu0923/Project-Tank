@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class UIPlayerCanvas : MonoBehaviour
 {
-    [SerializeField] UIPlayerStatusPanel playerStatusPanel;
-    [SerializeField] UIPlayerListPanel playerListPanel;
-    [SerializeField] Text waitingText;
+    public UIPlayerStatusPanel playerStatusPanel;
+    public UIPlayerListPanel playerListPanel;
+    public Text waitingText;
     private void Awake()
     {
         UIManager.Instance.playerCanvas = this;

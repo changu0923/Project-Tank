@@ -30,6 +30,11 @@ public class TankStat : MonoBehaviour
     private PhotonView photonView;
     public Canvas playerUICanvas;
 
+    public int CurrentHP { get => currentHP; }
+    public int MaxHP { get => maxHP; }
+    public string TankName { get => tankName; }
+
+
     private void Awake()
     {    
         destroyedMaterial = Resources.Load<Material>("MaterialDestroyed"); 

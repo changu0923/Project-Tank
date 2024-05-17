@@ -108,5 +108,4 @@ public class TankTurretMovement : MonoBehaviour
     {
         isTurretLock = key.isPressed ? true : false;
     }
-}
-    
+}    

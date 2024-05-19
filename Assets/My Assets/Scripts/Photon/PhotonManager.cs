@@ -2,7 +2,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -97,10 +96,20 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private void CountLoadedPlayer()
     {
         if( currentRoomPlayerCount == loadedPlayers) 
-        {
-            // TODO : CountDown Start;
-            // 카운트다운 시작하고, 플레이어 닉네임들 동기화 시키기
+        {            
             PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "AllPlayerReady", true } });
+        }
+    }
+
+    // 게임신에서 플레이어가 모두 접속완료하였으면, 플레이어 리스트 생성
+    private void InitPlayerListGameScene()
+    {
+        foreach (var player in PhotonNetwork.CurrentRoom.Players)
+        {
+            {
+                Player photonPlayer = player.Value;
+                UIManager.Instance.playerCanvas.playerListPanel.AddPlayer(photonPlayer.NickName);
+            }
         }
     }
 
@@ -120,6 +129,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {        
         Debug.Log($"Player Count : {PhotonNetwork.CurrentRoom.PlayerCount} [{DateTime.Now}]");
         currentRoomPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        UIManager.Instance.hangarPanel.matchmakingPanel.SetPlayerCount(currentRoomPlayerCount);
     }
 
     // 다른 플레이어가 방에 잘 접속했을때 호출
@@ -127,8 +137,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log($"Player Joined : {PhotonNetwork.CurrentRoom.PlayerCount} [{DateTime.Now}]");
         currentRoomPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
-
-        if(PhotonNetwork.IsMasterClient)
+        UIManager.Instance.hangarPanel.matchmakingPanel.SetPlayerCount(currentRoomPlayerCount);
+        if (PhotonNetwork.IsMasterClient)
         {
             if(currentRoomPlayerCount > 1)
             {
@@ -173,13 +183,26 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                     currentHP = 0;
                 }
                 print($"{targetPlayer.NickName}'s HP : {currentHP} left. ");
-                // TODO : 체력바 UI 연동
             }
             #endregion
         }
 
-    }
+        if(changedProps.ContainsKey("Destroyed"))
+        {
+            bool result = (bool)changedProps["Destroyed"];
+            if(result)
+            {
+                UIManager.Instance.playerCanvas.playerListPanel.PlayerDestroyed(targetPlayer.NickName);
+            }
+        }
 
+        if (changedProps.ContainsKey("EarnPoint"))
+        {
+            string result = (string)changedProps["EarnPoint"];
+
+            UIManager.Instance.playerCanvas.playerListPanel.PlayerGetPoint(result);
+        }
+    }
     public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
     {
         if(propertiesThatChanged.ContainsKey("AllPlayerReady"))
@@ -188,10 +211,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             if(result)
             {
                 GameManager.Instance.StartCountDown();
+                InitPlayerListGameScene();
             }
-        }
+        } 
     }
-
     #endregion
 
 

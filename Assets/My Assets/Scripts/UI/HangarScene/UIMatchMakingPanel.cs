@@ -55,9 +55,8 @@ public class UIMatchMakingPanel : MonoBehaviour
         elapsedTimeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    private void SetPlayerCount()
-    {
-        // TODO : Get Matched Player List
-        matchedPlayerText.text = $"Matched Players : 0";
+    public void SetPlayerCount(int playerCount)
+    {        
+        matchedPlayerText.text = $"Matched Players : {playerCount}";
     }
 }

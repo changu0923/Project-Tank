@@ -79,6 +79,7 @@ public class TankStat : MonoBehaviour
                 currentHP = 0;
                 isDestoryed = true;
                 photonView.RPC("TankDestroyed", RpcTarget.All);
+                GameManager.Instance.PlayerDestroyed(from);
             }
             OnTakeDamage?.Invoke();
         }
@@ -88,6 +89,7 @@ public class TankStat : MonoBehaviour
     private void TankDestroyed()
     {        
         SetVehicleCamo(destroyedMaterial);
+        // TODO : Add VFX
     }
 
     public void InitializeWhenGameStart()

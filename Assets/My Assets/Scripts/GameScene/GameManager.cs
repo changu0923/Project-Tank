@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
-    #region Custom Propeerties
+    #region CustomProperties
     private void SceneLoadComplete()
     {
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "SceneLoaded", true } });
@@ -62,7 +62,14 @@ public class GameManager : MonoBehaviour
     {
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "CurrentHP", currentHP} });
     }
+    public void PlayerDestroyed(string killer)
+    {
+        // Killer
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "EarnPoint", killer } });
 
+        // Victim
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "Destroyed", true } });
+    }
     #endregion
     public void InitializeGame()
     {

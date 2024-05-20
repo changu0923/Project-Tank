@@ -44,6 +44,6 @@ public class HangarUIVehicleContent : MonoBehaviour
     {
         tankNameText.text = currentTankData.TankName;
         vehicleNation.sprite = UIManager.Instance.hangarPanel.ModelList.GetSprite(currentTankData.TankNation);
-        //TODO : ICON
+        vehicleIcon.sprite = UIManager.Instance.hangarPanel.ModelList.GetIcon(currentTankData.TankName);
     }
 }

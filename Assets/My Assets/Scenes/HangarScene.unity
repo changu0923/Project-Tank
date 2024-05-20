@@ -17466,6 +17466,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 837341a9789888e42989c4e00688dd07, type: 3}
   - {fileID: 21300000, guid: 1ed518db4f8d4f141be630c7b6b70f21, type: 3}
   - {fileID: 21300000, guid: ac7385ae5dd2b8747a3667a32fbdb3ed, type: 3}
+  vehicleIcons:
+  - {fileID: 21300000, guid: a06112441a525284687c559b962c55be, type: 3}
+  - {fileID: 21300000, guid: c85ff995ef6fad9428c8fefd5a97a768, type: 3}
 --- !u!4 &1977113739
 Transform:
   m_ObjectHideFlags: 0

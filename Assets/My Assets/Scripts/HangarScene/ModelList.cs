@@ -10,6 +10,7 @@ public class ModelList : MonoBehaviour
     [SerializeField] List<Sprite> sprites = new List<Sprite>();
     [SerializeField] List<Material> camoMaterials = new List<Material>();
     [SerializeField] List<Sprite> camoSprites = new List<Sprite>();
+    [SerializeField] List<Sprite> vehicleIcons = new List<Sprite>();    
 
     public List<GameObject> VehicleModelList { get => vehicleModelList; set => vehicleModelList = value; }
     public List<Sprite> Sprites { get => sprites; set => sprites = value; }
@@ -25,6 +26,22 @@ public class ModelList : MonoBehaviour
         else if(nation == "RUSSIA")
         {
             return sprites[1];
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    public Sprite GetIcon(string tankName)
+    {
+        if (tankName == "M1")
+        {
+            return vehicleIcons[0];
+        }
+        else if (tankName == "T-72")
+        {
+            return vehicleIcons[1];
         }
         else
         {

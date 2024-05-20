@@ -19,13 +19,16 @@ public class UICamoHolder : MonoBehaviour
     {
         UIManager.Instance.hangarPanel.loadingPanel.gameObject.SetActive(true);
         selectedTankData = DatabaseManager.Instance.SelectedTank;
-        StartCoroutine(SetCamoCoroutine(selectedTankData.CamoSlot));     
+        SetCamo(selectedTankData.CamoSlot);
     }
 
+    private void SetCamo(int index)
+    {
+        StartCoroutine(SetCamoCoroutine(index));
+    }
     
     public void SetCamoOnUI(int index)
     {
-        print("SetCamoOnUI : get Index : " + index);
         Image currentCamoImage = camoButton.GetComponent<Image>();
         Sprite targetSprite = UIManager.Instance.hangarPanel.ModelList.CamoSprites[index];
         currentCamoImage.sprite = targetSprite;
@@ -41,9 +44,9 @@ public class UICamoHolder : MonoBehaviour
             currentVehicle.SetVehicleCamo(targetMaterial);
         }
     }
+
     IEnumerator SetCamoCoroutine(int index)
     {
-        print("index is :" + index);
         yield return new WaitForSeconds(0.5f);
         SetCamoOnUI(index);
         SetCamoOnVehicle(index);

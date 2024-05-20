@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +18,46 @@ public class UICamoHolder : MonoBehaviour
 
     private void OnEnable()
     {
-        UIManager.Instance.hangarPanel.loadingPanel.gameObject.SetActive(true);
+        isCamoButtonOn = false;
         selectedTankData = DatabaseManager.Instance.SelectedTank;
         SetCamo(selectedTankData.CamoSlot);
+        InitButton();
+        InitToggle();
+    }
+
+    private void InitButton()
+    {
+        camoButton.onClick.AddListener(OnButtonClicked);
+    }
+
+    private void InitToggle()
+    {
+        foreach (Toggle toggle in camoToggles) 
+        {
+            toggle.onValueChanged.AddListener(OnToggleSelected);
+        }
+    }
+
+    private void OnButtonClicked()
+    {
+        isCamoButtonOn = !isCamoButtonOn;
+        camoContentHolder.gameObject.SetActive(isCamoButtonOn);
+    }
+
+    private void OnToggleSelected(bool value)
+    {
+        Toggle selectedToggle;
+        int index = 0;
+        foreach (Toggle toggle in camoToggles)
+        {        
+            if(toggle.isOn)
+            {
+                selectedToggle = toggle;
+                break;    
+            }
+            index++;
+        }
+        SetCamo(index);        
     }
 
     private void SetCamo(int index)
@@ -47,9 +85,11 @@ public class UICamoHolder : MonoBehaviour
 
     IEnumerator SetCamoCoroutine(int index)
     {
+        UIManager.Instance.hangarPanel.loadingPanel.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         SetCamoOnUI(index);
         SetCamoOnVehicle(index);
+        DatabaseManager.Instance.ChangeCamo(index);
         UIManager.Instance.hangarPanel.loadingPanel.gameObject.SetActive(false); 
     }
 }

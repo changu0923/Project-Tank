@@ -35,6 +35,10 @@ public class UIHangarPanel : MonoBehaviour
         if (selectedVehicle != null)
         {
             GameObject currentSpawnVehicle = Instantiate(selectedVehicle, vehicleSpawnPoint.position, Quaternion.Euler(0f, -150f, 0f), vehicleSpawnPoint);
+            if(UIManager.Instance.hangarPanel.equipmentPanel.gameObject.activeSelf == true)
+            {
+                UIManager.Instance.hangarPanel.equipmentPanel.gameObject.SetActive(false);
+            }
             UIManager.Instance.hangarPanel.equipmentPanel.gameObject.SetActive(true);
         }
     }

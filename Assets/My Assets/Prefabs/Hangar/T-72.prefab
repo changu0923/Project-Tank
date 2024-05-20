@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5950160751590655474}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_03
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5950682595120902762}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_01
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 5950201282952606986}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_05
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 5950739345365178150}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_04
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 5950566554988708686}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_02
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 5950403065767678532}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_06
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 5950117774900421088}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_01
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 5918015794261297506}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Turret_Barrel_01
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 5950469655006467990}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_05
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 5918754970580894550}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Turret_01
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 5950814394699373968}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_L
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -957,7 +957,7 @@ GameObject:
   - component: {fileID: 5950542071574362524}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_06
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 5950779477355233152}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_R
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 5950476484445401806}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_07
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1206,7 +1206,7 @@ GameObject:
   - component: {fileID: 5950052702885453690}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_04
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1289,7 +1289,7 @@ GameObject:
   - component: {fileID: 5950192549710723708}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_02
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 5950403859253399884}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_07
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1457,7 +1457,7 @@ GameObject:
   - component: {fileID: 9093937045729561110}
   m_Layer: 0
   m_Name: T-72
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1573,6 +1573,11 @@ MonoBehaviour:
   tankName: T-72
   maxHP: 0
   maxSpeed: 0
+  tankHullMovement: {fileID: 0}
+  tankTurretMovement: {fileID: 0}
+  tankWheelMovement: {fileID: 0}
+  tankView: {fileID: 0}
+  tankAttack: {fileID: 0}
   targetRenderers:
   - {fileID: 5950691013378170844}
   - {fileID: 5950682595120902762}
@@ -1591,6 +1596,9 @@ MonoBehaviour:
   - {fileID: 5950403859253399884}
   - {fileID: 5950551091203187014}
   - {fileID: 5950161783166987146}
+  uiDamageIndicator: {fileID: 0}
+  playerUICanvas: {fileID: 0}
+  destroyedVFX: {fileID: 0}
 --- !u!1 &5964011969776312280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1612,7 @@ GameObject:
   - component: {fileID: 5950471724868062748}
   m_Layer: 0
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_03
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

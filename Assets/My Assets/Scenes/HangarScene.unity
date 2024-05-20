@@ -17780,7 +17780,7 @@ MonoBehaviour:
   m_CollideAgainst:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IgnoreTag: 
+  m_IgnoreTag: IgnoreCamera
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0

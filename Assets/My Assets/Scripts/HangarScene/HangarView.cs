@@ -14,9 +14,7 @@ public class HangarView : MonoBehaviour
     private GameObject _mainCamera;
     private Vector2 _input;
 
-    [Tooltip("How far in degrees can you move the camera up")]
     public float TopClamp = 70.0f;
-    [Tooltip("How far in degrees can you move the camera down")]
     public float BottomClamp = -30.0f;
 
     // cinemachine

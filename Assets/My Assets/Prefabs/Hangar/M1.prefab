@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8956153844446821557}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_R
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8956103877183260567}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_02
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 8957066839134675683}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_03
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 8956215850894615557}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_07
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 8956771568807879937}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_02
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: -8415913201190477802}
   m_Layer: 0
   m_Name: M1
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -550,6 +550,11 @@ MonoBehaviour:
   tankName: M1
   maxHP: 0
   maxSpeed: 0
+  tankHullMovement: {fileID: 0}
+  tankTurretMovement: {fileID: 0}
+  tankWheelMovement: {fileID: 0}
+  tankView: {fileID: 0}
+  tankAttack: {fileID: 0}
   targetRenderers:
   - {fileID: 8956588250685860141}
   - {fileID: 8956297668740596545}
@@ -572,7 +577,9 @@ MonoBehaviour:
   - {fileID: 8956693670481267647}
   - {fileID: 8956761353520848835}
   - {fileID: 8956551293964702303}
-  currentCamo: {fileID: 0}
+  uiDamageIndicator: {fileID: 0}
+  playerUICanvas: {fileID: 0}
+  destroyedVFX: {fileID: 0}
 --- !u!1 &8943077399837200933
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +593,7 @@ GameObject:
   - component: {fileID: 8956345699658315129}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_L
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -669,7 +676,7 @@ GameObject:
   - component: {fileID: 8957082357949835723}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_05
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -752,7 +759,7 @@ GameObject:
   - component: {fileID: 8956064794454779631}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_08
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -835,7 +842,7 @@ GameObject:
   - component: {fileID: 8956547306294842469}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_01
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,7 +925,7 @@ GameObject:
   - component: {fileID: 8956350290553625015}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_08
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1001,7 +1008,7 @@ GameObject:
   - component: {fileID: 8955729799554838295}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_06
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1084,7 +1091,7 @@ GameObject:
   - component: {fileID: 8956693670481267647}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_09
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1167,7 +1174,7 @@ GameObject:
   - component: {fileID: 8956446189848416699}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_04
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1250,7 +1257,7 @@ GameObject:
   - component: {fileID: 8957033324851376293}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_05
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,7 +1341,7 @@ GameObject:
   - component: {fileID: 9006126436084802197}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Turret_01
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1432,7 +1439,7 @@ GameObject:
   - component: {fileID: 8957034604500275685}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_09
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1515,7 +1522,7 @@ GameObject:
   - component: {fileID: 8955992698969325377}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_04
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1598,7 +1605,7 @@ GameObject:
   - component: {fileID: 8955779814161662743}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_03
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1682,7 +1689,7 @@ GameObject:
   - component: {fileID: 9006557952645882299}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Turret_Barrel_01
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1779,7 +1786,7 @@ GameObject:
   - component: {fileID: 8956655203020356255}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_R_07
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1862,7 +1869,7 @@ GameObject:
   - component: {fileID: 8956297668740596545}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_01
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1945,7 +1952,7 @@ GameObject:
   - component: {fileID: 8956021096068441723}
   m_Layer: 0
   m_Name: SM_Veh_Tank_USA_Track_Wheel_L_06
-  m_TagString: Untagged
+  m_TagString: IgnoreCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -5098,8 +5098,8 @@ MonoBehaviour:
   cameraRoot: {fileID: 7728403211453009}
   TopClamp: 70
   BottomClamp: -30
-  sensivity: 500
-  scrollSensitivity: 300
+  sensivity: 200
+  scrollSensitivity: 150
 --- !u!114 &7728404926919330
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,7 +21,12 @@ public class UIHangarPanel : MonoBehaviour
     private void Awake()
     {
         UIManager.Instance.hangarPanel = this;
-    } 
+    }
+
+    private void OnEnable()
+    {
+        Cursor.visible = true;
+    }
 
     public void ShowSelectedVehicle(string name)
     {

@@ -1,11 +1,8 @@
 using Cinemachine;
 using Photon.Pun;
 using Photon.Realtime;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -18,6 +15,11 @@ public class GameManager : MonoBehaviour
     private TankStat tankStat;
     private PhotonView photonView;
     public PhotonView PhotonView { get => photonView;}
+
+    // MasterClient Only
+    private int alivePlayerCount;
+
+    public int AlivePlayerCount { get => alivePlayerCount; set => alivePlayerCount = value; }
 
     #region Singleton
     private static GameManager instance;
@@ -130,4 +132,35 @@ public class GameManager : MonoBehaviour
         tankView.Vcam = vCam;
         vCam.m_Follow = tankView.CameraRoot;
     }
+
+    #region MasterClient
+    public void SetAliveCurrentPlayers(int players)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            alivePlayerCount = players;
+        }
+    }
+
+    public void CheckAliveCurrentPlayers()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            int currentPlayer = PhotonNetwork.CurrentRoom.Players.Count;
+            if (currentPlayer - alivePlayerCount <= 1)
+            {
+                PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "GameOver", true } });
+            }
+        }
+    }
+
+    public void GameOver()
+    {
+        UIManager.Instance.playerCanvas.gameOverPanel.gameObject.SetActive(true);
+        bool result = tankStat.IsDestoryed;
+        string panelText = result ? "You Lose." : "You Win.";
+        UIManager.Instance.playerCanvas.gameOverPanel.GameOverText.text = panelText;
+        PhotonManager.Instance.LeaveGameScene();
+    }
+    #endregion
 }

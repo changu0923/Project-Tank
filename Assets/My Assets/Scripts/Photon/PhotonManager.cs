@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
@@ -113,6 +114,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void LeaveGameScene()
+    {
+        StartCoroutine(LeaveRoom());
+    }
+
     #region Override Photon Pun Classes
     public override void OnConnectedToMaster()
     {
@@ -193,6 +199,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             if(result)
             {
                 UIManager.Instance.playerCanvas.playerListPanel.PlayerDestroyed(targetPlayer.NickName);
+                int currentAlivePlayer = GameManager.Instance.AlivePlayerCount - 1;
+                GameManager.Instance.SetAliveCurrentPlayers(currentAlivePlayer);
+                GameManager.Instance.CheckAliveCurrentPlayers();
+                print($"{targetPlayer.NickName} is Destroyed");
             }
         }
 
@@ -211,9 +221,19 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             if(result)
             {
                 GameManager.Instance.StartCountDown();
+                GameManager.Instance.SetAliveCurrentPlayers(PhotonNetwork.CurrentRoom.Players.Count);
                 InitPlayerListGameScene();
             }
-        } 
+        }
+
+        if (propertiesThatChanged.ContainsKey("GameOver"))
+        {
+            bool result = (bool)propertiesThatChanged["GameOver"];
+            if (result)
+            {
+                GameManager.Instance.GameOver();
+            }
+        }
     }
     #endregion
 
@@ -224,6 +244,17 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(waitTime);
         startGameCoroutine = null;
         ChangeScene(sceneName);
+    }
+
+    IEnumerator LeaveRoom()
+    {
+        yield return new WaitForSeconds(10f);
+        PhotonNetwork.LeaveRoom();
+        while (PhotonNetwork.InRoom)
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene("HangarScene");
     }
     #endregion
 }

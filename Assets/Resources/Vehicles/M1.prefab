@@ -5012,6 +5012,7 @@ MonoBehaviour:
   - {fileID: 7728402819998264}
   uiDamageIndicator: {fileID: 8784604798048792318, guid: 0c253cbb374baeb43aaf606cc65d6938, type: 3}
   playerUICanvas: {fileID: 0}
+  destroyedVFX: {fileID: 1056904543853562, guid: 4cf45cdce36e66e4a93614abb5ae7821, type: 3}
 --- !u!114 &7728404926919376
 MonoBehaviour:
   m_ObjectHideFlags: 0

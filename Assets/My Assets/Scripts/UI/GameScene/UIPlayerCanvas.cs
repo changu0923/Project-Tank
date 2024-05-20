@@ -9,6 +9,7 @@ public class UIPlayerCanvas : MonoBehaviour
 {
     public UIPlayerStatusPanel playerStatusPanel;
     public UIPlayerListPanel playerListPanel;
+    public UIGameOverPanel gameOverPanel;
     public Text waitingText;
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class UIPlayerCanvas : MonoBehaviour
 
     public void CountdownStart()
     {
-        StartCoroutine(CountdownCoroutine(5));
+        StartCoroutine(CountdownCoroutine(5));  
     }
 
     IEnumerator CountdownCoroutine(int _time)

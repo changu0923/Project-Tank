@@ -30,6 +30,9 @@ public class TankStat : MonoBehaviour
     private PhotonView photonView;
     public Canvas playerUICanvas;
 
+    [Header("VFX")]
+    [SerializeField] GameObject destroyedVFX;
+
     private Action onTakeDamage;
 
     
@@ -37,6 +40,7 @@ public class TankStat : MonoBehaviour
     public int MaxHP { get => maxHP; }
     public string TankName { get => tankName; }
     public Action OnTakeDamage { get => onTakeDamage; set => onTakeDamage = value; }
+    public bool IsDestoryed { get => isDestoryed; }
 
     private void Awake()
     {    
@@ -87,9 +91,23 @@ public class TankStat : MonoBehaviour
 
     [PunRPC]
     private void TankDestroyed()
-    {        
+    {
+        GameObject vfx = Instantiate(destroyedVFX);
+        vfx.transform.position = transform.position;
+        vfx.transform.rotation = Quaternion.identity;
+        Destroy(vfx, 10f);
         SetVehicleCamo(destroyedMaterial);
-        // TODO : Add VFX
+
+        if (photonView != null)
+        {
+            if (photonView.IsMine == true)
+            {
+                tankHullMovement.enabled = false;
+                tankTurretMovement.enabled = false; 
+                tankAttack.ScriptOn = false;
+                tankView.ActiveDeathCam();
+            }
+        }
     }
 
     public void InitializeWhenGameStart()

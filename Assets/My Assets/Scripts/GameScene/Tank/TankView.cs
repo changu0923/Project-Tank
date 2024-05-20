@@ -75,6 +75,14 @@ public class TankView : MonoBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
+    public void ActiveDeathCam()
+    {
+        if (thirdpersonFollow != null)
+        {
+            thirdpersonFollow.CameraDistance = 25f;
+        }
+    }
+
     public void OnLook(InputValue value)
     {
         if (true)

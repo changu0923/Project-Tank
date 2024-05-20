@@ -14,6 +14,8 @@ public class UIMatchMakingPanel : MonoBehaviour
     private float elapsedTime;
     private bool isMatchMaking;
 
+    public Button BackButton { get => backButton; }
+
     private void Awake()
     {
         backButton.onClick.AddListener(OnBackButtonClick);
@@ -22,7 +24,7 @@ public class UIMatchMakingPanel : MonoBehaviour
     private void OnEnable()
     {
         elapsedTime = 0f;
-        isMatchMaking = true;
+        isMatchMaking = true;     
         StartCoroutine(StartMatchMakingCoroutine());
     }
 
@@ -37,7 +39,6 @@ public class UIMatchMakingPanel : MonoBehaviour
 
     public void OnBackButtonClick()
     {
-        // TODO : Cancle MatchMaking And Close this Panel
         PhotonNetwork.LeaveRoom();
         isMatchMaking = false;
         gameObject.SetActive(false);

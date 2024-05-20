@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
         CinemachineVirtualCamera vCam = GameObject.FindGameObjectWithTag("TPSCamera").GetComponent<CinemachineVirtualCamera>();
         tankView.Vcam = vCam;
         vCam.m_Follow = tankView.CameraRoot;
+        vCam.m_LookAt = tankView.CameraRoot;    
     }
 
     #region MasterClient

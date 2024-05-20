@@ -12,6 +12,8 @@ public class UITopBarPanel : MonoBehaviour
     [SerializeField] Button startButton;
     [SerializeField] Button editNickname;
     [SerializeField] InputField editNicknameInput;
+    public Button StartButton { get => startButton;}
+
     private void Awake()
     {
         if (DatabaseManager.Instance.CurrentUserdata != null)
@@ -23,6 +25,11 @@ public class UITopBarPanel : MonoBehaviour
 
         startButton.onClick.AddListener(OnStartButtonClick);
         editNickname.onClick.AddListener(OnButtonEditNicknameClick);
+    }
+
+    private void OnEnable()
+    {
+        startButton.interactable = false;
     }
 
     private void OnButtonEditNicknameClick()
@@ -56,6 +63,7 @@ public class UITopBarPanel : MonoBehaviour
     {
         // TODO : Start Matchmaking
         PhotonManager.Instance.JoinRandomRoom();
+        startButton.interactable = false;
         UIManager.Instance.hangarPanel.matchmakingPanel.gameObject.SetActive(true);
     }
 

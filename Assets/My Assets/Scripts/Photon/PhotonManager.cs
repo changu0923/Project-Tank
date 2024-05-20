@@ -34,6 +34,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private int loadedPlayers = 0;
     private Coroutine startGameCoroutine;
 
+    private bool isLeaveRoom;
+
     private void Awake()
     {
         if (instance == null)
@@ -83,7 +85,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void ChangeNickname(string newNickname)
     {
         PhotonNetwork.NickName = newNickname;
-        print($"ChangeNickname Success : [{DateTime.Now}][Name : {PhotonNetwork.NickName}]");
     }
 
 
@@ -128,12 +129,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         print($"JoinLobby Success : [{DateTime.Now}]");
+        UIManager.Instance.hangarPanel.topBarPanel.StartButton.interactable = true;
     }
 
     // 로컬 플레이어가 방에 잘 접속했을때 호출
     public override void OnJoinedRoom()
     {        
-        Debug.Log($"Player Count : {PhotonNetwork.CurrentRoom.PlayerCount} [{DateTime.Now}]");
         currentRoomPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         UIManager.Instance.hangarPanel.matchmakingPanel.SetPlayerCount(currentRoomPlayerCount);
     }
@@ -141,7 +142,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     // 다른 플레이어가 방에 잘 접속했을때 호출
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log($"Player Joined : {PhotonNetwork.CurrentRoom.PlayerCount} [{DateTime.Now}]");
         currentRoomPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         UIManager.Instance.hangarPanel.matchmakingPanel.SetPlayerCount(currentRoomPlayerCount);
         if (PhotonNetwork.IsMasterClient)
@@ -160,6 +160,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         currentRoomPlayerCount--;
+
+        if(isLeaveRoom == true)
+        {
+            SceneManager.LoadScene("HangarScene");
+            isLeaveRoom = false;
+            print("LoadScene() Complete");
+        }
     }
 
     // references https://doc-api.photonengine.com/en/pun/current/class_photon_1_1_pun_1_1_mono_behaviour_pun_callbacks.html#afb96ff9ce687e592d74866b8775f1b32
@@ -255,14 +262,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     IEnumerator LeaveRoom()
     {
+        print("LeaveRoom() Called");
         yield return new WaitForSeconds(10f);
         PhotonNetwork.LeaveRoom();
-        while (PhotonNetwork.InRoom)
-        {
-            Debug.Log($"Trying To LeaveRoom [{DateTime.Now}]");
-            yield return null;
-        }
-        SceneManager.LoadScene("HangarScene");
+        print("LeaveRoom() Complete");
+        isLeaveRoom = true;
     }
     #endregion
 }

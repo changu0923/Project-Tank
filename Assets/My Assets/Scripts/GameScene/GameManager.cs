@@ -2,6 +2,7 @@ using Cinemachine;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,9 +18,7 @@ public class GameManager : MonoBehaviour
     public PhotonView PhotonView { get => photonView;}
 
     // MasterClient Only
-    private int alivePlayerCount;
-
-    public int AlivePlayerCount { get => alivePlayerCount; set => alivePlayerCount = value; }
+    private Dictionary<string, bool> currentRoomPlayerDic = new Dictionary<string, bool>();
 
     #region Singleton
     private static GameManager instance;
@@ -60,6 +59,11 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "SceneLoaded", true } });
     }
 
+    private void InitPlayerStatus()
+    {
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "AddPlayer", false } });
+    }
+
     public void UpdateCurrentHealth(int currentHP)
     {
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "CurrentHP", currentHP} });
@@ -72,6 +76,12 @@ public class GameManager : MonoBehaviour
         // Victim
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "Destroyed", true } });
     }
+
+    private void GameOverRoomPropertyUpdate()
+    {
+        PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "GameOver", true } });
+    }
+
     #endregion
     public void InitializeGame()
     {
@@ -90,6 +100,7 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.playerCanvas.playerStatusPanel.TankStat = tankStat;
         }
         UIManager.Instance.playerCanvas.playerStatusPanel.InitData(tankStat, photonView.Owner.NickName);
+        InitPlayerStatus();
 
         SetCamera(tankStat);
         Invoke("SetNickName", 2.5f);
@@ -134,23 +145,32 @@ public class GameManager : MonoBehaviour
     }
 
     #region MasterClient
-    public void SetAliveCurrentPlayers(int players)
+
+    public void AddCurrentPlayer(string name, bool status)
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            alivePlayerCount = players;
-        }
+        currentRoomPlayerDic.Add(name, status);
     }
 
-    public void CheckAliveCurrentPlayers()
+    public void ChangePlayerStatus(string name, bool status)
     {
-        if (PhotonNetwork.IsMasterClient)
+        currentRoomPlayerDic[name] = status;
+        CheckPlayersAlive();
+    }
+
+    private void CheckPlayersAlive()
+    {
+        int currentPlayerCount = currentRoomPlayerDic.Count;
+        int alivePlayer = 0;
+        foreach (var player in currentRoomPlayerDic)
         {
-            int currentPlayer = PhotonNetwork.CurrentRoom.Players.Count;
-            if (currentPlayer - alivePlayerCount <= 1)
+            if(player.Value == false)
             {
-                PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "GameOver", true } });
+                alivePlayer++;
             }
+        }
+        if (alivePlayer <= 1)
+        {
+            GameOverRoomPropertyUpdate();
         }
     }
 

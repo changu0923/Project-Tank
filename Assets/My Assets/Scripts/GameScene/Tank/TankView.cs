@@ -81,6 +81,10 @@ public class TankView : MonoBehaviour
         {
             thirdpersonFollow.CameraDistance = 25f;
         }
+        else
+        {
+            print("ActiveDeathCam : camera is null");
+        }
     }
 
     public void OnLook(InputValue value)

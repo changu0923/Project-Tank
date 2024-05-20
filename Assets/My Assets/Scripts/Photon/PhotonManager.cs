@@ -180,15 +180,23 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             }
             #endregion
 
+            #region Add Player into Dictionary
+
+            if (changedProps.ContainsKey("AddPlayer"))
+            {
+                bool result = (bool)changedProps["AddPlayer"];
+                GameManager.Instance.AddCurrentPlayer(targetPlayer.NickName, result);
+            }
+            #endregion
+
             #region HP Update
-            if(changedProps.ContainsKey("CurrentHP"))
+            if (changedProps.ContainsKey("CurrentHP"))
             {
                 int currentHP = (int)changedProps["CurrentHP"];
                 if(currentHP <=0)
                 {
                     currentHP = 0;
                 }
-                print($"{targetPlayer.NickName}'s HP : {currentHP} left. ");
             }
             #endregion
         }
@@ -199,10 +207,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             if(result)
             {
                 UIManager.Instance.playerCanvas.playerListPanel.PlayerDestroyed(targetPlayer.NickName);
-                int currentAlivePlayer = GameManager.Instance.AlivePlayerCount - 1;
-                GameManager.Instance.SetAliveCurrentPlayers(currentAlivePlayer);
-                GameManager.Instance.CheckAliveCurrentPlayers();
-                print($"{targetPlayer.NickName} is Destroyed");
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    GameManager.Instance.ChangePlayerStatus(targetPlayer.NickName, result);
+                }
             }
         }
 
@@ -221,7 +229,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             if(result)
             {
                 GameManager.Instance.StartCountDown();
-                GameManager.Instance.SetAliveCurrentPlayers(PhotonNetwork.CurrentRoom.Players.Count);
                 InitPlayerListGameScene();
             }
         }

@@ -252,6 +252,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
         while (PhotonNetwork.InRoom)
         {
+            Debug.Log($"Trying To LeaveRoom [{DateTime.Now}]");
             yield return null;
         }
         SceneManager.LoadScene("HangarScene");

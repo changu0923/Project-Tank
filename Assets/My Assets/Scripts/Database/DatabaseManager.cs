@@ -280,6 +280,7 @@ public class DatabaseManager : MonoBehaviour
                     else if (col.ColumnName =="camo_slot")
                     {
                         tankData.CamoSlot = int.Parse(row[col].ToString());
+                        print("Camo Insert :" + tankData.CamoSlot);
                     }
                 }                
                 currentUserOwnedVehicles.Add(tankData);

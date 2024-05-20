@@ -34,7 +34,7 @@ public class UIHangarPanel : MonoBehaviour
         GameObject selectedVehicle = modelList.VehicleModelList.Find(prefab => prefab.name == name);  
         if (selectedVehicle != null)
         {
-            Instantiate(selectedVehicle, vehicleSpawnPoint.position, Quaternion.Euler(0f, -150f, 0f), vehicleSpawnPoint);
+            GameObject currentSpawnVehicle = Instantiate(selectedVehicle, vehicleSpawnPoint.position, Quaternion.Euler(0f, -150f, 0f), vehicleSpawnPoint);
             UIManager.Instance.hangarPanel.equipmentPanel.gameObject.SetActive(true);
         }
     }

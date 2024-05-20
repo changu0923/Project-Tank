@@ -17460,7 +17460,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: be76a5ac3de137c4abce8171c8a4806e, type: 2}
   camoSprites:
   - {fileID: 21300000, guid: b83ca5d9fc1712e42839be6b8783ef2d, type: 3}
-  - {fileID: 21300000, guid: b83ca5d9fc1712e42839be6b8783ef2d, type: 3}
   - {fileID: 21300000, guid: 33ade0ad2d5538749bc3fcef57f93d20, type: 3}
   - {fileID: 21300000, guid: 7ab90678dd4d8614fa980acfe8de4ba3, type: 3}
   - {fileID: 21300000, guid: 837341a9789888e42989c4e00688dd07, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ public class UICamoHolder : MonoBehaviour
     
     public void SetCamoOnUI(int index)
     {
+        print("SetCamoOnUI : get Index : " + index);
         Image currentCamoImage = camoButton.GetComponent<Image>();
         Sprite targetSprite = UIManager.Instance.hangarPanel.ModelList.CamoSprites[index];
         currentCamoImage.sprite = targetSprite;
@@ -41,6 +43,7 @@ public class UICamoHolder : MonoBehaviour
     }
     IEnumerator SetCamoCoroutine(int index)
     {
+        print("index is :" + index);
         yield return new WaitForSeconds(0.5f);
         SetCamoOnUI(index);
         SetCamoOnVehicle(index);

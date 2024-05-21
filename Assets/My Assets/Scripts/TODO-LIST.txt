@@ -11,22 +11,15 @@ TODO List ✓ ✗
  - Photon ObjectPool(Bullets, Shells)		✗
  - VFX When Destroyed						✗
  - Change Model When Destroyed				✓ (Material : Complete, Model : Failed)
- - Acceleration 							✗
  - Highlight Opponents when mouse on it		✗
  - 파괴될때 포탑 날리기?						✗
- - 팀 나누기?									✗
  - 시작 후 타이머구현							✓
  - 차량별 UI구현 ( 조준시 정보 출력 )			✗
  - 차량 속도 표시 							✗
  
- - Built-in -> URP로 넘어오면서 궤도 작동 안함	 ✓
- - VFX : 현재 low poly 사용중인데 war fx 로 바꾸기
- 
- 멀티플레이어 카메라
- - 모든 플레이어마다 카메라를 구현할 필요는 없음. (각자의 클라이언트에서 자기 캐릭터만 조작)✓
- 
-WayPoint 기능 << 이름같은거 거리에 관계없이 같은 사이즈로 화면에 띄움
-
 05.16.
 할일 : 체력 일방적 처리 하였으니, 서버에서 체력빼고 RPC로 뿌리는거 구현하기	✓
 리지드바디 가속도 구현하기 (rb.MovePosition)은 Transform.Translate와 비슷한 기능이여서 가속도에 관계없음
+
+05.21.
+최우선 : Timer, ReloadTime, ReloadUI

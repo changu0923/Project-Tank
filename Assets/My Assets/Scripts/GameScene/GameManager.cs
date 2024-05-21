@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
         InitPlayerStatus();
 
         SetCamera(tankStat);
-        Invoke("SetNickName", 2.5f);
+        Invoke("SetPlayerInfo", 2.5f);
     }
 
     public void StartCountDown()
@@ -116,24 +117,41 @@ public class GameManager : MonoBehaviour
         tankStat.InitializeWhenGameStart();
     }
 
-    private void SetNickName()
+    private void SetPlayerInfo()
     {
         PhotonView[] players = FindObjectsOfType<PhotonView>();
-
+        string myNickName = photonView.Owner.NickName;
         foreach (PhotonView view in players)
         {
             view.gameObject.name = view.Owner.NickName + "'s Vehicle";
+            SetCamo(view);
             Canvas canvas = view.GetComponentInChildren<Canvas>();
             if (canvas != null)
             {                
                 TextMeshProUGUI textMeshPro = canvas.GetComponentInChildren<TextMeshProUGUI>();
                 if (textMeshPro != null)
-                {                    
+                {
                     string playerName = view.Owner.NickName;
-                    textMeshPro.text = playerName;
+                    if (playerName != myNickName)
+                    {
+                        textMeshPro.text = playerName;
+                    }
+                    else
+                    {
+                        textMeshPro.text = " ";
+                    }
                 }
             }          
         }
+    }
+
+    private void SetCamo(PhotonView player)
+    {
+        PhotonView target = player;
+        TankStat currentPlayerStat = target.GetComponent<TankStat>();
+        int index = PhotonManager.Instance.PlayerCamoIndex[target.Owner.NickName];
+        Material mat = UIManager.Instance.hangarPanel.ModelList.CamoMaterials[index];
+        currentPlayerStat.SetVehicleCamo(mat);
     }
 
     private void SetCamera(TankStat tankStatComponent)

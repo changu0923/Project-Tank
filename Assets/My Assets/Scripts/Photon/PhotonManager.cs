@@ -2,6 +2,8 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -26,8 +28,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             return instance;
         }
     }
-
-   
     #endregion
 
     private int currentRoomPlayerCount = 0; 
@@ -35,6 +35,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private Coroutine startGameCoroutine;
 
     private bool isLeaveRoom;
+
+    private Dictionary<string, int> playerCamoIndex = new Dictionary<string, int>();
+    public Dictionary<string, int> PlayerCamoIndex { get => playerCamoIndex;}
 
     private void Awake()
     {
@@ -103,6 +106,35 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
     }
 
+    private void SetCurrentVehicleCamo()
+    {
+        if (DatabaseManager.Instance.SelectedTank != null)
+        {
+            int camoIndex = DatabaseManager.Instance.SelectedTank.CamoSlot;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "Camo", camoIndex } });
+            print("SetCurrentVehicleCamo() : OK");
+        }
+        else
+        {
+            int camoIndex = 0;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "Camo", camoIndex } });
+            print("SetCurrentVehicleCamo() : Failed");
+        }
+    }
+
+    private void UpdatePlayersVehicleCamo()
+    {
+        foreach (Player player in PhotonNetwork.PlayerList) 
+        {
+            if(player.CustomProperties.ContainsKey("Camo"))
+            {
+                int index = (int)player.CustomProperties["Camo"];
+                playerCamoIndex[player.NickName] = index;
+                print($"UpdatePlayersVehicleCamo() : {player.NickName} found Camo : [{index}] ");
+            }
+        }      
+    }
+
     // 게임신에서 플레이어가 모두 접속완료하였으면, 플레이어 리스트 생성
     private void InitPlayerListGameScene()
     {
@@ -134,14 +166,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     // 로컬 플레이어가 방에 잘 접속했을때 호출
     public override void OnJoinedRoom()
-    {        
+    {
+        SetCurrentVehicleCamo();
         currentRoomPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         UIManager.Instance.hangarPanel.matchmakingPanel.SetPlayerCount(currentRoomPlayerCount);
+        Invoke("UpdatePlayersVehicleCamo", 2f);
     }
 
     // 다른 플레이어가 방에 잘 접속했을때 호출
     public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
+    {        
         currentRoomPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         UIManager.Instance.hangarPanel.matchmakingPanel.SetPlayerCount(currentRoomPlayerCount);
         if (PhotonNetwork.IsMasterClient)
@@ -169,6 +203,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if(playerCamoIndex.ContainsKey(otherPlayer.NickName))
+        {
+            playerCamoIndex.Remove(otherPlayer.NickName);
+        }
+    }
+
     // references https://doc-api.photonengine.com/en/pun/current/class_photon_1_1_pun_1_1_mono_behaviour_pun_callbacks.html#afb96ff9ce687e592d74866b8775f1b32
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
@@ -184,6 +226,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                     loadedPlayers++;
                     CountLoadedPlayer();
                 }
+            }
+            #endregion
+            #region SetCamo
+            if (changedProps.ContainsKey("Camo"))
+            {
+                int index = (int)changedProps["Camo"];
+                playerCamoIndex.Add(targetPlayer.NickName, index);
+                print($"{targetPlayer.NickName}'s Camo Added[index:{index}]");
             }
             #endregion
 

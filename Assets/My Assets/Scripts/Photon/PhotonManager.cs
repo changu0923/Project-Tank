@@ -3,7 +3,6 @@ using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -295,6 +294,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             bool result = (bool)propertiesThatChanged["GameOver"];
             if (result)
             {
+                GameManager.Instance.GameOver();
+            }
+        }
+
+        if (propertiesThatChanged.ContainsKey("TimeOver"))
+        {
+            bool result = (bool)propertiesThatChanged["TimeOver"];
+            if (result)
+            {
+                GameManager.Instance.IsTimeOver = true;
                 GameManager.Instance.GameOver();
             }
         }

@@ -363,6 +363,7 @@ public class DatabaseManager : MonoBehaviour
 
         if(result !=0)
         {
+            currentUserdata.UserNickname = newName;
             return true;
         }
         else

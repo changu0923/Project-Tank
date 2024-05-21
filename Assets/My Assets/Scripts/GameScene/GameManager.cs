@@ -1,6 +1,7 @@
 using Cinemachine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
@@ -16,11 +17,11 @@ public class GameManager : MonoBehaviour
     private List<PhotonView> activePlayers = new List<PhotonView>();
     private TankStat tankStat;
     private PhotonView photonView;
-    public PhotonView PhotonView { get => photonView;}
 
-    // MasterClient Only
     private Dictionary<string, bool> currentRoomPlayerDic = new Dictionary<string, bool>();
+    private bool isTimeOver;
 
+    public bool IsTimeOver { get => isTimeOver; set => isTimeOver = value; }
     #region Singleton
     private static GameManager instance;
     public static GameManager Instance
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+
     #endregion
     private void Awake()
     {
@@ -83,6 +85,16 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "GameOver", true } });
     }
 
+    private void TimeOverRoomPropertyUpdate()
+    {
+        PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "TimeOver", true } });
+    }
+
+    public void RequestTimeOver()
+    {
+        TimeOverRoomPropertyUpdate();
+    }
+
     #endregion
     public void InitializeGame()
     {
@@ -115,6 +127,7 @@ public class GameManager : MonoBehaviour
     public void InitalizeAfterCountDown()
     {
         tankStat.InitializeWhenGameStart();
+        UIManager.Instance.playerCanvas.playerListPanel.StartRoundTimer(300);
     }
 
     private void SetPlayerInfo()
@@ -189,17 +202,25 @@ public class GameManager : MonoBehaviour
         }
         if (alivePlayer <= 1)
         {
+            if(isTimeOver == true)
+            {
+                return;
+            }
             GameOverRoomPropertyUpdate();
         }
     }
 
+    #endregion
     public void GameOver()
     {
         UIManager.Instance.playerCanvas.gameOverPanel.gameObject.SetActive(true);
         bool result = tankStat.IsDestoryed;
         string panelText = result ? "You Lose." : "You Win.";
+        if(isTimeOver == true)
+        {
+            panelText = "Time Over";
+        }
         UIManager.Instance.playerCanvas.gameOverPanel.GameOverText.text = panelText;
         PhotonManager.Instance.LeaveGameScene();
     }
-    #endregion
 }

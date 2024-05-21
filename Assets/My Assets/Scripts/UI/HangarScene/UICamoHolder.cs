@@ -103,6 +103,7 @@ public class UICamoHolder : MonoBehaviour
         SetCamoOnUI(index);
         SetCamoOnVehicle(index);
         DatabaseManager.Instance.ChangeCamo(index);
+        DatabaseManager.Instance.SelectedTank.CamoSlot = index;
         UIManager.Instance.hangarPanel.loadingPanel.gameObject.SetActive(false);
         isSettingCamo = false; // 설정 완료 상태로 플래그 해제
     }

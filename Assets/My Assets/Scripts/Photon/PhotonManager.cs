@@ -198,7 +198,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             SceneManager.LoadScene("HangarScene");
             isLeaveRoom = false;
-            print("LoadScene() Complete");
         }
     }
 
@@ -235,7 +234,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 print($"{targetPlayer.NickName}'s Camo Added[index:{index}]");
             }
             #endregion
-
             #region Add Player into Dictionary
 
             if (changedProps.ContainsKey("AddPlayer"))
@@ -244,7 +242,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 GameManager.Instance.AddCurrentPlayer(targetPlayer.NickName, result);
             }
             #endregion
-
             #region HP Update
             if (changedProps.ContainsKey("CurrentHP"))
             {
@@ -255,9 +252,22 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 }
             }
             #endregion
-        }
 
-        if(changedProps.ContainsKey("Destroyed"))
+        }
+        #region AttackLog
+        if (changedProps.ContainsKey("AttackLog"))
+        {
+            string log = (string)changedProps["AttackLog"];
+            string[] names = log.Split('|');
+            if (names.Length >= 2)
+            {
+                string attackerName = names[0];
+                string targetName = names[1];
+                GameManager.Instance.HitMarkerCheck(attackerName);
+            }
+        }
+        #endregion
+        if (changedProps.ContainsKey("Destroyed"))
         {
             bool result = (bool)changedProps["Destroyed"];
             if(result)

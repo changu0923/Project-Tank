@@ -4,6 +4,7 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private Dictionary<string, bool> currentRoomPlayerDic = new Dictionary<string, bool>();
     private bool isTimeOver;
-
+    private string playerName;
     public bool IsTimeOver { get => isTimeOver; set => isTimeOver = value; }
     #region Singleton
     private static GameManager instance;
@@ -78,6 +79,15 @@ public class GameManager : MonoBehaviour
 
         // Victim
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "Destroyed", true } });
+    }
+    public void SendAttackLog(string from, string target)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(from);
+        sb.Append('|');
+        sb.Append(target);
+        string log = sb.ToString();
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "AttackLog", log } });
     }
 
     private void GameOverRoomPropertyUpdate()
@@ -152,9 +162,21 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         textMeshPro.text = " ";
+                        this.playerName = playerName;
                     }
                 }
             }          
+        }
+    }
+
+    public void HitMarkerCheck(string attacker)
+    {
+        if(photonView != null)
+        {
+            if(attacker == playerName)
+            {
+                UIManager.Instance.playerCanvas.ActiveHitMarker();
+            }
         }
     }
 

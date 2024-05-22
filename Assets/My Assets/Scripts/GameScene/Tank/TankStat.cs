@@ -2,6 +2,7 @@ using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class TankStat : MonoBehaviour
@@ -76,6 +77,7 @@ public class TankStat : MonoBehaviour
                     GameObject indicator = Instantiate(uiDamageIndicator, playerUICanvas.transform);
                     indicator.GetComponent<UIDamageIndicator>().SetIndicatorInfo(from, damage, location, tankView.CameraRoot);
                     GameManager.Instance.UpdateCurrentHealth(this.currentHP);
+                    GameManager.Instance.SendAttackLog(from, photonView.Owner.NickName);
                 }
             }
             if(currentHP <= 0)

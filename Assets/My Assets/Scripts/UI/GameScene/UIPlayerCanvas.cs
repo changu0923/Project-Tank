@@ -11,6 +11,7 @@ public class UIPlayerCanvas : MonoBehaviour
     public UIPlayerListPanel playerListPanel;
     public UIGameOverPanel gameOverPanel;
     public Text waitingText;
+    public Image hitMarker;
     private void Awake()
     {
         UIManager.Instance.playerCanvas = this;
@@ -19,6 +20,16 @@ public class UIPlayerCanvas : MonoBehaviour
     public void CountdownStart()
     {
         StartCoroutine(CountdownCoroutine(5));  
+    }
+
+    public void ActiveHitMarker()
+    {
+        hitMarker.gameObject.SetActive(true);
+        Color color = hitMarker.color;
+        color.a = 1f;
+        hitMarker.color = color;
+        StartCoroutine(HitMarkerStart());
+        AudioManager.Instance.PlayerHitEffect();
     }
 
     IEnumerator CountdownCoroutine(int _time)
@@ -37,5 +48,20 @@ public class UIPlayerCanvas : MonoBehaviour
         }
         waitingText.gameObject.SetActive(false);
         GameManager.Instance.InitalizeAfterCountDown();
+    }
+
+    IEnumerator HitMarkerStart()
+    {
+        float lifeTime = 0.5f;
+        float elapsedTime = 0f;
+        while (elapsedTime < lifeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            Color color = hitMarker.color;
+            color.a = Mathf.Lerp(1f, 0f, elapsedTime / lifeTime);
+            hitMarker.color = color;
+            yield return null;
+        }
+        hitMarker.gameObject.SetActive(false);
     }
 }

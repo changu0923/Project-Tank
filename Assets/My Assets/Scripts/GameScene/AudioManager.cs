@@ -10,6 +10,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip turretSound;
     public AudioClip fireClip;
     public AudioClip reloadClip;
+    public AudioClip penetratedClip;
+    public AudioClip deflectedClip;
+    public AudioClip explosionClip;
 
     [Header("3D Space Audio Object")]
     [SerializeField] GameObject audioElement; 
@@ -62,7 +65,7 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
 
-    public void PlayAudio(AudioClip audio, Transform positon, float distance)
+    public void PlayAudio(AudioClip audio, Transform positon, float distance = 150f)
     {
         AudioClip getClip = audio;
         GameObject audioObject = Instantiate(audioElement, positon.position, Quaternion.identity);

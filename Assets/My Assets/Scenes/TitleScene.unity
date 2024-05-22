@@ -603,6 +603,9 @@ MonoBehaviour:
   turretSound: {fileID: 8300000, guid: aabc1f848fa297447b568f4bdd8c6f15, type: 3}
   fireClip: {fileID: 8300000, guid: 4f41f1621e04ca2488379c02307ad336, type: 3}
   reloadClip: {fileID: 8300000, guid: d39b570c1f3f79544ab525bf7176f084, type: 3}
+  penetratedClip: {fileID: 8300000, guid: 429ff2f761e563643a3eaafcbaa941fa, type: 3}
+  deflectedClip: {fileID: 8300000, guid: b67df24a8d0b0324a9b0bcdffca2c045, type: 3}
+  explosionClip: {fileID: 8300000, guid: bb8ac50ffc3fb374e8e9904bf7b99ce1, type: 3}
   audioElement: {fileID: 1998154912112919159, guid: 9b77d159ef38f6045bfd10a1cb8e0071, type: 3}
 --- !u!4 &296281899
 Transform:

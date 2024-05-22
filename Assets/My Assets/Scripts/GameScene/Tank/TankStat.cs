@@ -33,7 +33,11 @@ public class TankStat : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] GameObject destroyedVFX;
+    private AudioClip armorPenetratedClip;
+    private AudioClip armorDeflectedClip;
+    private AudioClip vehicleDestroyedClip;
     private AudioSource audioSource;
+
 
     private Action onTakeDamage;
 
@@ -49,7 +53,11 @@ public class TankStat : MonoBehaviour
         destroyedMaterial = Resources.Load<Material>("MaterialDestroyed"); 
         audioSource = GetComponent<AudioSource>();
         currentHP = maxHP;
-        isDestoryed = false;        
+        isDestoryed = false;
+        armorPenetratedClip = AudioManager.Instance.penetratedClip;
+        armorDeflectedClip = AudioManager.Instance.deflectedClip;
+        vehicleDestroyedClip = AudioManager.Instance.explosionClip;
+
     }
 
     public void SetVehicleCamo(Material inputMaterial)
@@ -82,10 +90,12 @@ public class TankStat : MonoBehaviour
                     if (damage != 0)
                     {
                         GameManager.Instance.SendAttackSuccessLog(from, photonView.Owner.NickName);
+                        photonView.RPC("ArmorPenetrated", RpcTarget.All);
                     }
                     else
                     {
                         GameManager.Instance.SendAttackFailedLog(from, photonView.Owner.NickName);
+                        photonView.RPC("ArmorPenetrateFailed", RpcTarget.All);
                     }
                 }
             }
@@ -101,9 +111,22 @@ public class TankStat : MonoBehaviour
     }
 
     [PunRPC]
+    private void ArmorPenetrated()
+    {
+        AudioManager.Instance.PlayAudio(armorPenetratedClip, transform);
+    }
+
+    [PunRPC]
+    private void ArmorPenetrateFailed()
+    {
+        AudioManager.Instance.PlayAudio(armorDeflectedClip, transform);
+    }
+
+    [PunRPC]
     private void TankDestroyed()
     {
         GameObject vfx = Instantiate(destroyedVFX);
+        AudioManager.Instance.PlayAudio(vehicleDestroyedClip, transform);
         vfx.transform.position = transform.position;
         vfx.transform.rotation = Quaternion.identity;
         Destroy(vfx, 10f);

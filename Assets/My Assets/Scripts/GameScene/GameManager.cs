@@ -80,14 +80,24 @@ public class GameManager : MonoBehaviour
         // Victim
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "Destroyed", true } });
     }
-    public void SendAttackLog(string from, string target)
+    public void SendAttackSuccessLog(string from, string target)
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(from);
         sb.Append('|');
         sb.Append(target);
         string log = sb.ToString();
-        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "AttackLog", log } });
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "AttackSuccessLog", log } });
+    }
+
+    public void SendAttackFailedLog(string from, string target)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(from);
+        sb.Append('|');
+        sb.Append(target);
+        string log = sb.ToString();
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "AttackFailedLog", log } });
     }
 
     private void GameOverRoomPropertyUpdate()
@@ -176,6 +186,16 @@ public class GameManager : MonoBehaviour
             if(attacker == playerName)
             {
                 UIManager.Instance.playerCanvas.ActiveHitMarker();
+            }
+        }
+    }
+    public void AttackFailed(string attacker)
+    {
+        if (photonView != null)
+        {
+            if (attacker == playerName)
+            {
+                //TODO : 도탄되었습니다.
             }
         }
     }

@@ -23,15 +23,23 @@ public class TankTurretMovement : MonoBehaviour
     [Header("주포 올림각 제한")]
     [SerializeField] float maxElevation;
 
+    [Header("터렛 오디오소스")]
+    [SerializeField] AudioSource audioSource;
+
     private int playerLayer;
     private bool isTurretLock;
     private float currentAngle;
+    private Quaternion previousRotation;
+    private float turretMoveTimer = 0f;
 
     public float CurrentAngle { get => currentAngle; }
     public Transform AimTransform { get => aimTransform; } 
 
     private void Start()
     {
+        previousRotation = turret.localRotation;
+        audioSource.clip = AudioManager.Instance.turretSound;
+        audioSource.loop = true;
         playerLayer = 1 << LayerMask.NameToLayer("Player");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -41,6 +49,7 @@ public class TankTurretMovement : MonoBehaviour
     {
         TurretMove();
         GunMove();
+        HandleTurretSound();
     }
 
     public void TurretMove()
@@ -101,7 +110,30 @@ public class TankTurretMovement : MonoBehaviour
         {
             gun.localEulerAngles = Vector3.right * -currentAngle;
         }
-    }   
+    }
+
+    private void HandleTurretSound()
+    {
+        float turretStillTime = 0.15f;
+        if (turret.localRotation != previousRotation)
+        {
+            turretMoveTimer = 0f;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            turretMoveTimer += Time.deltaTime;  
+
+            if (turretMoveTimer >= turretStillTime && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+        previousRotation = turret.localRotation;
+    }
 
     // 터렛 잠금 기능
     void OnMouseRight(InputValue key)

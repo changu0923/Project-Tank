@@ -229,9 +229,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             #region SetCamo
             if (changedProps.ContainsKey("Camo"))
             {
-                int index = (int)changedProps["Camo"];
-                playerCamoIndex.Add(targetPlayer.NickName, index);
-                print($"{targetPlayer.NickName}'s Camo Added[index:{index}]");
+                int index = (int)changedProps["Camo"]; 
+                if (playerCamoIndex.ContainsKey(targetPlayer.NickName))
+                {
+                    playerCamoIndex[targetPlayer.NickName] = index;
+                }
+                else
+                {
+                    playerCamoIndex.Add(targetPlayer.NickName, index);
+                }
             }
             #endregion
             #region Add Player into Dictionary
@@ -254,16 +260,30 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             #endregion
 
         }
-        #region AttackLog
-        if (changedProps.ContainsKey("AttackLog"))
+
+        #region AttackSuccessLog
+        if (changedProps.ContainsKey("AttackSuccessLog"))
         {
-            string log = (string)changedProps["AttackLog"];
+            string log = (string)changedProps["AttackSuccessLog"];
             string[] names = log.Split('|');
             if (names.Length >= 2)
             {
                 string attackerName = names[0];
                 string targetName = names[1];
                 GameManager.Instance.HitMarkerCheck(attackerName);
+            }
+        }
+        #endregion
+        #region AttackFailedLog
+        if (changedProps.ContainsKey("AttackFailedLog"))
+        {
+            string log = (string)changedProps["AttackFailedLog"];
+            string[] names = log.Split('|');
+            if (names.Length >= 2)
+            {
+                string attackerName = names[0];
+                string targetName = names[1];
+                GameManager.Instance.AttackFailed(attackerName);
             }
         }
         #endregion

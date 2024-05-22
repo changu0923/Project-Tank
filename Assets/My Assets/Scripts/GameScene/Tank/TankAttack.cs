@@ -18,6 +18,11 @@ public class TankAttack : MonoBehaviourPunCallbacks
     [Header("VFX")]
     [SerializeField] GameObject cannonFirePrefab;
 
+    [Header("AudioSource")]
+    [SerializeField] AudioSource audioSource;
+    private AudioClip fireSound;
+    private AudioClip reloadSound;
+
     // 스크립트 제어용 bool 변수
     private bool scriptOn;
 
@@ -26,6 +31,12 @@ public class TankAttack : MonoBehaviourPunCallbacks
     private Transform aimTransfrom;
 
     public bool ScriptOn { get => scriptOn; set => scriptOn = value; }
+
+    private void Awake()
+    {
+        fireSound = AudioManager.Instance.fireClip;
+        reloadSound = AudioManager.Instance.reloadClip;
+    }
 
     // 주포를 발사합니다.
     [PunRPC]
@@ -44,6 +55,7 @@ public class TankAttack : MonoBehaviourPunCallbacks
             GameObject vfx = Instantiate(cannonFirePrefab, gunPoint.position, gunPoint.rotation);
             Destroy(vfx, 2.5f);
             shell.GetComponent<Shell>().Fire();
+            AudioManager.Instance.PlayAudio(fireSound, gunPoint, 150f);    
             StartCoroutine(ReloadMainGun(mainGunReloadTime));
         }
     }
@@ -60,6 +72,10 @@ public class TankAttack : MonoBehaviourPunCallbacks
     IEnumerator ReloadMainGun(float reloadTime)
     {
         currentReloadTime = reloadTime; // 초기화
+        if (photonView.IsMine)
+        {
+            audioSource.PlayOneShot(reloadSound);
+        }
 
         while (currentReloadTime > 0f)
         {

@@ -33,6 +33,7 @@ public class TankStat : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] GameObject destroyedVFX;
+    private AudioSource audioSource;
 
     private Action onTakeDamage;
 
@@ -46,6 +47,7 @@ public class TankStat : MonoBehaviour
     private void Awake()
     {    
         destroyedMaterial = Resources.Load<Material>("MaterialDestroyed"); 
+        audioSource = GetComponent<AudioSource>();
         currentHP = maxHP;
         isDestoryed = false;        
     }
@@ -77,7 +79,14 @@ public class TankStat : MonoBehaviour
                     GameObject indicator = Instantiate(uiDamageIndicator, playerUICanvas.transform);
                     indicator.GetComponent<UIDamageIndicator>().SetIndicatorInfo(from, damage, location, tankView.CameraRoot);
                     GameManager.Instance.UpdateCurrentHealth(this.currentHP);
-                    GameManager.Instance.SendAttackLog(from, photonView.Owner.NickName);
+                    if (damage != 0)
+                    {
+                        GameManager.Instance.SendAttackSuccessLog(from, photonView.Owner.NickName);
+                    }
+                    else
+                    {
+                        GameManager.Instance.SendAttackFailedLog(from, photonView.Owner.NickName);
+                    }
                 }
             }
             if(currentHP <= 0)

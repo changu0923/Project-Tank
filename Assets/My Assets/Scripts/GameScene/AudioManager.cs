@@ -1,4 +1,3 @@
-using Photon.Pun.Demo.PunBasics;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -6,6 +5,14 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSource;
     [Header("GameScene")]
     public AudioClip hitMarkerEffect;
+
+    [Header("Tank")]
+    public AudioClip turretSound;
+    public AudioClip fireClip;
+    public AudioClip reloadClip;
+
+    [Header("3D Space Audio Object")]
+    [SerializeField] GameObject audioElement; 
 
     #region Singleton
     private static AudioManager instance;
@@ -32,6 +39,7 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -52,5 +60,14 @@ public class AudioManager : MonoBehaviour
     {
         AudioClip clip = audio;
         audioSource.PlayOneShot(clip);
+    }
+
+    public void PlayAudio(AudioClip audio, Transform positon, float distance)
+    {
+        AudioClip getClip = audio;
+        GameObject audioObject = Instantiate(audioElement, positon.position, Quaternion.identity);
+        Audio3DSpace audio3D = audioObject.GetComponent<Audio3DSpace>();
+        audio3D.PlaySound(getClip, distance);
+        Debug.Log($"Instantiate AudioObjet on [{positon.position}]");
     }
 }

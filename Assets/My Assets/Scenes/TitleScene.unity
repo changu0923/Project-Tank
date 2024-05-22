@@ -502,7 +502,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -606,6 +606,8 @@ MonoBehaviour:
   penetratedClip: {fileID: 8300000, guid: 429ff2f761e563643a3eaafcbaa941fa, type: 3}
   deflectedClip: {fileID: 8300000, guid: b67df24a8d0b0324a9b0bcdffca2c045, type: 3}
   explosionClip: {fileID: 8300000, guid: bb8ac50ffc3fb374e8e9904bf7b99ce1, type: 3}
+  engineIdleClip: {fileID: 8300000, guid: 314c84dac52403742ae2233dddb090b2, type: 3}
+  engineActiveClip: {fileID: 8300000, guid: f261c39f9b88a334d87697b6a8da74fb, type: 3}
   audioElement: {fileID: 1998154912112919159, guid: 9b77d159ef38f6045bfd10a1cb8e0071, type: 3}
 --- !u!4 &296281899
 Transform:

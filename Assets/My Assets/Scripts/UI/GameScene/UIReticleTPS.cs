@@ -1,21 +1,46 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIReticleTPS : MonoBehaviour
 { 
     [SerializeField]RectTransform inCircleReticle;
-    [SerializeField] RectTransform outCircleBackgroundReticle;
-    [SerializeField]RectTransform outCircleReticle;
-    [SerializeField]Transform aimTrasform;
-    [SerializeField]Transform gunAimTrasform;
+    [SerializeField]Image outCircleBackgroundReticle;
+    [SerializeField]Image outCircleReticle;
+    private Transform aimTransform;
+    private bool isReady = false;
+    public bool IsReady { get => isReady; set => isReady = value; }
+
     void Update()
     {
-        Vector3 screenMousePosition = Camera.main.WorldToScreenPoint(aimTrasform.position);
-        Vector3 screenGunAimPosition = Camera.main.WorldToScreenPoint(gunAimTrasform.position);
+        if (isReady == true)
+        {
+            Vector3 screenGunAimPosition = Camera.main.WorldToScreenPoint(aimTransform.position);
+            inCircleReticle.position = screenGunAimPosition;
+        }
+    }
 
-        inCircleReticle.position = screenGunAimPosition;
-        outCircleReticle.position = screenMousePosition;
-        outCircleBackgroundReticle.position = screenMousePosition;
+    public void SetAimTransform(Transform target)
+    {
+        aimTransform = target;
+    }
+
+    public void StartReload(float _t)
+    {
+        StartCoroutine(StartReloadBar(_t));
+    }
+    IEnumerator StartReloadBar(float _time)
+    {
+        float totalTime = _time;
+        float currentTime = 0f;
+
+        while (currentTime <= totalTime)
+        {
+            float normalizedTime = currentTime / totalTime;
+            outCircleReticle.fillAmount = normalizedTime;
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        outCircleReticle.fillAmount = 1.0f;
     }
 }

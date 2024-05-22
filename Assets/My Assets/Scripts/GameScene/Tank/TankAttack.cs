@@ -57,6 +57,7 @@ public class TankAttack : MonoBehaviourPunCallbacks
             shell.GetComponent<Shell>().Fire();
             AudioManager.Instance.PlayAudio(fireSound, gunPoint, 150f);    
             StartCoroutine(ReloadMainGun(mainGunReloadTime));
+            UIManager.Instance.playerCanvas.uiReticle.StartReload(mainGunReloadTime);
         }
     }
 

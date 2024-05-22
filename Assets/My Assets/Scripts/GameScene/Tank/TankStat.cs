@@ -38,6 +38,9 @@ public class TankStat : MonoBehaviour
     private AudioClip vehicleDestroyedClip;
     private AudioSource audioSource;
 
+    [Header("GunTransform")]
+    [SerializeField] Transform gunAimTransform;
+
 
     private Action onTakeDamage;
 
@@ -47,6 +50,7 @@ public class TankStat : MonoBehaviour
     public string TankName { get => tankName; }
     public Action OnTakeDamage { get => onTakeDamage; set => onTakeDamage = value; }
     public bool IsDestoryed { get => isDestoryed; }
+    public Transform GunAimTransform { get => gunAimTransform; }
 
     private void Awake()
     {    

@@ -33,7 +33,8 @@ public class TankTurretMovement : MonoBehaviour
     private float turretMoveTimer = 0f;
 
     public float CurrentAngle { get => currentAngle; }
-    public Transform AimTransform { get => aimTransform; } 
+    public Transform AimTransform { get => aimTransform; }
+    public Transform GunAimTransform { get => gunAimTransform; }
 
     private void Start()
     {

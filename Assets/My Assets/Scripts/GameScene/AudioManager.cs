@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip penetratedClip;
     public AudioClip deflectedClip;
     public AudioClip explosionClip;
+    public AudioClip engineIdleClip;
+    public AudioClip engineActiveClip;
 
     [Header("3D Space Audio Object")]
     [SerializeField] GameObject audioElement; 
@@ -71,6 +73,5 @@ public class AudioManager : MonoBehaviour
         GameObject audioObject = Instantiate(audioElement, positon.position, Quaternion.identity);
         Audio3DSpace audio3D = audioObject.GetComponent<Audio3DSpace>();
         audio3D.PlaySound(getClip, distance);
-        Debug.Log($"Instantiate AudioObjet on [{positon.position}]");
     }
 }

@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Instance.playerCanvas = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<UIPlayerCanvas>();
             UIManager.Instance.playerCanvas.playerStatusPanel.TankStat = tankStat;
+            UIManager.Instance.playerCanvas.uiReticle.SetAimTransform(tankStat.GunAimTransform);
         }
         UIManager.Instance.playerCanvas.playerStatusPanel.InitData(tankStat, photonView.Owner.NickName);
         InitPlayerStatus();
@@ -153,6 +154,7 @@ public class GameManager : MonoBehaviour
     private void SetPlayerInfo()
     {
         PhotonView[] players = FindObjectsOfType<PhotonView>();
+        UIManager.Instance.playerCanvas.uiReticle.IsReady = true;
         string myNickName = photonView.Owner.NickName;
         foreach (PhotonView view in players)
         {

@@ -12,6 +12,7 @@ public class UIPlayerCanvas : MonoBehaviour
     public UIGameOverPanel gameOverPanel;
     public Text waitingText;
     public Image hitMarker;
+    public UIReticleTPS uiReticle;
     private void Awake()
     {
         UIManager.Instance.playerCanvas = this;

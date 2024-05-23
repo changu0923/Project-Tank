@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -5,6 +6,11 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private AudioSource audioSource;
+    [Header("UI")]
+    public AudioSource uiAudioSource;
+    public AudioClip clickClip;
+    public AudioClip countDownClip;
+
     [Header("GameScene")]
     public AudioClip hitMarkerEffect;
 
@@ -82,14 +88,37 @@ public class AudioManager : MonoBehaviour
         audio3D.PlaySound(getClip, distance);
     }
 
+    public void UIButtonClick()
+    {
+        AudioClip audioClip = clickClip;
+        uiAudioSource.PlayOneShot(audioClip);
+    }
+
+    public void UICountDown()
+    {
+        AudioClip audioClip = countDownClip;
+        uiAudioSource.PlayOneShot(audioClip);
+    }
+
     public void CrewAttackSuccess()
     {
+        StartCoroutine(CrewAttackSuccessCoroutine());
+    }
+    public void CrewAttackFailed()
+    {
+        StartCoroutine(CrewAttackFailedCoroutine());
+    }
+
+    IEnumerator CrewAttackSuccessCoroutine()
+    {
+        yield return new WaitForSeconds(0.75f);
         int index = UnityEngine.Random.Range(0, pierced.Count);
         AudioClip randomClip = pierced[index];
         crewAudio.PlayOneShot(randomClip);
     }
-    public void CrewAttackFailed()
+    IEnumerator CrewAttackFailedCoroutine()
     {
+        yield return new WaitForSeconds(0.75f);
         int index = UnityEngine.Random.Range(0, notPierced.Count);
         AudioClip randomClip = notPierced[index];
         crewAudio.PlayOneShot(randomClip);

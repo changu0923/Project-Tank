@@ -34,6 +34,7 @@ public class UITopBarPanel : MonoBehaviour
 
     private void OnButtonEditNicknameClick()
     {
+        AudioManager.Instance.UIButtonClick();
         editNicknameInput.gameObject.SetActive(true);
         editNicknameInput.onEndEdit.RemoveAllListeners();
         editNicknameInput.onEndEdit.AddListener(OnEditNicknameInputSubmit);
@@ -41,6 +42,7 @@ public class UITopBarPanel : MonoBehaviour
     
     private void OnEditNicknameInputSubmit(string name)
     {
+        AudioManager.Instance.UIButtonClick();
         if (string.IsNullOrEmpty(name))
         {
             editNicknameInput.gameObject.SetActive(false);
@@ -61,6 +63,7 @@ public class UITopBarPanel : MonoBehaviour
 
     public void OnStartButtonClick()
     {
+        AudioManager.Instance.UIButtonClick();
         // TODO : Start Matchmaking
         PhotonManager.Instance.JoinRandomRoom();
         startButton.interactable = false;

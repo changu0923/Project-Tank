@@ -28,7 +28,8 @@ public class HangarUIVehicleContent : MonoBehaviour
 
     private void OnTogglePressed(bool bValue)
     {
-        if(bValue)
+        AudioManager.Instance.UIButtonClick();
+        if (bValue)
         {
             DatabaseManager.Instance.SelectedTank = currentTankData;
             Debug.Log($"Data Set : {DatabaseManager.Instance.SelectedTank.TankName}");

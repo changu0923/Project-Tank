@@ -30,12 +30,13 @@ public class UILoginPanel : MonoBehaviour
         {
             errorText.text = "로그인 실패. 아이디와 비밀번호를 다시 확인하십시오.";
         }
-
+        AudioManager.Instance.UIButtonClick();
     }
 
     private void OnCreateButtonClick()
     {
         UIManager.Instance.titlePanel.createAccountPanel.gameObject.SetActive(true);
         gameObject.SetActive(false);
+        AudioManager.Instance.UIButtonClick();
     }
 }

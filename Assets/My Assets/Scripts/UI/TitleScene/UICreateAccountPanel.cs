@@ -22,6 +22,7 @@ public class UICreateAccountPanel : MonoBehaviour
 
     private void OnCreateButtonClick()
     {
+        AudioManager.Instance.UIButtonClick();
         // 1. ID 중복검사
         if (DatabaseManager.Instance.CheckID(emailInput.text) == true)
         {
@@ -67,6 +68,7 @@ public class UICreateAccountPanel : MonoBehaviour
 
     private void OnBackButtonClick()
     {
+        AudioManager.Instance.UIButtonClick();
         UIManager.Instance.titlePanel.loginPanel.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }

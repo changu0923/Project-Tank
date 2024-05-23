@@ -39,6 +39,7 @@ public class UIPlayerCanvas : MonoBehaviour
         int countdownValue = _time;
         while (countdownValue > 0)
         {
+            AudioManager.Instance.UICountDown();
             sb.Append("Game will start in ");
             sb.Append(countdownValue.ToString());
             sb.Append(" seconds.");

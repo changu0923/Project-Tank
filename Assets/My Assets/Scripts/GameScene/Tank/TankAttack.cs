@@ -1,7 +1,5 @@
 using Photon.Pun;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -42,11 +40,12 @@ public class TankAttack : MonoBehaviourPunCallbacks
     [PunRPC]
     private void MainGunFire()
     {
+
         if (isMainGunReady == true)
         {
-            isMainGunReady=false;
-            GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);           
-            if(aimTransfrom == null )
+            isMainGunReady = false;
+            GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
+            if (aimTransfrom == null)
             {
                 aimTransfrom = GetComponent<TankTurretMovement>().AimTransform;
             }
@@ -55,7 +54,17 @@ public class TankAttack : MonoBehaviourPunCallbacks
             GameObject vfx = Instantiate(cannonFirePrefab, gunPoint.position, gunPoint.rotation);
             Destroy(vfx, 2.5f);
             shell.GetComponent<Shell>().Fire();
-            AudioManager.Instance.PlayAudio(fireSound, gunPoint, 150f);    
+            AudioManager.Instance.PlayAudio(fireSound, gunPoint, 150f);
+
+            print($"view id : {photonView.ViewID}\n owner :{photonView.Owner.NickName}\nmy nickname : {PhotonNetwork.NickName}");
+
+
+            if (false == photonView.IsMine)
+            {
+                StartCoroutine(ReloadMainGunNotMine(mainGunReloadTime));
+                return;
+            }
+
             StartCoroutine(ReloadMainGun(mainGunReloadTime));
             UIManager.Instance.playerCanvas.uiReticle.StartReload(mainGunReloadTime);
         }
@@ -87,6 +96,12 @@ public class TankAttack : MonoBehaviourPunCallbacks
             }
             yield return null;
         }
+        isMainGunReady = true;
+    }
+
+    IEnumerator ReloadMainGunNotMine(float reloadTime)
+    {
+        yield return new WaitForSeconds(reloadTime);
         isMainGunReady = true;
     }
 

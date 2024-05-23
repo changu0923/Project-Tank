@@ -55,9 +55,13 @@ public class TankAttack : MonoBehaviourPunCallbacks
             GameObject vfx = Instantiate(cannonFirePrefab, gunPoint.position, gunPoint.rotation);
             Destroy(vfx, 2.5f);
             shell.GetComponent<Shell>().Fire();
-            AudioManager.Instance.PlayAudio(fireSound, gunPoint, 150f);    
-            StartCoroutine(ReloadMainGun(mainGunReloadTime));
-            UIManager.Instance.playerCanvas.uiReticle.StartReload(mainGunReloadTime);
+            AudioManager.Instance.PlayAudio(fireSound, gunPoint, 150f); 
+            if (photonView.IsMine)
+            {
+                StartCoroutine(ReloadMainGun(mainGunReloadTime));
+                UIManager.Instance.playerCanvas.uiReticle.StartReload(mainGunReloadTime);
+            }
+
         }
     }
 

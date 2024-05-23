@@ -36,38 +36,33 @@ public class TankAttack : MonoBehaviourPunCallbacks
         reloadSound = AudioManager.Instance.reloadClip;
     }
 
+    private void RequestMainGunFire()
+    {
+        if(isMainGunReady==false)
+        {
+            return;
+        }
+        isMainGunReady = false;
+        StartCoroutine(ReloadMainGun(mainGunReloadTime));
+        UIManager.Instance.playerCanvas.uiReticle.StartReload(mainGunReloadTime);
+        photonView.RPC("MainGunFire", RpcTarget.All);
+    }
+
     // 주포를 발사합니다.
     [PunRPC]
     private void MainGunFire()
     {
-
-        if (isMainGunReady == true)
+        GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
+        if (aimTransfrom == null)
         {
-            isMainGunReady = false;
-            GameObject shell = Instantiate(cannonPrefab, gunPoint.position, gunPoint.rotation);
-            if (aimTransfrom == null)
-            {
-                aimTransfrom = GetComponent<TankTurretMovement>().AimTransform;
-            }
-            shell.GetComponent<Shell>().SetAimTransform(aimTransfrom);
-            shell.GetComponent<Shell>().SetShooterInfo(photonView.Owner.NickName, gunPoint.position);
-            GameObject vfx = Instantiate(cannonFirePrefab, gunPoint.position, gunPoint.rotation);
-            Destroy(vfx, 2.5f);
-            shell.GetComponent<Shell>().Fire();
-            AudioManager.Instance.PlayAudio(fireSound, gunPoint, 150f);
-
-            print($"view id : {photonView.ViewID}\n owner :{photonView.Owner.NickName}\nmy nickname : {PhotonNetwork.NickName}");
-
-
-            if (false == photonView.IsMine)
-            {
-                StartCoroutine(ReloadMainGunNotMine(mainGunReloadTime));
-                return;
-            }
-
-            StartCoroutine(ReloadMainGun(mainGunReloadTime));
-            UIManager.Instance.playerCanvas.uiReticle.StartReload(mainGunReloadTime);
+            aimTransfrom = GetComponent<TankTurretMovement>().AimTransform;
         }
+        shell.GetComponent<Shell>().SetAimTransform(aimTransfrom);
+        shell.GetComponent<Shell>().SetShooterInfo(photonView.Owner.NickName, gunPoint.position);
+        GameObject vfx = Instantiate(cannonFirePrefab, gunPoint.position, gunPoint.rotation);
+        Destroy(vfx, 2.5f);
+        shell.GetComponent<Shell>().Fire();
+        AudioManager.Instance.PlayAudio(fireSound, gunPoint, 150f);
     }
 
     // 동축기관총을 발사합니다.
@@ -98,13 +93,6 @@ public class TankAttack : MonoBehaviourPunCallbacks
         }
         isMainGunReady = true;
     }
-
-    IEnumerator ReloadMainGunNotMine(float reloadTime)
-    {
-        yield return new WaitForSeconds(reloadTime);
-        isMainGunReady = true;
-    }
-
     #endregion
 
     #region InputSystem
@@ -115,7 +103,7 @@ public class TankAttack : MonoBehaviourPunCallbacks
 
         if(key.isPressed == true)
         {
-            photonView.RPC("MainGunFire", RpcTarget.All);
+            RequestMainGunFire();
         }
     }
 

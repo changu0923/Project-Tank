@@ -259,6 +259,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         UIManager.Instance.playerCanvas.gameOverPanel.gameObject.SetActive(true);
+        UIManager.Instance.playerCanvas.uiReticle.IsReady = false;
         bool result = tankStat.IsDestoryed;
         string panelText = result ? "You Lose." : "You Win.";
         if(isTimeOver == true)

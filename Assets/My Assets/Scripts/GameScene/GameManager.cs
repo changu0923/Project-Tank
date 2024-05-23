@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour
             if(attacker == playerName)
             {
                 UIManager.Instance.playerCanvas.ActiveHitMarker();
+                AudioManager.Instance.CrewAttackSuccess();
             }
         }
     }
@@ -197,7 +198,7 @@ public class GameManager : MonoBehaviour
         {
             if (attacker == playerName)
             {
-                //TODO : 도탄되었습니다.
+                AudioManager.Instance.CrewAttackFailed();
             }
         }
     }

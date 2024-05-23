@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -15,6 +17,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip explosionClip;
     public AudioClip engineIdleClip;
     public AudioClip engineActiveClip;
+
+    [Header("Crew Voice")]
+    [SerializeField] AudioSource crewAudio;
+    public List<AudioClip> pierced = new List<AudioClip>();
+    public List<AudioClip> notPierced =new List<AudioClip>();
 
     [Header("3D Space Audio Object")]
     [SerializeField] GameObject audioElement; 
@@ -73,5 +80,18 @@ public class AudioManager : MonoBehaviour
         GameObject audioObject = Instantiate(audioElement, positon.position, Quaternion.identity);
         Audio3DSpace audio3D = audioObject.GetComponent<Audio3DSpace>();
         audio3D.PlaySound(getClip, distance);
+    }
+
+    public void CrewAttackSuccess()
+    {
+        int index = UnityEngine.Random.Range(0, pierced.Count);
+        AudioClip randomClip = pierced[index];
+        crewAudio.PlayOneShot(randomClip);
+    }
+    public void CrewAttackFailed()
+    {
+        int index = UnityEngine.Random.Range(0, notPierced.Count);
+        AudioClip randomClip = notPierced[index];
+        crewAudio.PlayOneShot(randomClip);
     }
 }

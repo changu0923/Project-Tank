@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Timeline;
 
-public class TankHullMovement : MonoBehaviour
+public class TankHullMovement : MonoBehaviourPunCallbacks
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float rotationSpeed;
@@ -17,7 +17,16 @@ public class TankHullMovement : MonoBehaviour
 
     float x;
     float z;
-    private Rigidbody rb;    
+    private Rigidbody rb;
+
+    public enum TankState
+    {
+        Idle,
+        Moving,
+        Destroyed,
+    }
+
+    private TankState currentState;
 
     public float X { get => x; }
     public float Z { get => z; }
@@ -37,11 +46,13 @@ public class TankHullMovement : MonoBehaviour
         rb.velocity = Vector3.zero;
         x = 0;
         z = 0;
+        currentState = TankState.Idle;
     }
 
     void Update()
     {
         GetXZ();
+        UpdateState();
     }
 
     private void FixedUpdate()
@@ -114,6 +125,49 @@ public class TankHullMovement : MonoBehaviour
                 engineAudioSource.Play();
             }
             engineAudioSource.pitch = 1f;
+        }
+    }
+    private void UpdateState()
+    {
+        TankState newState = TankState.Idle;
+
+        if (z != 0 || x != 0)
+        {
+            newState = TankState.Moving;
+        }
+
+        if (newState != currentState)
+        {
+            currentState = newState;
+            photonview.RPC("SyncEngineSound", RpcTarget.All, currentState);
+        }
+    }
+
+    [PunRPC]
+    public void SyncEngineSound(TankState state)
+    {
+        switch (state)
+        {
+            case TankState.Idle:
+                engineAudioSource.clip = engineIdleClip;
+                engineAudioSource.pitch = 1f;
+                break;
+
+            case TankState.Moving:
+                engineAudioSource.clip = engineActiveClip;
+                float pitchZ = 1f;
+                float pitchX = 1f;
+                engineAudioSource.pitch = Mathf.Max(pitchZ, pitchX);
+                break;
+
+            case TankState.Destroyed:
+                engineAudioSource.Stop();
+                return;
+        }
+
+        if (!engineAudioSource.isPlaying)
+        {
+            engineAudioSource.Play();
         }
     }
 }

@@ -13,6 +13,8 @@ public class Shell : MonoBehaviour
     private Transform aimTransform;
     private Rigidbody rb;
 
+    private int hitCount = 1;
+
     // Shooter Information
     private string shooterName;
     private Vector3 shooterPosition;
@@ -54,6 +56,13 @@ public class Shell : MonoBehaviour
 
         if (collision.collider.CompareTag("Armor"))
         {      
+            if(hitCount == 0) 
+            {
+                return;
+            }
+
+            hitCount--;
+
             Armor targetArmor = collision.collider.GetComponent<Armor>();
 
             // 충돌한 객체의 표면 노멀 벡터 (정규화된 노멀 벡터 사용)

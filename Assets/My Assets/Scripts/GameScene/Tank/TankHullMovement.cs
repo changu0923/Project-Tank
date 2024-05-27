@@ -1,9 +1,10 @@
 using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Timeline;
 
-public class TankHullMovement : MonoBehaviourPunCallbacks
+public class TankHullMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float rotationSpeed;
@@ -12,57 +13,65 @@ public class TankHullMovement : MonoBehaviourPunCallbacks
     [SerializeField] AudioSource engineAudioSource;
     private AudioClip engineIdleClip;
     private AudioClip engineActiveClip;
-
+    Coroutine engineSoundCoroutine;
     private PhotonView photonview;
+
+    private float pitchChangeSpeed = 0.1f;
+    private float minPitch = 0.5f;
+    private float maxPitch = 1.0f;
+
+    private enum TankStatus
+    {
+        IDLE,
+        MOVING,
+        STOP,
+    }
+
+    private TankStatus currentStatus;
+    private TankStatus prevStatus;
 
     float x;
     float z;
     private Rigidbody rb;
 
-    public enum TankState
-    {
-        Idle,
-        Moving,
-        Destroyed,
-    }
-
-    private TankState currentState;
-
     public float X { get => x; }
     public float Z { get => z; }
+    private TankStatus CurrentStatus { get => currentStatus; set => currentStatus = value; }
+    private TankStatus PrevStatus { get => prevStatus; set => prevStatus = value; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         engineActiveClip = AudioManager.Instance.engineActiveClip;
-        engineIdleClip = AudioManager.Instance.engineIdleClip;  
+        engineIdleClip = AudioManager.Instance.engineIdleClip;
         photonview = GetComponent<PhotonView>();
     }
 
     void Start()
     {
-        InitEngine();
+        InitEngine();  
 
         rb.velocity = Vector3.zero;
         x = 0;
         z = 0;
-        currentState = TankState.Idle;
     }
 
     void Update()
     {
         GetXZ();
-        UpdateState();
     }
 
     private void FixedUpdate()
-    {       
+    {
         Move();
         Rotate();
-    }  
+    }
 
     private void InitEngine()
     {
+        currentStatus = TankStatus.IDLE;
+        prevStatus = CurrentStatus;
+
         engineAudioSource.rolloffMode = AudioRolloffMode.Linear;
         engineAudioSource.spatialBlend = 1f;
         engineAudioSource.maxDistance = 100f;
@@ -82,12 +91,12 @@ public class TankHullMovement : MonoBehaviourPunCallbacks
     {
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
-        EngineSoundEffect(z,x);
+        EngineSoundEffect(z, x);
     }
 
     void Move()
     {
-        if(Z != 0f) 
+        if (Z != 0f)
         {
             Vector3 moveDirection = new Vector3(0f, 0f, Z) * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(transform.position + transform.TransformDirection(moveDirection));
@@ -95,7 +104,7 @@ public class TankHullMovement : MonoBehaviourPunCallbacks
     }
     void Rotate()
     {
-        if(X != 0f) 
+        if (X != 0f)
         {
             Vector3 rotation = new Vector3(0f, x * rotationSpeed * Time.deltaTime, 0f);
             Quaternion deltaRotation = Quaternion.Euler(rotation);
@@ -107,67 +116,70 @@ public class TankHullMovement : MonoBehaviourPunCallbacks
     {
         if (moveZ != 0 || rotateX != 0)
         {
-            if (engineAudioSource.clip != engineActiveClip)
+            currentStatus = TankStatus.MOVING;
+            if(currentStatus != prevStatus)
             {
-                engineAudioSource.clip = engineActiveClip;
-                engineAudioSource.Play();
+                PlayEngineSoundEffect();
             }
-
-            float pitchZ = Mathf.Clamp(Mathf.Abs(moveZ), 0f, 1f);
-            float pitchX = Mathf.Clamp(Mathf.Abs(rotateX), 0f, 1f);
-            engineAudioSource.pitch = Mathf.Max(pitchZ, pitchX);
         }
         else
         {
-            if (engineAudioSource.clip != engineIdleClip)
+            currentStatus = TankStatus.IDLE;
+            if(currentStatus != prevStatus) 
             {
-                engineAudioSource.clip = engineIdleClip;
-                engineAudioSource.Play();
+                PlayEngineSoundEffect();
             }
-            engineAudioSource.pitch = 1f;
         }
-    }
-    private void UpdateState()
-    {
-        TankState newState = TankState.Idle;
-
-        if (z != 0 || x != 0)
-        {
-            newState = TankState.Moving;
-        }
-
-        if (newState != currentState)
-        {
-            currentState = newState;
-            photonview.RPC("SyncEngineSound", RpcTarget.All, currentState);
-        }
+        prevStatus = currentStatus;
     }
 
     [PunRPC]
-    public void SyncEngineSound(TankState state)
+    public void PlayEngineSoundEffect()
     {
-        switch (state)
+        if (engineSoundCoroutine != null)
         {
-            case TankState.Idle:
-                engineAudioSource.clip = engineIdleClip;
-                engineAudioSource.pitch = 1f;
-                break;
-
-            case TankState.Moving:
-                engineAudioSource.clip = engineActiveClip;
-                float pitchZ = 1f;
-                float pitchX = 1f;
-                engineAudioSource.pitch = Mathf.Max(pitchZ, pitchX);
-                break;
-
-            case TankState.Destroyed:
-                engineAudioSource.Stop();
-                return;
+            StopCoroutine(engineSoundCoroutine);
         }
 
-        if (!engineAudioSource.isPlaying)
+        if (currentStatus == TankStatus.IDLE)
         {
-            engineAudioSource.Play();
+            // TODO : 엔진음 작아지다가 Idle 엔진음 출력
+            engineSoundCoroutine = StartCoroutine(SoundEngineMoveToIdle());
+            Debug.Log("PlayEngineSoundEffect() : Moving -> Idle");
+        }
+        else if (currentStatus == TankStatus.MOVING)
+        {
+            // TODO : Idle에서 Moving 엔진음 출력
+            engineSoundCoroutine = StartCoroutine(SoundEngineIdleToMove());
+            Debug.Log("PlayEngineSoundEffect() : Idle -> Moving");
+        }
+        else    // (currentStatus == TankStatus.STOP)
+        {
+            // TODO : 퍼진 소리 출력
+            Debug.Log("PlayEngineSoundEffect() : Stopped");
         }
     }
+
+    #region SoundControl
+    IEnumerator SoundEngineIdleToMove()
+    {
+        float targetPitch = maxPitch;
+        while (engineAudioSource.pitch < targetPitch)
+        {
+            engineAudioSource.pitch += pitchChangeSpeed * Time.deltaTime;
+            yield return null;
+        }
+        engineAudioSource.pitch = targetPitch;
+    }
+    IEnumerator SoundEngineMoveToIdle()
+    {
+        float targetPitch = minPitch;
+        while (engineAudioSource.pitch > targetPitch)
+        {
+            engineAudioSource.pitch -= pitchChangeSpeed * Time.deltaTime;
+            yield return null;
+        }
+        engineAudioSource.pitch = targetPitch;
+    }
+    #endregion
 }

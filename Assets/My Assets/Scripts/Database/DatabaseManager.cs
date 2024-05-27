@@ -57,6 +57,7 @@ public class DatabaseManager : MonoBehaviour
 
     private void ConnectDatabase()
     {
+        Debug.Log($"Mysql Trying to Connect : [{DateTime.Now}]");
         try
         {
             string config = $"server=localhost;port=3306;database=project_tank;uid=root;pwd={passwd};charset=utf8;";

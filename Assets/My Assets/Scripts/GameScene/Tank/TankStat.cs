@@ -121,6 +121,7 @@ public class TankStat : MonoBehaviour
                 isDestoryed = true;
                 photonView.RPC("TankDestroyed", RpcTarget.All);
                 GameManager.Instance.PlayerDestroyed(shooterName);
+                OnTakeDamage?.Invoke();
             }
         }
     }

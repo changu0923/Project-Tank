@@ -9,6 +9,8 @@ TagManager:
   - PlayerUI
   - CameraCollision
   - IgnoreCamera
+  - Sharpnel
+  - Modules
   layers:
   - Default
   - TransparentFX
@@ -22,8 +24,8 @@ TagManager:
   - Shell
   - Obstacles
   - Model
-  - 
-  - 
+  - Sharpnel
+  - Modules
   - 
   - 
   - 

@@ -8,7 +8,8 @@ public class Shell : MonoBehaviour
     [SerializeField] protected float shellPenetration;
     [SerializeField] protected float shellSpeed;
     [SerializeField] protected int shellDamage;
- 
+    [SerializeField] protected GameObject sharpnel;
+
     private TrailRenderer trailRenderer;
     private Transform aimTransform;
     private Rigidbody rb;
@@ -64,22 +65,15 @@ public class Shell : MonoBehaviour
             hitCount--;
 
             Armor targetArmor = collision.collider.GetComponent<Armor>();
-
-            // 충돌한 객체의 표면 노멀 벡터 (정규화된 노멀 벡터 사용)
             Vector3 surfaceNormal = collision.contacts[0].normal;
-
-            // 총알의 방향 벡터 (총알이 튀어나온 방향)
             Vector3 bulletDirection = transform.forward;
-
-            // 입사각 계산 (두 벡터의 각도 계산) 
             float incidenceAngle = Vector3.Angle(-bulletDirection, surfaceNormal);
-
-            // 장갑계산
             float relativeThickness = CalculateRelativeThickness(targetArmor.GetArmorThickness, incidenceAngle);
-
             if (relativeThickness < shellPenetration)
             {
                 targetArmor.Penetrated(GetRandomDamage(), shooterName, shooterPosition);
+                GameObject spawnedSharpnel = Instantiate(sharpnel, collision.contacts[0].point, Quaternion.LookRotation(transform.forward));
+                spawnedSharpnel.GetComponent<Sharpnels>().SpawnRandomizeSharpnel(shooterName);
                 OnImpact();
                 Destroy(gameObject);
             }
@@ -93,18 +87,13 @@ public class Shell : MonoBehaviour
 
     private float CalculateRelativeThickness(float actualThickness, float incidenceAngle)
     {
-        // 입사각이 90도 이하인 경우에만 계산
         if (incidenceAngle <= 90f)
         {
-            // 입사각을 상대적인 입사각으로 변환
             float relativeIncidenceAngle = 90f - incidenceAngle;
-
-            // 사인 값을 사용하여 상대 갑옷 두께를 계산
             return actualThickness / Mathf.Sin(relativeIncidenceAngle * Mathf.Deg2Rad);
         }
         else
         {
-            // 입사각이 90도를 초과하는 경우, 상대적인 입사각은 90도로 설정
             return actualThickness;
         }
     }

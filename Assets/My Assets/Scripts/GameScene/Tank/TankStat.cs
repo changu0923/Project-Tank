@@ -41,10 +41,7 @@ public class TankStat : MonoBehaviour
     [Header("GunTransform")]
     [SerializeField] Transform gunAimTransform;
 
-
-    private Action onTakeDamage;
-
-    
+    private Action onTakeDamage;    
     public int CurrentHP { get => currentHP; }
     public int MaxHP { get => maxHP; }
     public string TankName { get => tankName; }
@@ -111,6 +108,20 @@ public class TankStat : MonoBehaviour
                 GameManager.Instance.PlayerDestroyed(from);
             }
             OnTakeDamage?.Invoke();
+        }
+    }
+
+    public void ModuleAmmoRackDestroyed(string shooterName)
+    {
+        if (photonView != null)
+        {
+            if (photonView.IsMine)
+            {
+                currentHP = 0;
+                isDestoryed = true;
+                photonView.RPC("TankDestroyed", RpcTarget.All);
+                GameManager.Instance.PlayerDestroyed(shooterName);
+            }
         }
     }
 

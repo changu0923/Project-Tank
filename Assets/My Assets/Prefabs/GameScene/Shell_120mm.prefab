@@ -388,6 +388,7 @@ MonoBehaviour:
   shellPenetration: 100
   shellSpeed: 6808
   shellDamage: 390
+  sharpnel: {fileID: 6153052175726254961, guid: 45aff75668a420d43aefea864d3f5f18, type: 3}
 --- !u!1 &6361743865375071932
 GameObject:
   m_ObjectHideFlags: 0

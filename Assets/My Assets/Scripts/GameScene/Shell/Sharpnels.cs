@@ -30,7 +30,7 @@ public class Sharpnels : MonoBehaviour
         foreach (var sharpnel in sharpnelList)
         {
             Vector2 randomPointInCircle = Random.insideUnitCircle * 2f;
-            Vector3 shrapnelTargetPos = circlePos + new Vector3(randomPointInCircle.x, 0f, randomPointInCircle.y);
+            Vector3 shrapnelTargetPos = circlePos + transform.right * randomPointInCircle.x + transform.up * randomPointInCircle.y;
             Vector3 dir = (shrapnelTargetPos - sharpnel.transform.position).normalized;
             Rigidbody rb = sharpnel.GetComponent<Rigidbody>();            
             if(rb != null)

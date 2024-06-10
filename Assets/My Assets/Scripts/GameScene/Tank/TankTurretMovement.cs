@@ -102,6 +102,13 @@ public class TankTurretMovement : MonoBehaviour
         Vector3 localTargetPos = turret.InverseTransformDirection(aimTransform.position - gun.position);
         Vector3 zeroPlainVector = Vector3.ProjectOnPlane(localTargetPos, Vector3.up);
 
+        Vector3 zeroPlainWorldStart = gun.position;
+        Vector3 zeroPlainWorldEnd = turret.TransformDirection(zeroPlainVector) + gun.position;
+
+        Debug.DrawLine(zeroPlainWorldStart, zeroPlainWorldEnd, Color.green);
+        Debug.DrawLine(aimTransform.position, zeroPlainWorldEnd, Color.blue);
+        Debug.DrawLine(gun.position, aimTransform.position, Color.red);
+
         float angle = Vector3.Angle(zeroPlainVector, localTargetPos);
         angle *= Mathf.Sign(localTargetPos.y);
         angle = Mathf.Clamp(angle, -maxDepression, maxElevation);

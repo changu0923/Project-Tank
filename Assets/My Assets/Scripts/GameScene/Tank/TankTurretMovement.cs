@@ -5,6 +5,7 @@ using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder;
 
 public class TankTurretMovement : MonoBehaviour
 {
@@ -98,17 +99,13 @@ public class TankTurretMovement : MonoBehaviour
             gunAimTransform.position = targetPos;
         }
 
-
         Vector3 localTargetPos = turret.InverseTransformDirection(aimTransform.position - gun.position);
-        Vector3 zeroPlainVector = Vector3.ProjectOnPlane(localTargetPos, Vector3.up);
 
-        Vector3 zeroPlainWorldStart = gun.position;
-        Vector3 zeroPlainWorldEnd = turret.TransformDirection(zeroPlainVector) + gun.position;
-
-        Debug.DrawLine(zeroPlainWorldStart, zeroPlainWorldEnd, Color.green);
-        Debug.DrawLine(aimTransform.position, zeroPlainWorldEnd, Color.blue);
-        Debug.DrawLine(gun.position, aimTransform.position, Color.red);
-
+        Vector3 currentPlainNormal = turret.up;
+        Debug.DrawRay(turret.position, currentPlainNormal * 10, Color.green);
+        Debug.DrawRay(gunPoint.position, gunPoint.forward * 10, Color.red);
+        Vector3 zeroPlainVector = Vector3.ProjectOnPlane(localTargetPos, currentPlainNormal);
+        
         float angle = Vector3.Angle(zeroPlainVector, localTargetPos);
         angle *= Mathf.Sign(localTargetPos.y);
         angle = Mathf.Clamp(angle, -maxDepression, maxElevation);
